@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { ArrowRight } from 'react-bootstrap-icons';
-import { Button, Row, Col } from 'react-bootstrap';
+import { Button, Row, Col } from 'react-bootstrap-v5';
 import Link from 'next/link';
 import { DateTime } from 'luxon';
 import styles from '../styles/home/blog-preview.module.sass';

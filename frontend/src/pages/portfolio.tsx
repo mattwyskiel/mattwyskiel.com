@@ -1,4 +1,4 @@
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap-v5';
 import styles from '../styles/portfolio/portfolio.module.sass';
 import { useAPI } from '../utils/API';
 

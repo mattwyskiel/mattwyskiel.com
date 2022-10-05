@@ -1,4 +1,4 @@
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap-v5';
 import Image from 'next/image';
 import styles from '../styles/about/about.module.sass';
 import axios from 'axios';

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { DateTime } from 'luxon';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap-v5';
 import ReactMarkdown from 'react-markdown';
 import DisqusComments from '../../components/commentsPane';
 import styles from '../../styles/blog/blog.module.sass';
