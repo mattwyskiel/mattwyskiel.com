@@ -1,16 +1,5 @@
-import {
-  Button,
-  Container,
-  Form,
-  FormControl,
-  Nav,
-  Navbar,
-  NavDropdown,
-} from "react-bootstrap-v5";
-import custom from "../styles/header.module.sass";
-
 const headerNavBarStyle = {
-  backgroundColor: "Black",
+  backgroundColor: 'Black',
 };
 
 export default function Header(props) {
@@ -27,7 +16,7 @@ export default function Header(props) {
         <Navbar expand="sm" bg="black" variant="dark">
           <Container>
             <Navbar.Brand href="/">
-              <span className={custom["site-title"]}>Matthew Wyskiel</span>
+              <span className={custom['site-title']}>Matthew Wyskiel</span>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
