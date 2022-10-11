@@ -1,17 +1,28 @@
 import axios from 'axios';
-import BlogPreview from '../components/blog-preview';
-import IntroText from '../components/introText';
-import Jumbotron from '../components/jumbotron';
+import type { NextPage } from 'next';
+import { BlogPreview } from '../components/blogPreview';
+import { IntroText } from '../components/introText';
+import { Jumbotron } from '../components/jumbotron';
 
-export default function HomePage(props) {
+interface HomePageProps {
+  splashText: string;
+  splashImage: string;
+  topHeader: string;
+  topDescription: string;
+  posts: any[];
+}
+
+const Home: NextPage<HomePageProps> = props => {
   return (
-    <main>
+    <div className="divide-y-4 divide-solid">
       <Jumbotron splashText={props.splashText} splashImage={props.splashImage} />
       <IntroText topHeader={props.topHeader} topDescription={props.topDescription} />
       <BlogPreview posts={props.posts} />
-    </main>
+    </div>
   );
-}
+};
+
+export default Home;
 
 export async function getStaticProps() {
   const wcmResult = await axios.get(
