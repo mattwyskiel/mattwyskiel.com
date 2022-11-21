@@ -30,6 +30,12 @@ export const Footer: FC = () => {
           Copyright &copy; {new Date().getFullYear()}{' '}
           <a href="https://github.com/mattwyskiel">Matthew Wyskiel</a>
         </div>
+        <div
+          data-iframe-width="150"
+          data-iframe-height="270"
+          data-share-badge-id="c37c5a93-070b-4e2c-ae17-f6736c9c703a"
+          data-share-badge-host="https://www.credly.com"
+        ></div>
       </div>
     </footer>
   );

@@ -15,15 +15,17 @@ export const IntroText: FC<IntroTextProps> = props => {
         <p className="text-xl">{props.topDescription}</p>
         <br />
         <div className="text-center flex flex-row flex-wrap justify-center items-stretch">
-          <Link href={'/about'}>
-            <a className="flex items-center flex-row m-5 p-3 bg-black rounded-md text-white">
-              More About Me &nbsp; <ArrowRightIcon className="h-5 w-5" />
-            </a>
+          <Link
+            href={'/about'}
+            className="flex items-center flex-row m-5 p-3 bg-black rounded-md text-white">
+            More About Me<ArrowRightIcon className="h-5 w-5" />
+
           </Link>
-          <Link href={'/portfolio'}>
-            <a className="flex items-center flex-row m-5 p-3 bg-black rounded-md text-white">
-              View Portfolio &nbsp; <ArrowRightIcon className="h-5 w-5" />
-            </a>
+          <Link
+            href={'/portfolio'}
+            className="flex items-center flex-row m-5 p-3 bg-black rounded-md text-white">
+            View Portfolio<ArrowRightIcon className="h-5 w-5" />
+
           </Link>
         </div>
       </div>
