@@ -1,26 +1,26 @@
 import {
   BaseSiteCdkDistributionProps,
   BaseSiteDomainProps,
-} from "@serverless-stack/resources/dist/BaseSite";
-import { isCDKConstruct } from "@serverless-stack/resources/dist/Construct";
-import { RemovalPolicy } from "aws-cdk-lib";
+} from './utils/BaseSite';
+import { isCDKConstruct } from './utils/Construct';
+import { RemovalPolicy } from 'aws-cdk-lib';
 import {
   DnsValidatedCertificate,
   ICertificate,
-} from "aws-cdk-lib/aws-certificatemanager";
-import { Distribution, ViewerProtocolPolicy } from "aws-cdk-lib/aws-cloudfront";
-import { S3Origin } from "aws-cdk-lib/aws-cloudfront-origins";
+} from 'aws-cdk-lib/aws-certificatemanager';
+import { Distribution, ViewerProtocolPolicy } from 'aws-cdk-lib/aws-cloudfront';
+import { S3Origin } from 'aws-cdk-lib/aws-cloudfront-origins';
 import {
   AaaaRecord,
   ARecord,
   HostedZone,
   IHostedZone,
   RecordTarget,
-} from "aws-cdk-lib/aws-route53";
-import { HttpsRedirect } from "aws-cdk-lib/aws-route53-patterns";
-import { CloudFrontTarget } from "aws-cdk-lib/aws-route53-targets";
-import { Bucket, BucketProps, HttpMethods } from "aws-cdk-lib/aws-s3";
-import { Construct } from "constructs";
+} from 'aws-cdk-lib/aws-route53';
+import { HttpsRedirect } from 'aws-cdk-lib/aws-route53-patterns';
+import { CloudFrontTarget } from 'aws-cdk-lib/aws-route53-targets';
+import { Bucket, BucketProps, HttpMethods } from 'aws-cdk-lib/aws-s3';
+import { Construct } from 'constructs';
 
 ///
 /// With scaffolding help from https://github.com/serverless-stack/serverless-stack/blob/master/packages/resources/src/NextjsSite.ts
@@ -69,9 +69,9 @@ export class ExposedAssetBucket extends Construct {
       removalPolicy: RemovalPolicy.DESTROY,
       cors: [
         {
-          allowedOrigins: ["*"],
+          allowedOrigins: ['*'],
           allowedMethods: [HttpMethods.GET],
-          allowedHeaders: ["*"],
+          allowedHeaders: ['*'],
           exposedHeaders: [],
         },
       ],
@@ -99,7 +99,7 @@ export class ExposedAssetBucket extends Construct {
     const domainNames = [];
     if (!customDomain) {
       // no domain
-    } else if (typeof customDomain === "string") {
+    } else if (typeof customDomain === 'string') {
       domainNames.push(customDomain);
     } else {
       domainNames.push(customDomain.domainName);
@@ -109,7 +109,7 @@ export class ExposedAssetBucket extends Construct {
     const origin = new S3Origin(this.s3Bucket);
 
     // Create Distribution
-    return new Distribution(this, "Distribution", {
+    return new Distribution(this, 'Distribution', {
       // Override props.
       ...cfDistributionProps,
       // these values can NOT be overwritten by cfDistributionProps
@@ -137,7 +137,7 @@ export class ExposedAssetBucket extends Construct {
       return;
     }
 
-    if (typeof customDomain === "string") {
+    if (typeof customDomain === 'string') {
       return;
     }
 
@@ -170,23 +170,23 @@ export class ExposedAssetBucket extends Construct {
 
     let hostedZone;
 
-    if (typeof customDomain === "string") {
-      hostedZone = HostedZone.fromLookup(this, "HostedZone", {
+    if (typeof customDomain === 'string') {
+      hostedZone = HostedZone.fromLookup(this, 'HostedZone', {
         domainName: customDomain,
       });
     } else if (isCDKConstruct(customDomain.hostedZone)) {
       hostedZone = customDomain.cdk?.hostedZone as IHostedZone;
-    } else if (typeof customDomain.hostedZone === "string") {
-      hostedZone = HostedZone.fromLookup(this, "HostedZone", {
+    } else if (typeof customDomain.hostedZone === 'string') {
+      hostedZone = HostedZone.fromLookup(this, 'HostedZone', {
         domainName: customDomain.hostedZone,
       });
-    } else if (typeof customDomain.domainName === "string") {
+    } else if (typeof customDomain.domainName === 'string') {
       // Skip if domain is not a Route53 domain
       if (customDomain.isExternalDomain === true) {
         return;
       }
 
-      hostedZone = HostedZone.fromLookup(this, "HostedZone", {
+      hostedZone = HostedZone.fromLookup(this, 'HostedZone', {
         domainName: customDomain.domainName,
       });
     } else {
@@ -207,25 +207,25 @@ export class ExposedAssetBucket extends Construct {
 
     // HostedZone is set for Route 53 domains
     if (this.hostedZone) {
-      if (typeof customDomain === "string") {
-        acmCertificate = new DnsValidatedCertificate(this, "Certificate", {
+      if (typeof customDomain === 'string') {
+        acmCertificate = new DnsValidatedCertificate(this, 'Certificate', {
           domainName: customDomain,
           hostedZone: this.hostedZone,
-          region: "us-east-1",
+          region: 'us-east-1',
         });
       } else if (customDomain.cdk?.certificate) {
         acmCertificate = customDomain.cdk?.certificate;
       } else {
-        acmCertificate = new DnsValidatedCertificate(this, "Certificate", {
+        acmCertificate = new DnsValidatedCertificate(this, 'Certificate', {
           domainName: customDomain.domainName,
           hostedZone: this.hostedZone,
-          region: "us-east-1",
+          region: 'us-east-1',
         });
       }
     }
     // HostedZone is NOT set for non-Route 53 domains
     else {
-      if (typeof customDomain !== "string") {
+      if (typeof customDomain !== 'string') {
         acmCertificate = customDomain.cdk?.certificate;
       }
     }
@@ -242,7 +242,7 @@ export class ExposedAssetBucket extends Construct {
 
     let recordName;
     let domainAlias;
-    if (typeof customDomain === "string") {
+    if (typeof customDomain === 'string') {
       recordName = customDomain;
     } else {
       recordName = customDomain.domainName;
@@ -255,12 +255,12 @@ export class ExposedAssetBucket extends Construct {
       zone: this.hostedZone,
       target: RecordTarget.fromAlias(new CloudFrontTarget(this.cfDistribution)),
     };
-    new ARecord(this, "AliasRecord", recordProps);
-    new AaaaRecord(this, "AliasRecordAAAA", recordProps);
+    new ARecord(this, 'AliasRecord', recordProps);
+    new AaaaRecord(this, 'AliasRecordAAAA', recordProps);
 
     // Create Alias redirect record
     if (domainAlias) {
-      new HttpsRedirect(this, "Redirect", {
+      new HttpsRedirect(this, 'Redirect', {
         zone: this.hostedZone,
         recordNames: [domainAlias],
         targetDomain: recordName,
