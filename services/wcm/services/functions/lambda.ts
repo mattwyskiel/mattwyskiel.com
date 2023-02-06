@@ -3,7 +3,7 @@ import validator from '@middy/validator';
 import { APIGatewayProxyHandlerV2 } from 'aws-lambda';
 import { json } from 'lib/lambda-utils';
 import requestMonitoring from '../lib/middleware/request-monitoring';
-import { DynamoDBController } from '../services/dynamodb.service';
+import { DynamoDBController } from '../lib/services/dynamodb.service';
 
 const inputSchema = {
   type: 'object',
