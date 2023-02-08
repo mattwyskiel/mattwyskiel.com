@@ -1,4 +1,4 @@
-import { StackContext } from '@serverless-stack/resources';
+import { StackContext } from 'sst/constructs';
 import { ExposedAssetBucket } from './constructs/AssetBucket';
 
 export function AssetsStack({ stack }: StackContext) {
