@@ -1,15 +1,14 @@
 import { SSTConfig } from 'sst';
-import { MyStack } from './stacks/MyStack';
+import { API } from './stacks/MyStack';
 
 export default {
-  config() {
-    return { name: 'mattwyskiel-dotcom-wcm', region: 'us-east-1' };
+  config(_input) {
+    return {
+      name: 'mattwyskiel-dotcom-wcm',
+      region: 'us-east-1',
+    };
   },
   stacks(app) {
-    app.setDefaultFunctionProps({
-      runtime: 'nodejs16.x',
-      architecture: 'arm_64',
-    });
-    app.stack(MyStack);
+    app.stack(API);
   },
 } satisfies SSTConfig;

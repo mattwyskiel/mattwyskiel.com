@@ -1,9 +1,8 @@
+import { ApiHandler } from 'sst/node/api';
 import middy from '@middy/core';
 import validator from '@middy/validator';
-import { APIGatewayProxyHandlerV2 } from 'aws-lambda';
-import { json } from 'lib/lambda-utils';
-import requestMonitoring from '../lib/middleware/request-monitoring';
-import { DynamoDBController } from '../lib/services/dynamodb.service';
+import requestMonitoring from './middleware/request-monitoring';
+import { DynamoDBController } from '../../../packages/core/src/services/dynamodb.service';
 
 const inputSchema = {
   type: 'object',
@@ -19,9 +18,13 @@ const inputSchema = {
   required: ['queryStringParameters'],
 } as const;
 
-const getPageContent: APIGatewayProxyHandlerV2 = async event => {
-  return json(await DynamoDBController.getPageContent(event.queryStringParameters!.page!));
-};
+export const getPageContent = ApiHandler(async event => {
+  return {
+    body: JSON.stringify(
+      await DynamoDBController.getPageContent(event.queryStringParameters!.page!)
+    ),
+  };
+});
 
 export const handler = middy(getPageContent)
   .use(requestMonitoring<typeof inputSchema>())
