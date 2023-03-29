@@ -4,8 +4,8 @@ on:
       - 'main'
       - 'develop'
     paths:
-      - 'infra/**'
-      - '.github/workflows/infra.yaml'
+      - 'frontend/**'
+      - '.github/workflows/frontend.yaml'
 
 permissions:
   id-token: write # This is required for requesting the JWT
