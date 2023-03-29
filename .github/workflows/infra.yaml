@@ -16,6 +16,8 @@ jobs:
     name: Publishes this SST stack
     steps:
       - uses: actions/checkout@v3
+      - run: cd infra
+        shell: bash
       - id: pnpm-install
         uses: mattwyskiel/sst-node-pnpm-setup@v1
       - run: pnpm i
