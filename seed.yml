@@ -1,5 +1,2 @@
 before_compile:
   - n lts
-  - npm install -g pnpm
-compile:
-  - cd $SEED_SERVICE_FULLPATH && pnpm install
