@@ -33,9 +33,9 @@ jobs:
           aws-region: us-east-1
           role-to-assume: arn:aws:iam::662292074719:role/whiskey-app-role
           role-session-name: sst-pnpm-workflows-sample
-      - run: cd infra && pnpm sst deploy --stage dev
+      - run: cd frontend && pnpm sst deploy --stage dev
         shell: bash
         if: startsWith(github.ref_name, 'develop')
-      - run: cd infra && pnpm sst deploy --stage prod
+      - run: cd frontend && pnpm sst deploy --stage prod
         shell: bash
         if: startsWith(github.ref_name, 'main')
