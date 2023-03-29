@@ -1,0 +1,34 @@
+.portfolio-title
+    font-size: 3.2em
+    text-align: center
+
+.portfolio-flex-grid
+    display: flex
+
+    .portfolio-flex-col
+        flex: 1
+
+.portfolio-italics
+    font-style: italic
+.portfolio-center
+    text-align: center
+
+@include media-query($on-palm)
+    .portfolio-flex-grid
+        display: block
+
+.app-preview
+
+    position: relative
+    padding-bottom: 56.25%
+    height: 0
+    
+
+    video
+        box-sizing: border-box
+        background-size: contain
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%

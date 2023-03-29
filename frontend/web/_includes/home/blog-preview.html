@@ -1,0 +1,26 @@
+<div class="blog-preview wrapper">
+  {%- if site.posts.size > 0 -%}
+    <h2 class="preview-post-list-heading">Recent Blog Posts</h2>
+
+    <ul class="preview-post-list">
+      {%- for post in site.posts limit:2 -%}
+      <li>
+        <div class="preview-post">
+          <h3>
+            <a class="preview-post-link" href="{{ post.url | relative_url }}">
+              {{ post.title | escape }}
+            </a>
+          </h3>
+          {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+          <span class="preview-post-date">{{ post.date | date: date_format }}</span>
+          <br>
+          <p>{{ post.excerpt }}</p>
+          <div class="preview-read-more-link">
+              <a class="button-black" href="{{ post.url | relative_url }}">Read More      <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </li>
+      {%- endfor -%}
+    </ul>
+  {%- endif -%}
+</div>

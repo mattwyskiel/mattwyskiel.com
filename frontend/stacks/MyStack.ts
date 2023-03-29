@@ -1,30 +1,10 @@
-import { StackContext, NextjsDomainProps, NextjsSite } from '@serverless-stack/resources';
+import { StackContext, StaticSite } from 'sst/constructs';
 
-export function MyStack({ stack }: StackContext) {
-  const site = new NextjsSite(stack, 'Site', {
-    path: 'src',
-    customDomain: domain(stack.stage),
-  });
-
-  stack.addOutputs({
-    url: site.url,
-    publicURL: site.customDomainUrl ?? 'undefined',
+export function Site({ stack }: StackContext) {
+  new StaticSite(stack, 'JekyllSite', {
+    path: 'web',
+    errorPage: '404.html',
+    buildOutput: '_site',
+    buildCommand: 'bundle exec jekyll build',
   });
 }
-
-const domain = (stage: string): NextjsDomainProps | undefined => {
-  switch (stage) {
-    case 'prod':
-      return {
-        domainName: 'mattwyskiel.com',
-        domainAlias: 'www.mattwyskiel.com',
-      };
-    case 'dev':
-      return {
-        hostedZone: 'mattwyskiel.com',
-        domainName: 'develop.mattwyskiel.com',
-      };
-    default:
-      return undefined;
-  }
-};
