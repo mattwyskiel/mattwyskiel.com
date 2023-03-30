@@ -28,7 +28,7 @@ jobs:
           ruby-version: '3.1'
       - run: pnpm i
         shell: bash
-      - run: bundle install
+      - run: cd web && bundle install
         shell: bash
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
