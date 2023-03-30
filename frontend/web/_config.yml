@@ -17,14 +17,14 @@ title: Matthew Wyskiel
 email: mwwyskiel@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Software Developer, Music Enthusiast, News Junkie.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://mattwyskiel.com" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: '' # the subpath of your site, e.g. /blog
+url: 'https://mattwyskiel.com' # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: mattwyskiel
-github_username:  mattwyskiel
+github_username: mattwyskiel
 
 defaults:
   - scope:
-      path: ""
+      path: ''
     values:
       image: /assets/images/default_article_image.png
 
@@ -51,7 +51,7 @@ disqus:
   shortname: mattwyskielblog
 
 paginate: 5
-paginate_path: "/blog/:num"
+paginate_path: '/blog/:num'
 
 # Build settings
 markdown: kramdown
@@ -60,19 +60,3 @@ plugins:
   - jekyll-seo-tag
   - jekyll-paginate
   - jekyll-sitemap
-
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-# exclude:
-#   
-exclude:
-  - package.json
-  - gulpfile.js
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
