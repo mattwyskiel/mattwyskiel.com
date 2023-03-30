@@ -13,6 +13,9 @@ permissions:
 
 jobs:
   deploy:
+    defaults:
+      run:
+        working-directory: ./frontend
     runs-on: ubuntu-latest
     name: Publishes this SST stack
     steps:
@@ -23,9 +26,9 @@ jobs:
         uses: ruby/setup-ruby@359bebbc29cbe6c87da6bc9ea3bc930432750108
         with:
           ruby-version: '2.6'
-      - run: cd frontend && pnpm i
+      - run: pnpm i
         shell: bash
-      - run: cd frontend/web && bundle install
+      - run: bundle install
         shell: bash
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
@@ -33,9 +36,9 @@ jobs:
           aws-region: us-east-1
           role-to-assume: arn:aws:iam::662292074719:role/whiskey-app-role
           role-session-name: sst-pnpm-workflows-sample
-      - run: cd frontend && pnpm sst deploy --stage dev
+      - run: pnpm sst deploy --stage dev
         shell: bash
         if: startsWith(github.ref_name, 'develop')
-      - run: cd frontend && pnpm sst deploy --stage prod
+      - run: pnpm sst deploy --stage prod
         shell: bash
         if: startsWith(github.ref_name, 'main')
