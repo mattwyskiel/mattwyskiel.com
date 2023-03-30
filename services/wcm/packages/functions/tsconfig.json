@@ -4,7 +4,7 @@
     "module": "esnext",
     "baseUrl": ".",
     "paths": {
-      "@wcm/core/*": ["../core/src/*"]
+      "@mattwyskiel-dotcom-wcm/core/*": ["../core/src/*"]
     }
   }
 }

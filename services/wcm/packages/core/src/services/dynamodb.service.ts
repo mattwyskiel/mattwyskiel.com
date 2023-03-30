@@ -6,12 +6,11 @@ import {
 import { unmarshall } from '@aws-sdk/util-dynamodb';
 import { Table } from 'sst/node/table';
 
-export class DynamoDBController {
-  public static async getPageContent(
-    page: string
-  ): Promise<Record<string, unknown>> {
+const dynamodbClient = new DynamoDBClient({ region: 'us-east-1' });
+
+export class DynamoDBService {
+  public static async getPageContent(page: string): Promise<Record<string, unknown>> {
     // Set the parameters
-    const dynamodbClient = new DynamoDBClient({ region: 'us-east-1' });
     const params: ExecuteStatementInput = {
       Statement: `SELECT * FROM "${Table.Table.tableName}" WHERE page=?`,
       Parameters: [{ S: page }],

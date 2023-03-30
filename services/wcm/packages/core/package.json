@@ -1,20 +1,19 @@
 {
-  "name": "@wcm/core",
+  "name": "@mattwyskiel-dotcom-wcm/core",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "test": "sst bind 'vitest'",
+    "test": "sst bind vitest",
     "typecheck": "tsc -noEmit"
   },
   "devDependencies": {
-    "@types/node": "^18.13.0",
-    "sst": "^2.0.2",
-    "vitest": "^0.28.4"
+    "@types/node": "^18.15.11",
+    "sst": "^2.3.4",
+    "vitest": "^0.29.8"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.266.1",
-    "@aws-sdk/util-dynamodb": "^3.266.1",
-    "sst": "^2.0.2",
+    "@aws-sdk/client-dynamodb": "^3.301.0",
+    "@aws-sdk/util-dynamodb": "^3.301.0",
     "winston": "^3.8.2"
   }
 }

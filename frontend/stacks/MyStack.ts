@@ -1,8 +1,4 @@
-import {
-  StackContext,
-  StaticSite,
-  StaticSiteDomainProps,
-} from 'sst/constructs';
+import { StackContext, StaticSite, StaticSiteDomainProps } from 'sst/constructs';
 
 export function Site({ stack }: StackContext) {
   new StaticSite(stack, 'JekyllSite', {
