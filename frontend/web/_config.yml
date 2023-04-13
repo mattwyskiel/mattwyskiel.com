@@ -53,8 +53,6 @@ disqus:
 paginate: 5
 paginate_path: '/blog/:num'
 
-include: ['.well-known']
-
 # Build settings
 markdown: kramdown
 plugins:
