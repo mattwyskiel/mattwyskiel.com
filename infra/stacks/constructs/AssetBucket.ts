@@ -1,13 +1,7 @@
-import {
-  BaseSiteCdkDistributionProps,
-  BaseSiteDomainProps,
-} from './utils/BaseSite';
+import { BaseSiteCdkDistributionProps, BaseSiteDomainProps } from './utils/BaseSite';
 import { isCDKConstruct } from './utils/Construct';
 import { RemovalPolicy } from 'aws-cdk-lib';
-import {
-  DnsValidatedCertificate,
-  ICertificate,
-} from 'aws-cdk-lib/aws-certificatemanager';
+import { DnsValidatedCertificate, ICertificate } from 'aws-cdk-lib/aws-certificatemanager';
 import { Distribution, ViewerProtocolPolicy } from 'aws-cdk-lib/aws-cloudfront';
 import { S3Origin } from 'aws-cdk-lib/aws-cloudfront-origins';
 import {
@@ -39,11 +33,7 @@ export class ExposedAssetBucket extends Construct {
   public readonly acmCertificate?: ICertificate;
   public readonly hostedZone?: IHostedZone;
 
-  constructor(
-    scope: Construct,
-    id: string,
-    props: ExposedAssetBucketProps = {}
-  ) {
+  constructor(scope: Construct, id: string, props: ExposedAssetBucketProps = {}) {
     super(scope, id);
     this.props = props;
     // create bucket

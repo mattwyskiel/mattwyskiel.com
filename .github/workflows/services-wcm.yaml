@@ -4,10 +4,10 @@ on:
       - 'main'
       - 'develop'
     paths:
-      - 'infra/**'
-      - '.github/workflows/infra.yaml'
+      - 'services/wcm/**'
+      - '.github/workflows/services-wcm.yaml'
 
-name: Infra
+name: Services/WCM
 
 permissions:
   id-token: write # This is required for requesting the JWT
@@ -17,7 +17,7 @@ jobs:
   deploy:
     defaults:
       run:
-        working-directory: ./infra
+        working-directory: ./services/wcm
     runs-on: ubuntu-latest
     name: Publishes this SST stack
     steps:

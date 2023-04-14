@@ -1,14 +1,14 @@
-import { SSTConfig } from 'sst';
-import { API } from './stacks/MyStack';
+import { SSTConfig } from "sst";
+import { API } from "./stacks/MyStack";
 
 export default {
   config(_input) {
     return {
-      name: 'mattwyskiel-dotcom-wcm',
-      region: 'us-east-1',
+      name: "mattwyskiel-dotcom-wcm",
+      region: "us-east-1",
     };
   },
   stacks(app) {
     app.stack(API);
-  },
+  }
 } satisfies SSTConfig;
