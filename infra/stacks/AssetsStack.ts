@@ -1,5 +1,6 @@
 import { StackContext } from 'sst/constructs';
 import { ExposedAssetBucket } from './constructs/AssetBucket';
+import { Duration } from 'aws-cdk-lib';
 
 export function AssetsStack({ stack }: StackContext) {
   const bucket = new ExposedAssetBucket(stack, 'AssetsBucket', {
@@ -9,6 +10,11 @@ export function AssetsStack({ stack }: StackContext) {
     },
     s3Bucket: {
       bucketName: stack.stage === 'prod' ? 'com.mattwyskiel.assets' : 'com.mattwyskiel.assets-dev',
+      lifecycleRules: [
+        {
+          abortIncompleteMultipartUploadAfter: Duration.days(3),
+        },
+      ],
     },
   });
 
