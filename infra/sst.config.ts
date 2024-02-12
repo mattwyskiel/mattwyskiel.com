@@ -1,5 +1,6 @@
 import { SSTConfig } from 'sst';
 import { AssetsStack } from './stacks/AssetsStack';
+import { API } from './stacks/APIStack';
 
 export default {
   config(_input) {
@@ -10,5 +11,6 @@ export default {
   },
   stacks(app) {
     app.stack(AssetsStack);
+    app.stack(API);
   },
 } satisfies SSTConfig;
