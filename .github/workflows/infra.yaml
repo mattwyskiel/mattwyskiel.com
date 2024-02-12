@@ -40,4 +40,4 @@ jobs:
         if: startsWith(github.ref_name, 'main')
       - uses: mattwyskiel/sst-outputs-to-ssm@main
         with:
-          outputs_path: .sst/outputs.json
+          outputs_path: ./infra/.sst/outputs.json
