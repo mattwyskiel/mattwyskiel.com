@@ -32,9 +32,12 @@ jobs:
           aws-region: us-east-1
           role-to-assume: arn:aws:iam::662292074719:role/whiskey-app-role
           role-session-name: sst-pnpm-workflows-sample
-      - run: pnpm sst deploy --stage dev
+      - run: pnpm sst deploy --stage dev --outputs-file outputs.json
         shell: bash
         if: startsWith(github.ref_name, 'develop')
-      - run: pnpm sst deploy --stage prod
+      - run: pnpm sst deploy --stage prod --outputs-file outputs.json
         shell: bash
         if: startsWith(github.ref_name, 'main')
+      - uses: mattwyskiel/sst-outputs-to-ssm@main
+        with:
+          outputs_path: .sst/outputs.json
