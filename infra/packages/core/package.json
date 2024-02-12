@@ -1,0 +1,14 @@
+{
+  "name": "@api-infra/core",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "sst bind vitest",
+    "typecheck": "tsc -noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.16",
+    "sst": "2.40.3",
+    "vitest": "^0.30.1"
+  }
+}
