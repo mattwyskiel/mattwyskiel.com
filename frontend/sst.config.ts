@@ -9,6 +9,9 @@ export default {
     };
   },
   stacks(app) {
+    if (app.stage === 'prod') {
+      app.setDefaultRemovalPolicy('retain');
+    }
     app.stack(Site);
   },
 } satisfies SSTConfig;
