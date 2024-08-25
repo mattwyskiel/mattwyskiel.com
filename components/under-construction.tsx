@@ -7,8 +7,14 @@ export default function UnderConstruction() {
           After many years, I’m finally renovating this website in order to
           better tell the stories that I’ve collected over my career. However,
           due to the age of the last version’s look (yikes), I wanted to do this
-          redesign incrementally. So, please pardon our appearance, we are open
-          during construction :)
+          redesign{" "}
+          <a
+            className="text-blue-900 hover:text-blue-950"
+            href="https://github.com/mattwyskiel/mattwyskiel.com/tree/redesign-refactor"
+          >
+            incrementally
+          </a>
+          . So, please pardon our appearance, we are open during construction :)
         </p>
       </div>
     </div>

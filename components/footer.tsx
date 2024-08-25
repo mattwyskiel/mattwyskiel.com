@@ -37,7 +37,7 @@ export default function Footer() {
         <p>
           This website is{" "}
           <a
-            href="https://github.com/mattwyskiel/mattwyskiel.com"
+            href="https://github.com/mattwyskiel/mattwyskiel.com/tree/redesign-refactor"
             className="text-blue-900 hover:text-blue-950"
           >
             custom-built and open-source
