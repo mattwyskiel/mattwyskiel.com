@@ -26,7 +26,14 @@ export default async function Home() {
         </h1>
 
         <div className="flex justify-center py-5 pb-10">
-          <img src="/hero.svg" alt="hero" className="w-full lg:w-[800px]" />
+          {/* <img src="/hero.svg" alt="hero" className="w-full lg:w-[800px]" /> */}
+          <Image
+            src={"/hero-still.png"}
+            alt="hero"
+            width={800}
+            height={569}
+            className="w-full lg:w-[800px]"
+          />
         </div>
 
         <div className="md:grid lg:grid-cols-7 md:grid-cols-11">

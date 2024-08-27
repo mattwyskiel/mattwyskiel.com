@@ -15,7 +15,6 @@ export default $config({
           ? {
               name: "mattwyskiel.com",
               aliases: ["www.mattwyskiel.com"],
-              dns: sst.aws.dns({ override: true }),
             }
           : undefined,
     });
