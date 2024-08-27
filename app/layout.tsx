@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description: "A Builder and an Archivist",
     url: "https://mattwyskiel.com",
     title: "Matt Wyskiel",
-    images: { url: "https://mattwyskiel.com/hero-still.png" },
+    images: { url: "https://mattwyskiel.com/ogimage.png" },
   },
 };
 
