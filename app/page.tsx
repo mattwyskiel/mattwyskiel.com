@@ -64,7 +64,7 @@ export default async function Home() {
                 </p>
                 <p className="text-center pt-5">
                   Feel free to peruse my website, read my stories, and reach out
-                  to me if you&apos;d like to work together.
+                  to me if you&apos;d like to connect or work together.
                 </p>
                 <div className="flex justify-center pt-5 gap-5 flex-wrap">
                   <Button asChild variant="outline">

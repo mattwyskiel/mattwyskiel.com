@@ -27,7 +27,7 @@ export default async function Home() {
               </div>
               <p className="pb-3">{post.excerpt}</p>
               <Button asChild variant="outline">
-                <Link href={`/posts/${post.slug}`}>Read More &gt;</Link>
+                <Link href={`/stories/${post.slug}`}>Read More &gt;</Link>
               </Button>
             </div>
           ))}
