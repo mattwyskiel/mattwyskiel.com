@@ -1,6 +1,8 @@
 import { Open_Sans } from "next/font/google";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import { Linkedin, Mail } from "lucide-react";
 
 const logoFont = Open_Sans({ subsets: ["latin"], weight: "400" });
 
@@ -22,14 +24,32 @@ export default function Header() {
         </a>
         <div className="justify-end items-center gap-5 flex">
           <Button variant={"ghost"} asChild>
-            <Link href="/">Blog</Link>
+            <Link href="/stories">Stories</Link>
           </Button>
           <Button variant={"outline"} asChild>
             <Link href="https://assets.mattwyskiel.com/Resume.pdf">Resume</Link>
           </Button>
-          <Button asChild>
-            <Link href="https://linkedin.com/in/mattwyskiel">Contact</Link>
-          </Button>
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button>Contact</Button>
+            </PopoverTrigger>
+            <PopoverContent>
+              <div className="gap-5 flex flex-wrap justify-center">
+                <Button variant={"outline"} asChild>
+                  <Link href="https://linkedin.com/in/mattwyskiel">
+                    <Linkedin className="mr-2 h-4 w-4" />
+                    LinkedIn
+                  </Link>
+                </Button>
+                <Button variant={"outline"} asChild>
+                  <Link href="mailto:matt@mattwyskiel.com">
+                    <Mail className="mr-2 h-4 w-4" />
+                    Email
+                  </Link>
+                </Button>
+              </div>
+            </PopoverContent>
+          </Popover>
         </div>
       </div>{" "}
     </header>

@@ -1,6 +1,6 @@
 import { createClient, EntrySkeletonType } from "contentful";
 
-const BASE_URL = "preview.contentful.com";
+const BASE_URL = "cdn.contentful.com";
 const SPACE_ID = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID;
 const ACCESS_TOKEN = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN;
 const ENVIRONMENT = "master";
@@ -12,19 +12,8 @@ const client = createClient({
   host: BASE_URL,
 });
 
-interface Post extends EntrySkeletonType {
-  fields: {
-    title: string;
-    slug: string;
-    content: string;
-    excerpt: string;
-    publishDate: string;
-    tags: string[];
-  };
-}
-
 export async function getPosts() {
-  const entries = await client.getEntries<Post>({
+  const entries = await client.getEntries<any>({
     content_type: "blogPost",
   });
 
@@ -47,7 +36,7 @@ export async function getPosts() {
 }
 
 export async function getPostBySlug(slug: string) {
-  const entry = await client.getEntries<Post>({
+  const entry = await client.getEntries<any>({
     content_type: "blogPost",
     "fields.slug": slug,
   });
