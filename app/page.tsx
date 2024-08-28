@@ -71,9 +71,7 @@ export default async function Home() {
                     <Link href="/stories">Read my stories</Link>
                   </Button>
                   <Button asChild variant="outline">
-                    <Link href="https://assets.mattwyskiel.com/Resume.pdf">
-                      View my work
-                    </Link>
+                    <Link href="/portfolio">View my work</Link>
                   </Button>
                   <Popover>
                     <PopoverTrigger asChild>

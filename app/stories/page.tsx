@@ -1,4 +1,12 @@
 import { Button } from "@/components/ui/button";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { getPosts } from "@/lib/contentful";
 import Link from "next/link";
 
@@ -8,6 +16,16 @@ export default async function Home() {
   return (
     <main className="px-10 pb-10">
       <div>
+        <div className="grid lg:grid-cols-7 md:grid-cols-11">
+          <Breadcrumb className="p-4 lg:col-start-2 lg:col-span-5 md:col-start-2 md:col-span-9">
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/">Matt Wyskiel</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+            </BreadcrumbList>
+          </Breadcrumb>
+        </div>
         <h1 className="text-4xl font-medium text-center">My Stories</h1>
         <div className="py-10 grid lg:grid-cols-7 md:grid-cols-11">
           {posts.map((post) => (

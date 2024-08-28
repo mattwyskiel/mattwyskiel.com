@@ -27,7 +27,7 @@ export default function Header() {
             <Link href="/stories">Stories</Link>
           </Button>
           <Button variant={"outline"} asChild>
-            <Link href="https://assets.mattwyskiel.com/Resume.pdf">Resume</Link>
+            <Link href="/portfolio">Portfolio</Link>
           </Button>
           <Popover>
             <PopoverTrigger asChild>
