@@ -10,7 +10,7 @@ export default function UnderConstruction() {
           redesign{" "}
           <a
             className="text-blue-900 hover:text-blue-950"
-            href="https://github.com/mattwyskiel/mattwyskiel.com/tree/redesign-refactor"
+            href="https://github.com/mattwyskiel/mattwyskiel.com"
           >
             incrementally
           </a>
