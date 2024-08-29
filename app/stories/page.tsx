@@ -9,6 +9,19 @@ import {
 } from "@/components/ui/breadcrumb";
 import { getPosts } from "@/lib/contentful";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Stories | Matt Wyskiel",
+  description: "A collection of stories and articles I've written.",
+  openGraph: {
+    type: "website",
+    description: "A collection of stories and articles I've written.",
+    url: "https://mattwyskiel.com/stories",
+    title: "Stories | Matt Wyskiel",
+    images: { url: "https://mattwyskiel.com/ogimage.png" },
+  },
+};
 
 export default async function Home() {
   const posts = await getPosts();

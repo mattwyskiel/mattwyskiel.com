@@ -7,7 +7,20 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import UnderConstruction from "@/components/under-construction";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Portfolio | Matt Wyskiel",
+  description: "A collection of projects and work I've done.",
+  openGraph: {
+    type: "website",
+    description: "A collection of projects and work I've done.",
+    url: "https://mattwyskiel.com/portfolio",
+    title: "Portfolio | Matt Wyskiel",
+    images: { url: "https://mattwyskiel.com/ogimage.png" },
+  },
+};
 
 export default function PortfolioPage() {
   return (
@@ -24,6 +37,7 @@ export default function PortfolioPage() {
       </div>
 
       <h1 className="text-4xl font-medium text-center">My Portfolio</h1>
+
       <div className="pb-10 pt-6 text-center">
         <Button asChild variant="outline">
           <Link href="https://assets.mattwyskiel.com/Resume.pdf">
