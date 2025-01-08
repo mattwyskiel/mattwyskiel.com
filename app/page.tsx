@@ -33,6 +33,7 @@ export default async function Home() {
             width={800}
             height={569}
             className="w-full lg:w-[800px]"
+            priority={true}
           />
         </div>
 

@@ -19,6 +19,19 @@ const nextConfig = {
       },
     ];
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.ctfassets.net",
+      },
+    ],
+  },
+  experimental: {
+    staleTimes: {
+      static: 5,
+    },
+  },
 };
 
 export default nextConfig;

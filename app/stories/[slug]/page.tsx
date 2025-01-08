@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import Markdown from "react-markdown";
 import { Metadata, ResolvingMetadata } from "next";
+import rehypeRaw from "rehype-raw";
 
 export async function generateMetadata(
   { params }: { params: { slug: string } },
@@ -48,9 +49,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
           <BreadcrumbSeparator />
         </BreadcrumbList>
       </Breadcrumb>
-      <article className="px-10 pb-10 prose lg:prose-lg max-w-none lg:px-32 md:px-24">
+      <article className="px-10 pb-10 prose lg:prose-lg max-w-none lg:w-[1000px] mx-auto lg:px-32 md:px-24">
         <div>
-          <h1 className="text-center">{post.title}</h1>
+          <h1 className="text-center mb-5">{post.title}</h1>
           <h6 className="text-center">
             {post.publishDate.toLocaleDateString("en-US", {
               year: "numeric",
@@ -59,7 +60,9 @@ export default async function Page({ params }: { params: { slug: string } }) {
             })}
           </h6>
           <div className="pb-10">
-            <Markdown className="">{post.content}</Markdown>
+            <Markdown className="prose-img:mx-auto" rehypePlugins={[rehypeRaw]}>
+              {post.content}
+            </Markdown>
           </div>
         </div>
       </article>

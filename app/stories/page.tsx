@@ -10,6 +10,7 @@ import {
 import { getPosts } from "@/lib/contentful";
 import Link from "next/link";
 import { Metadata } from "next";
+import { unstable_noStore } from "next/cache";
 
 export const metadata: Metadata = {
   title: "Stories | Matt Wyskiel",
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
+  unstable_noStore();
   const posts = await getPosts();
 
   return (
