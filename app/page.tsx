@@ -46,7 +46,7 @@ export default async function Home() {
                 src="/profile.jpg"
                 width={300}
                 height={400}
-                className="rounded-3xl py-5"
+                className="rounded-[36px] py-5 overflow-hidden object-cover"
               />
               <div>
                 <h2 className="text-2xl font-medium text-center py-5 sm:pt-0 md:pt-5">

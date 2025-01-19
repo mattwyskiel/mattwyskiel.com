@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Instagram from "./logos/instagram";
 import Linkedin from "./logos/linkedin";
 
@@ -9,24 +10,30 @@ export default function Footer() {
           <Linkedin />
         </a>
         <a href="https://x.com/mattwyskiel">
-          <img
+          <Image
             src="/twitter-x.svg"
-            alt="logo"
-            className="w-12 h-12 transition hover:scale-125"
+            alt="X (formerly Twitter) logo"
+            width={36}
+            height={36}
+            className="transition hover:scale-125"
           />
         </a>
         <a href="https://instagram.com/mattwyskiel">
-          <img
+          <Image
             src="/instagram-black.svg"
-            alt="logo"
-            className="w-11 h-11 transition hover:scale-125"
+            alt="Instagram logo"
+            width={36}
+            height={36}
+            className="transition hover:scale-125"
           />
         </a>
         <a href="https://github.com/mattwyskiel">
-          <img
+          <Image
             src="/github.svg"
-            alt="logo"
-            className="w-12 h-12 transition hover:scale-125"
+            alt="GitHub logo"
+            width={40}
+            height={40}
+            className="transition hover:scale-125"
           />
         </a>
       </div>

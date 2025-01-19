@@ -37,18 +37,20 @@ export default async function Page({ params }: { params: { slug: string } }) {
   const post = await getPostBySlug(params.slug);
   return (
     <div>
-      <Breadcrumb className="px-4 pb-8 lg:px-32 md:px-24">
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/">Matt Wyskiel</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/stories">Stories</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-        </BreadcrumbList>
-      </Breadcrumb>
+      <div className="flex justify-center">
+        <Breadcrumb className="px-4 pb-8">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">Matt Wyskiel</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/stories">Stories</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
       <article className="px-10 pb-10 prose lg:prose-lg max-w-none lg:w-[1000px] mx-auto lg:px-32 md:px-24">
         <div>
           <h1 className="text-center mb-5">{post.title}</h1>

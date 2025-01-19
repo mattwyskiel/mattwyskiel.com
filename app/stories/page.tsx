@@ -31,8 +31,8 @@ export default async function Home() {
   return (
     <main className="px-10 pb-10">
       <div>
-        <div className="grid lg:grid-cols-7 md:grid-cols-11">
-          <Breadcrumb className="p-4 lg:col-start-2 lg:col-span-5 md:col-start-2 md:col-span-9">
+        <div className="flex justify-center">
+          <Breadcrumb className="p-4">
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink href="/">Matt Wyskiel</BreadcrumbLink>

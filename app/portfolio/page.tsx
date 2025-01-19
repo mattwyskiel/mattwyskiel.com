@@ -28,8 +28,8 @@ export const metadata: Metadata = {
 export default function PortfolioPage() {
   return (
     <div className="">
-      <div className="grid lg:grid-cols-7 md:grid-cols-11">
-        <Breadcrumb className="p-4 lg:col-start-2 lg:col-span-5 md:col-start-2 md:col-span-9">
+      <div className="flex justify-center">
+        <Breadcrumb className="p-4">
           <BreadcrumbList>
             <BreadcrumbItem>
               <BreadcrumbLink href="/">Matt Wyskiel</BreadcrumbLink>
@@ -43,7 +43,7 @@ export default function PortfolioPage() {
         Selected Portfolio
       </h1>
 
-      <div>
+      <div className="flex flex-col gap-8 max-w-7xl mx-auto px-4">
         {/* Whiskey */}
         <div className="pt-2 py-5 px-10 md:max-w-[600px] mx-auto justify-center">
           <h2 className="text-2xl font-medium text-center">Whiskey</h2>
@@ -59,7 +59,7 @@ export default function PortfolioPage() {
             height={400}
             className="rounded-xl mx-auto"
           />
-          <div className="">
+          <div className="w-full">
             <p className="text-center p-5">
               My personal automation system, built and iterated over many years,
               built natively in the AWS cloud.
@@ -112,9 +112,9 @@ export default function PortfolioPage() {
               </AlertDescription>
             </Alert>
           </div>
-
-          <Separator decorative={true} className="mt-10" />
         </div>
+
+        <Separator className="max-w-[600px] mx-auto w-full" />
 
         {/* A-List */}
         <div className="py-5 px-10 md:max-w-[600px] mx-auto justify-center">
@@ -129,7 +129,7 @@ export default function PortfolioPage() {
             className="rounded-xl mx-auto"
             alt="a-list"
           />
-          <div className="md:w-[500px]">
+          <div className="w-full md:w-auto">
             <p className="text-center pt-5">
               An audio player for my DJ-style mixes.
             </p>
@@ -181,8 +181,9 @@ export default function PortfolioPage() {
               </AlertDescription>
             </Alert>
           </div>
-          <Separator decorative={true} className="mt-10" />
         </div>
+
+        <Separator className="max-w-[600px] mx-auto w-full" />
 
         {/* Kingsmen Café */}
         <div className="pt-2 py-5 px-10 md:max-w-[600px] mx-auto justify-center">
@@ -197,7 +198,7 @@ export default function PortfolioPage() {
             />
             Your browser does not support the video tag.
           </video>
-          <div className="md:w-[500px]">
+          <div className="w-full md:w-auto">
             <p className="text-center p-5">
               A mobile pre-ordering experience for a small local coffee chain
               based at Christian Heritage School, Trumbull, CT.
@@ -244,14 +245,12 @@ export default function PortfolioPage() {
               </AlertDescription>
             </Alert>
           </div>
-          <Separator decorative={true} className="mt-10" />
         </div>
+
+        <Separator className="max-w-[600px] mx-auto w-full" />
 
         {/* mattwyskiel.com */}
         <div className="pt-2 px-10 md:max-w-[600px] mx-auto justify-center">
-          <h3 className="font-light text-sm italic text-center">
-            And let&apos;s not forget...
-          </h3>
           <h2 className="text-2xl font-medium text-center">mattwyskiel.com</h2>
           <h3 className="font-light text-sm italic text-center pb-6">
             The website you&apos;re looking at right now!
@@ -263,7 +262,7 @@ export default function PortfolioPage() {
             className="rounded-xl mx-auto"
             alt="mattwyskiel.com"
           />
-          <div className="md:w-[500px]">
+          <div className="w-full md:w-auto">
             <p className="text-center p-5">
               My personal portfolio website, custom-built and open source using
               the latest web technologies
@@ -307,7 +306,6 @@ export default function PortfolioPage() {
               </AlertDescription>
             </Alert>
           </div>
-          <Separator decorative={true} className="mt-10" />
         </div>
       </div>
 
