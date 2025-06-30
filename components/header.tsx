@@ -16,7 +16,10 @@ export default function Header() {
                     <Link href="/stories" className="text-sm font-medium text-muted-foreground hover:text-foreground">
                         Stories
                     </Link>
-                    <Link href="/music" className="text-sm font-medium text-muted-foreground hover:text-foreground">
+                    {/* <Link href="/music" className="text-sm font-medium text-muted-foreground hover:text-foreground"> */}
+                    {/*     Music */}
+                    {/* </Link> */}
+                    <Link href="https://a-list.mattwyskiel.com" className="text-sm font-medium text-muted-foreground hover:text-foreground">
                         Music
                     </Link>
                     <Link href="/contact" className="text-sm font-medium text-muted-foreground hover:text-foreground">

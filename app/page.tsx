@@ -1,16 +1,15 @@
 import Link from "next/link"
-import { Music, Code, Car, Wrench } from "lucide-react"
+import { Music, Code, Car, Landmark } from "lucide-react"
+import { getPosts } from "@/lib/contentful"
 
-export default function Home() {
+export default async function Home() {
+    const posts = await getPosts()
     return (
         <div className="min-h-screen bg-[#f8f9fa]">
             <main className="container mx-auto px-4 py-10 max-w-4xl">
                 {/* Hero Section */}
                 <div className="flex flex-col gap-6 mb-16">
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Hey, I'm Matt.</h1>
-                    {/* <p className="text-xl text-muted-foreground max-w-2xl"> */}
-                    {/*     I build software, mix music, and enjoy the ride along the way. */}
-                    {/* </p> */}
                 </div>
 
                 {/* About Section */}
@@ -20,9 +19,6 @@ export default function Home() {
                             <h2 className="text-2xl font-semibold mb-6">What I'm About</h2>
                             <p className="text-muted-foreground">
                                 I build software, as a career and as a hobby. I collect and archive all kinds of media. I'm a music lover / mixer / snob. All in pursuit of the Good Life.
-                            </p>
-                            <p className="text-muted-foreground">
-                                Feel free to peruse my website, read my stories, and reach out to me if any of this interests you enough to connect or work together!
                             </p>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
@@ -35,8 +31,8 @@ export default function Home() {
                                 <h3 className="font-medium">Music</h3>
                             </div>
                             <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm">
-                                <Wrench className="h-8 w-8 text-teal-500 mb-2" />
-                                <h3 className="font-medium">Tinkering</h3>
+                                <Landmark className="h-8 w-8 text-teal-500 mb-2" />
+                                <h3 className="font-medium">Archiving</h3>
                             </div>
                             <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm">
                                 <Car className="h-8 w-8 text-teal-500 mb-2" />
@@ -75,29 +71,23 @@ export default function Home() {
                 <section className="mb-16">
                     <h2 className="text-2xl font-semibold mb-6">Latest Posts</h2>
                     <div className="space-y-6">
-                        <div className="border-b pb-6">
-                            <h3 className="font-medium text-lg mb-2">
-                                <Link href="#" className="hover:text-teal-600">
-                                    The Joy of Building from Scratch
-                                </Link>
-                            </h3>
-                            <p className="text-sm text-muted-foreground mb-2">April 15, 2023</p>
-                            <p className="text-muted-foreground">
-                                Thoughts on the satisfaction that comes from creating something with your own hands and mind.
-                            </p>
-                        </div>
-                        <div className="border-b pb-6">
-                            <h3 className="font-medium text-lg mb-2">
-                                <Link href="#" className="hover:text-teal-600">
-                                    Finding Inspiration in Unexpected Places
-                                </Link>
-                            </h3>
-                            <p className="text-sm text-muted-foreground mb-2">March 22, 2023</p>
-                            <p className="text-muted-foreground">
-                                How a weekend drive led to solving a complex software problem I'd been stuck on for weeks.
-                            </p>
-                        </div>
+                        {posts.slice(0, 2).map((post, index) => (
+                            <div className="border-b pb-6">
+                                <h3 className="font-medium text-lg mb-2">
+                                    <Link href={`/stories/${post.slug}`} className="hover:text-teal-600">
+                                        {post.title}
+                                    </Link>
+                                </h3>
+                                <p className="text-sm text-muted-foreground mb-2">{post.publishDate.toLocaleDateString("en-US", {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                })}</p>
+                                <p className="text-muted-foreground">{post.excerpt}</p>
+                            </div>
+                        ))}
                     </div>
+
                     <div className="mt-6">
                         <Link href="/stories" className="text-teal-600 hover:text-teal-700 font-medium">
                             View all posts →

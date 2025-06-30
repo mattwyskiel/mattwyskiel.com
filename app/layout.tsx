@@ -9,9 +9,8 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-    title: "Matt Wyskiel - Software, Music & More",
+    title: "Matt Wyskiel",
     description: "Personal site of Matt Wyskiel - software builder, music enthusiast, and tinkerer.",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
