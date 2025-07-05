@@ -92,7 +92,7 @@ export default function ProjectsPage() {
                                     <div className="flex items-center gap-2">
                                         <h3 className="font-medium text-lg">{project.title}</h3>
                                         {project.featured && (
-                                            <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" title="Featured" />
+                                            <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
                                         )}
                                     </div>
                                     <div className="flex items-center gap-2 ml-4">
