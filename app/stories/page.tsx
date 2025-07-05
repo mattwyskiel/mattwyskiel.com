@@ -30,8 +30,7 @@ export default async function StoriesPage() {
 
                 <h1 className="text-3xl font-bold mb-4">Stories</h1>
                 <p className="text-muted-foreground mb-8 max-w-2xl">
-                    Thoughts, tutorials, and stories about software development, music production, and finding joy in the things I
-                    build.
+                    Me yapping.
                 </p>
 
                 <div className="space-y-10">
