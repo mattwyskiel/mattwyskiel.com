@@ -5,10 +5,10 @@ import { getPosts } from "@/lib/contentful";
 
 export const metadata: Metadata = {
     title: "Stories | Matt Wyskiel",
-    description: "A collection of stories and articles I've written.",
+    description: "A collection of the stories I have to tell. (TL;DR I'm a Yapper)",
     openGraph: {
         type: "website",
-        description: "A collection of stories and articles I've written.",
+        description: "A collection of the stories I have to tell. (TL;DR I'm a Yapper)",
         url: "https://mattwyskiel.com/stories",
         title: "Stories | Matt Wyskiel",
         images: { url: "https://mattwyskiel.com/ogimage.png" },
