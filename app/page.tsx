@@ -72,7 +72,7 @@ export default async function Home() {
                     <h2 className="text-2xl font-semibold mb-6">Latest Posts</h2>
                     <div className="space-y-6">
                         {posts.slice(0, 2).map((post, index) => (
-                            <div className="border-b pb-6">
+                            <div key={index} className="border-b pb-6">
                                 <h3 className="font-medium text-lg mb-2">
                                     <Link href={`/stories/${post.slug}`} className="hover:text-teal-600">
                                         {post.title}
