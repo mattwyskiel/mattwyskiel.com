@@ -10,6 +10,8 @@ import {
 import Markdown from "react-markdown";
 import Link from 'next/link'
 import { Metadata, ResolvingMetadata } from "next";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import rehypeRaw from "rehype-raw";
 import { ArrowLeft } from "lucide-react";
 
@@ -56,8 +58,39 @@ export default async function Page({ params }: { params: { slug: string } }) {
                             day: "numeric",
                         })}
                     </h6>
-                    <div className="prose-img:mx-auto ">
-                        <Markdown rehypePlugins={[rehypeRaw]}>
+                    <div className="prose-img:mx-auto">
+                        <Markdown
+                            rehypePlugins={[rehypeRaw]}
+                            components={{
+                                p: ({ node, ...props }) => <p className="text-muted-foreground py-2" {...props} />,
+                                a: ({ node, ...props }) => <a className="text-teal-600 hover:text-teal-700 font-medium" {...props} />,
+                                h1: ({ node, ...props }) => <h1 className="text-3xl font-bold" {...props} />,
+                                h2: ({ node, ...props }) => <h2 className="text-2xl font-semibold" {...props} />,
+                                h3: ({ node, ...props }) => <h3 className="text-xl font-semibold" {...props} />,
+                                h4: ({ node, ...props }) => <h4 className="text-lg font-semibold" {...props} />,
+                                h5: ({ node, ...props }) => <h5 className="text-md font-semibold" {...props} />,
+                                h6: ({ node, ...props }) => <h6 className="text-sm font-semibold" {...props} />,
+                                li: ({ node, ...props }) => <li className="text-muted-foreground" {...props} />,
+                                blockquote: ({ node, ...props }) => <blockquote className="border-l-4 pl-4 italic text-muted-foreground" {...props} />,
+                                img: ({ node, ...props }) => <img className="rounded-lg my-4" {...props} />,
+                                code(props) {
+                                    const { children, className, node, ...rest } = props
+                                    const match = /language-(\w+)/.exec(className || '')
+                                    return match ? (
+                                        <SyntaxHighlighter
+                                            PreTag="div"
+                                            children={String(children).replace(/\n$/, '')}
+                                            language={match[1]}
+                                            style={materialDark}
+                                        />
+                                    ) : (
+                                        <code {...rest} className={className}>
+                                            {children}
+                                        </code>
+                                    )
+                                }
+                            }}
+                        >
                             {post.content}
                         </Markdown>
                     </div>

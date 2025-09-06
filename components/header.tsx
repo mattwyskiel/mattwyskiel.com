@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Headphones, Github } from "lucide-react";
+import { Headphones, Github, Mail } from "lucide-react";
 import {
     Popover,
     PopoverContent,
@@ -41,7 +41,7 @@ export default function Header() {
                                     <p className="text-sm text-muted-foreground mb-4">
                                         Have a question about one of my projects? Want to
                                         collaborate on something cool? Or just want to chat about
-                                        music or software?
+                                        software or music?
                                     </p>
                                 </div>
                                 <div>
@@ -66,6 +66,13 @@ export default function Header() {
                                             >
                                                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                                             </svg>
+                                        </Link>
+                                        <Link
+                                            href="mailto:matt@mattwyskiel.com"
+                                            className="flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-teal-500 hover:bg-teal-50 transition-colors group"
+                                            title="Email"
+                                        >
+                                            <Mail className="h-5 w-5 text-teal-500" />
                                         </Link>
                                     </div>
                                 </div>

@@ -27,14 +27,14 @@ export default function AListPage() {
                         ))}
                     </div>
                     <div className="flex gap-4">
-                        <Link 
-                            href="https://a-list.mattwyskiel.com" 
+                        <Link
+                            href="https://a-list.mattwyskiel.com"
                             className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-md font-medium"
                         >
                             Listen Now
                         </Link>
-                        <Link 
-                            href="https://github.com/mattwyskiel/a-list" 
+                        <Link
+                            href="https://github.com/mattwyskiel/a-list"
                             className="border border-teal-600 text-teal-600 hover:bg-teal-50 px-6 py-2 rounded-md font-medium"
                         >
                             View Code
@@ -47,13 +47,9 @@ export default function AListPage() {
                     <h2 className="text-2xl font-semibold mb-6">Overview</h2>
                     <div className="bg-white p-6 rounded-lg shadow-sm">
                         <p className="text-muted-foreground mb-4">
-                            A-List is my personal DJ mix player, designed to showcase and organize my DJ mixes 
-                            in a beautiful, accessible format. It features a centralized database of all my mixes, 
+                            A-List is my personal DJ mix player, designed to showcase and organize my DJ mixes
+                            in a beautiful, accessible format. It features a centralized database of all my mixes,
                             a responsive web player, and even generates podcast feeds for easy consumption.
-                        </p>
-                        <p className="text-muted-foreground">
-                            Built with modern web technologies, A-List demonstrates my approach to personal 
-                            media management and showcases my passion for music and audio engineering.
                         </p>
                     </div>
                 </section>
@@ -66,23 +62,22 @@ export default function AListPage() {
                             <Database className="h-8 w-8 text-teal-500 mb-4" />
                             <h3 className="font-medium text-lg mb-2">Centralized Database</h3>
                             <p className="text-muted-foreground">
-                                All mixes are stored in a centralized database with rich metadata, 
-                                including tracklists, genres, and mix information.
+                                All mixes are stored in a centralized database with rich metadata.
                             </p>
                         </div>
                         <div className="bg-white p-6 rounded-lg shadow-sm">
                             <Music className="h-8 w-8 text-teal-500 mb-4" />
                             <h3 className="font-medium text-lg mb-2">Web Player</h3>
                             <p className="text-muted-foreground">
-                                Beautiful, responsive web player with full audio controls, 
-                                playlist management, and seamless playback experience.
+                                Beautiful, responsive web player with full audio controls
+                                and a seamless playback experience.
                             </p>
                         </div>
                         <div className="bg-white p-6 rounded-lg shadow-sm">
                             <Radio className="h-8 w-8 text-teal-500 mb-4" />
                             <h3 className="font-medium text-lg mb-2">Podcast Feed</h3>
                             <p className="text-muted-foreground">
-                                Automatically generates podcast feeds, making it easy to subscribe 
+                                Automatically generates podcast feeds, making it easy to subscribe
                                 and listen to new mixes in your favorite podcast app.
                             </p>
                         </div>
@@ -90,7 +85,7 @@ export default function AListPage() {
                             <Smartphone className="h-8 w-8 text-teal-500 mb-4" />
                             <h3 className="font-medium text-lg mb-2">Mobile Responsive</h3>
                             <p className="text-muted-foreground">
-                                Fully responsive design that works seamlessly across all devices, 
+                                Fully responsive design that works seamlessly across all devices,
                                 from desktop to mobile.
                             </p>
                         </div>
@@ -192,8 +187,8 @@ export default function AListPage() {
                             <span className="font-medium">Live & Active</span>
                         </div>
                         <p className="text-muted-foreground">
-                            A-List is live and actively maintained. New mixes are regularly added, and the platform 
-                            continues to evolve with new features and improvements. The project serves as both a 
+                            A-List is live and actively maintained. New mixes are regularly added, and the platform
+                            continues to evolve with new features and improvements. The project serves as both a
                             portfolio piece and a practical tool for sharing my musical work.
                         </p>
                     </div>
