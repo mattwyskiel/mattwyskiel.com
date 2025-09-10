@@ -70,6 +70,8 @@ export default async function Page({ params }: { params: { slug: string } }) {
                                 h4: ({ node, ...props }) => <h4 className="text-lg font-semibold" {...props} />,
                                 h5: ({ node, ...props }) => <h5 className="text-md font-semibold" {...props} />,
                                 h6: ({ node, ...props }) => <h6 className="text-sm font-semibold" {...props} />,
+                                ol: ({ node, ...props }) => <ol className="list-decimal list-inside text-muted-foreground" {...props} />,
+                                ul: ({ node, ...props }) => <ul className="list-disc list-inside text-muted-foreground" {...props} />,
                                 li: ({ node, ...props }) => <li className="text-muted-foreground" {...props} />,
                                 blockquote: ({ node, ...props }) => <blockquote className="border-l-4 pl-4 italic text-muted-foreground" {...props} />,
                                 img: ({ node, ...props }) => <img className="rounded-lg my-4" {...props} />,
