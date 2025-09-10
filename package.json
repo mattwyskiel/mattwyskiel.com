@@ -2,14 +2,19 @@
     "name": "mattwyskiel-dotcom",
     "main": "index.ts",
     "private": true,
+    "packageManager": "bun@1.2.20",
     "workspaces": [
         "src"
     ],
-    "scripts": {},
+    "scripts": {
+        "deploy": "pulumi up --stack prod -y",
+        "deploy:dev": "pulumi up --stack dev -y"
+    },
     "devDependencies": {
         "@types/bun": "latest",
         "@types/glob": "^9.0.0",
-        "@types/mime": "^3.0.0"
+        "@types/mime": "^3.0.0",
+        "turbo": "^2.5.6"
     },
     "peerDependencies": {
         "typescript": "^5"

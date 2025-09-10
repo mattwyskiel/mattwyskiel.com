@@ -1,10 +1,10 @@
 # Agent Guidelines for mattwyskiel.com
 
 ## Commands
-- **Build**: `cd src && bun run build`
-- **Dev**: `cd src && bun run dev`
-- **Lint**: `cd src && bun run lint` (ESLint configured with Next.js strict rules - may need installation)
-- **Type Check**: `cd src && npx tsc --noEmit` (TypeScript - may need installation)
+- **Build**: `turbo build`
+- **Dev**: `turbo dev`
+- **Lint**: `turbo lint` (ESLint configured with Next.js strict rules - may need installation)
+- **Type Check**: `turbo check-types`
 - **Single Test**: No test framework configured
 - **Infrastructure Preview**: `pulumi preview`
 - **Infrastructure Deploy**: `pulumi up`
@@ -22,12 +22,13 @@
 - **Error Handling**: Use try/catch for async operations
 - **Components**: Functional components with TypeScript props
 - **Icons**: Lucide React icons
-- **Package Manager**: Bun (workspaces setup)
+- **Package Manager**: Bun 1.2.20 (workspaces setup)
 
 ## Infrastructure
 - **Provider**: AWS (serverless deployment)
 - **IaC Tool**: Pulumi with TypeScript
 - **Build Tool**: OpenNext.js for AWS Lambda deployment
+- **Monorepo Tool**: Turborepo for workspace management
 - **CDN**: CloudFront
 - **Storage**: S3 for static assets
 - **Domain**: Custom domain (mattwyskiel.com) with Route 53

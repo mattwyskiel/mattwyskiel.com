@@ -11,7 +11,8 @@ Check back often, I seem to redesign this thing once every year or so :sweat_smi
 - **Styling**: Tailwind CSS
 - **UI Components**: shadcn/ui
 - **CMS**: Contentful
-- **Package Manager**: Bun (workspaces)
+- **Package Manager**: Bun 1.2.20 (workspaces)
+- **Monorepo Tool**: Turborepo
 - **Icons**: Lucide React
 - **Infrastructure**: Pulumi + AWS (OpenNext.js)
 - **Deployment**: AWS Lambda + CloudFront + S3
@@ -76,11 +77,12 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 
 ## Development Commands
 
-- `cd src && bun run dev` - Start development server
-- `cd src && bun run build` - Build for production
-- `cd src && bun run start` - Start production server
-- `cd src && bun run lint` - Run ESLint (may need to install ESLint first)
-- `cd src && npx tsc --noEmit` - Run TypeScript type checking (may need to install TypeScript globally)
+- `turbo dev` - Start development server
+- `turbo build` - Build for production
+- `turbo start` - Start production server
+- `turbo lint` - Run ESLint (may need to install ESLint first)
+- `turbo check-types` - Run TypeScript type checking
+- `turbo build` - Build the webapp workspace
 - `pulumi preview` - Preview infrastructure changes
 - `pulumi up` - Deploy infrastructure changes
 - `pulumi refresh` - Refresh infrastructure state
@@ -117,11 +119,21 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 │   └── public/          # Static assets
 ├── index.ts             # Pulumi infrastructure entry point
 ├── nextjs.ts            # Next.js deployment component
+├── turbo.json           # Turborepo configuration
 ├── Pulumi.yaml          # Pulumi project configuration
 ├── Pulumi.dev.yaml      # Development stack configuration
 ├── Pulumi.prod.yaml     # Production stack configuration
 └── package.json         # Root package.json (workspaces)
 ```
+
+## Monorepo Management
+
+This project uses Turborepo for efficient monorepo management:
+
+- **Workspace Structure**: Organized with `src/` as the main application workspace
+- **Task Orchestration**: Configured for build, dev, and type checking tasks
+- **Caching**: Intelligent caching of build outputs and dependencies
+- **Pipeline Optimization**: Dependency-aware task scheduling with `turbo.json` configuration
 
 ## Infrastructure
 

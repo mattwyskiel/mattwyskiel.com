@@ -42,7 +42,7 @@ export default async function Home() {
                             </div>
                             <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm">
                                 <Car className="h-8 w-8 text-teal-500 mb-2" />
-                                <h3 className="font-medium">Joyrides</h3>
+                                <h3 className="font-medium">The Good Life</h3>
                             </div>
                         </div>
                     </div>
