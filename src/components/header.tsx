@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Headphones, Github, Mail } from "lucide-react";
+import { Headphones, Github, Mail } from "lucide-react"
 import {
     Popover,
     PopoverContent,

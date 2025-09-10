@@ -1,11 +1,19 @@
 import * as pulumi from "@pulumi/pulumi";
-import * as vercel from "@pulumiverse/vercel";
+import { NextJsSite } from "./nextjs";
 
-const envSuffix = pulumi.getStack() === "prod" ? "" : `-${pulumi.getStack()}`;
-
-const project = new vercel.Project("mattwyskiel-dotcom", {
-  name: `mattwyskiel.com${envSuffix}`,
-  framework: "nextjs",
+const site = new NextJsSite("site", {
+  path: "src",
+  environment: {
+    CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID || "",
+    CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN || "",
+  },
+  customDomain:
+    pulumi.getStack() === "prod"
+      ? {
+          name: "mattwyskiel.com",
+        }
+      : undefined,
 });
 
-export const projectId = project.id;
+export const url = site.url;
+

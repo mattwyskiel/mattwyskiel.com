@@ -1,27 +1,33 @@
-# AGENTS.md
+# Agent Guidelines for mattwyskiel.com
 
-## Build/Test Commands
-
-- `bun run dev` - Start development server
-- `bun run build` - Build for production
-- `bun run start` - Start production server
-- `bun run lint` - Run ESLint
-- `tsc --noEmit` - Run TypeScript type checking
-- No test framework configured
+## Commands
+- **Build**: `cd src && bun run build`
+- **Dev**: `cd src && bun run dev`
+- **Lint**: `cd src && bun run lint` (ESLint configured with Next.js strict rules - may need installation)
+- **Type Check**: `cd src && npx tsc --noEmit` (TypeScript - may need installation)
+- **Single Test**: No test framework configured
+- **Infrastructure Preview**: `pulumi preview`
+- **Infrastructure Deploy**: `pulumi up`
+- **Infrastructure Refresh**: `pulumi refresh`
 
 ## Code Style
-
-- **Imports**: Group by type (React, Next.js, components, utils), use `@/*` path aliases
-- **Components**: Functional components with TypeScript, PascalCase naming
-- **Variables/Functions**: camelCase naming
-- **Formatting**: Use tabs for indentation (per Tailwind config), double quotes for strings
-- **Types**: Strict TypeScript, avoid `any`, use proper interface definitions
-- **CSS**: Tailwind classes with consistent ordering, shadcn/ui components from `components/ui/`
+- **Language**: TypeScript with strict mode enabled
+- **Framework**: Next.js 15 App Router, React 19
+- **Styling**: Tailwind CSS with shadcn/ui components
+- **Imports**: Type imports first, then regular imports; use semicolons
+- **Path Aliases**: Use `@/` for src directory imports
+- **Naming**: PascalCase for components, camelCase for functions/variables
+- **Formatting**: Prettier (default config)
+- **Types**: Explicit typing required, use interfaces for complex objects
 - **Error Handling**: Use try/catch for async operations
-- **File Structure**: Pages in `app/` directory, reusable components in `components/`
-- **Exports**: Named exports preferred, use `export default` for page components
-- **Props**: Use proper TypeScript interfaces extending HTML attributes when applicable
+- **Components**: Functional components with TypeScript props
+- **Icons**: Lucide React icons
+- **Package Manager**: Bun (workspaces setup)
 
-## Framework
-
-Next.js 15 with App Router, React 19, TypeScript, Tailwind CSS, shadcn/ui, Contentful CMS
+## Infrastructure
+- **Provider**: AWS (serverless deployment)
+- **IaC Tool**: Pulumi with TypeScript
+- **Build Tool**: OpenNext.js for AWS Lambda deployment
+- **CDN**: CloudFront
+- **Storage**: S3 for static assets
+- **Domain**: Custom domain (mattwyskiel.com) with Route 53
