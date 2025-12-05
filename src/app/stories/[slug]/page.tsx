@@ -15,10 +15,8 @@ import { materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import rehypeRaw from "rehype-raw";
 import { ArrowLeft } from "lucide-react";
 
-export async function generateMetadata(
-    { params }: { params: { slug: string } },
-    parent: ResolvingMetadata
-): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }, parent: ResolvingMetadata): Promise<Metadata> {
+    const params = await props.params;
     const post = await getPostBySlug(params.slug);
     return {
         openGraph: {
@@ -37,7 +35,8 @@ export async function generateMetadata(
     };
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
+export default async function Page(props0: { params: Promise<{ slug: string }> }) {
+    const params = await props0.params;
     const post = await getPostBySlug(params.slug);
     return (
         <div className="min-h-screen bg-[#f8f9fa]">
@@ -89,7 +88,7 @@ export default async function Page({ params }: { params: { slug: string } }) {
                                         <code {...rest} className={className}>
                                             {children}
                                         </code>
-                                    )
+                                    );
                                 }
                             }}
                         >
