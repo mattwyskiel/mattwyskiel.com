@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { Headphones, Github, Mail } from "lucide-react"
+import { Headphones, Github, Mail } from "lucide-react";
 import {
     Popover,
     PopoverContent,
     PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@whiskey/web-ui/components/ui/popover";
+import { ModeToggle } from "./ModeToggle";
 
 export default function Header() {
     return (
@@ -12,7 +13,9 @@ export default function Header() {
             <div className="container mx-auto px-4 py-4 flex items-center justify-between max-w-4xl">
                 <Link href="/" className="flex items-center gap-2">
                     <Headphones className="h-6 w-6 text-teal-500" />
-                    <span className="font-medium font-mono text-lg">mattwyskiel</span>
+                    <span className="font-medium font-mono text-lg">
+                        mattwyskiel
+                    </span>
                 </Link>
                 <nav className="flex items-center gap-6">
                     <Link
@@ -37,15 +40,20 @@ export default function Header() {
                         <PopoverContent className="w-72">
                             <div className="space-y-4">
                                 <div>
-                                    <h3 className="font-semibold mb-2">Get in Touch</h3>
+                                    <h3 className="font-semibold mb-2">
+                                        Get in Touch
+                                    </h3>
                                     <p className="text-sm text-muted-foreground mb-4">
-                                        Have a question about one of my projects? Want to
-                                        collaborate on something cool? Or just want to chat about
-                                        software or music?
+                                        Have a question about one of my
+                                        projects? Want to collaborate on
+                                        something cool? Or just want to chat
+                                        about software or music?
                                     </p>
                                 </div>
                                 <div>
-                                    <h4 className="font-medium mb-3">Connect</h4>
+                                    <h4 className="font-medium mb-3">
+                                        Connect
+                                    </h4>
                                     <div className="flex gap-3">
                                         <Link
                                             href="https://github.com/mattwyskiel"
