@@ -1,7 +1,8 @@
 import Link from "next/link"
-import { ArrowLeft } from "lucide-react"
 import { Metadata } from "next";
 import { getPosts } from "@/lib/contentful";
+import { BackLink } from "@/components/back-link";
+import { Badge } from "@whiskey/web-ui/components/ui/badge";
 
 export const metadata: Metadata = {
     title: "Stories | Matt Wyskiel",
@@ -18,15 +19,9 @@ export const metadata: Metadata = {
 export default async function StoriesPage() {
     const posts = await getPosts()
     return (
-        <div className="min-h-screen bg-[#f8f9fa]">
+        <div className="min-h-screen bg-muted">
             <main className="container mx-auto px-4 py-10 max-w-4xl">
-                <Link
-                    href="/"
-                    className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-6"
-                >
-                    <ArrowLeft className="h-4 w-4" />
-                    Back home
-                </Link>
+                <BackLink href="/" label="Back home" />
 
                 <h1 className="text-3xl font-bold mb-4">Stories</h1>
                 <p className="text-muted-foreground mb-8 max-w-2xl">
@@ -37,7 +32,7 @@ export default async function StoriesPage() {
                     {posts.map((post, index) => (
                         <article key={index} className="border-b pb-10">
                             <h2 className="text-2xl font-semibold mb-2">
-                                <Link href={`/stories/${post.slug}`} className="hover:text-teal-600">
+                                <Link href={`/stories/${post.slug}`} className="hover:text-brand">
                                     {post.title}
                                 </Link>
                             </h2>
@@ -48,13 +43,17 @@ export default async function StoriesPage() {
                             })}</p>
                             <p className="text-muted-foreground mb-4">{post.excerpt}</p>
                             <div className="flex flex-wrap gap-2 mb-4">
-                                {(post.tags || []).map((tag, i) => (
-                                    <span key={i} className="bg-teal-50 text-teal-700 text-xs px-2 py-1 rounded">
+                                {(post.tags || []).map((tag) => (
+                                    <Badge
+                                        key={tag}
+                                        variant="secondary"
+                                        className="bg-brand-muted text-brand-muted-foreground"
+                                    >
                                         {tag}
-                                    </span>
+                                    </Badge>
                                 ))}
                             </div>
-                            <Link href={`/stories/${post.slug}`} className="text-teal-600 hover:text-teal-700 font-medium text-sm">
+                            <Link href={`/stories/${post.slug}`} className="text-brand hover:text-brand-hover font-medium text-sm">
                                 Read more →
                             </Link>
                         </article>

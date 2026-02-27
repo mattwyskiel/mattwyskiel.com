@@ -1,24 +1,35 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
-    ArrowLeft,
     Cloud,
     Smartphone,
     Database,
     Workflow,
     Shield,
 } from "lucide-react";
+import { BackLink } from "@/components/back-link";
+import { Badge } from "@whiskey/web-ui/components/ui/badge";
+import { Button } from "@whiskey/web-ui/components/ui/button";
+
+export const metadata: Metadata = {
+    title: "Whiskey | Matt Wyskiel",
+    description:
+        "My personal automation system — cloud-native, data-rich, and private.",
+    openGraph: {
+        type: "website",
+        title: "Whiskey | Matt Wyskiel",
+        description:
+            "My personal automation system — cloud-native, data-rich, and private.",
+        url: "https://mattwyskiel.com/projects/whiskey",
+        images: { url: "https://mattwyskiel.com/ogimage.png" },
+    },
+};
 
 export default function WhiskeyPage() {
     return (
-        <div className="min-h-screen bg-[#f8f9fa]">
+        <div className="min-h-screen bg-muted">
             <main className="container mx-auto px-4 py-10 max-w-4xl">
-                <Link
-                    href="/projects"
-                    className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-6"
-                >
-                    <ArrowLeft className="h-4 w-4" />
-                    Back to projects
-                </Link>
+                <BackLink href="/projects" label="Back to projects" />
 
                 {/* Hero Section */}
                 <div className="mb-12">
@@ -37,34 +48,33 @@ export default function WhiskeyPage() {
                             "Cloud-Native",
                             "Data Processing",
                         ].map((tag) => (
-                            <span
+                            <Badge
                                 key={tag}
-                                className="bg-teal-50 text-teal-700 text-sm px-3 py-1 rounded"
+                                variant="secondary"
+                                className="bg-brand-muted text-brand-muted-foreground text-sm"
                             >
                                 {tag}
-                            </span>
+                            </Badge>
                         ))}
                     </div>
                     <div className="flex gap-4">
-                        <Link
-                            href="https://github.com/whiskey-platform"
-                            className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-md font-medium"
-                        >
-                            View on GitHub
-                        </Link>
-                        <Link
-                            href="#overview"
-                            className="border border-teal-600 text-teal-600 hover:bg-teal-50 px-6 py-2 rounded-md font-medium"
-                        >
-                            Learn More
-                        </Link>
+                        <Button asChild className="bg-brand hover:bg-brand-hover text-brand-foreground">
+                            <Link href="https://github.com/whiskey-platform">
+                                View on GitHub
+                            </Link>
+                        </Button>
+                        <Button asChild variant="outline" className="border-brand text-brand hover:bg-brand-muted">
+                            <Link href="#overview">
+                                Learn More
+                            </Link>
+                        </Button>
                     </div>
                 </div>
 
                 {/* Overview */}
                 <section className="mb-12">
                     <h2 className="text-2xl font-semibold mb-6">Overview</h2>
-                    <div className="bg-white p-6 rounded-lg shadow-sm">
+                    <div className="bg-card p-6 rounded-lg shadow-sm">
                         <p className="text-muted-foreground mb-4">
                             Whiskey is my second brain, my OS, my personal automation system.
                             It's a cloud-native, data-rich, and private platform that ingests
@@ -86,8 +96,8 @@ export default function WhiskeyPage() {
                 <section className="mb-12">
                     <h2 className="text-2xl font-semibold mb-6">Key Features</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="bg-white p-6 rounded-lg shadow-sm">
-                            <Workflow className="h-8 w-8 text-teal-500 mb-4" />
+                        <div className="bg-card p-6 rounded-lg shadow-sm">
+                            <Workflow className="h-8 w-8 text-brand mb-4" />
                             <h3 className="font-medium text-lg mb-2">AI-Powered Assistant</h3>
                             <p className="text-muted-foreground">
                                 Advanced AI assistant with direct access to all personal data,
@@ -95,8 +105,8 @@ export default function WhiskeyPage() {
                                 contextual insights.
                             </p>
                         </div>
-                        <div className="bg-white p-6 rounded-lg shadow-sm">
-                            <Database className="h-8 w-8 text-teal-500 mb-4" />
+                        <div className="bg-card p-6 rounded-lg shadow-sm">
+                            <Database className="h-8 w-8 text-brand mb-4" />
                             <h3 className="font-medium text-lg mb-2">
                                 Intelligent Data Processing
                             </h3>
@@ -106,8 +116,8 @@ export default function WhiskeyPage() {
                                 through machine learning.
                             </p>
                         </div>
-                        <div className="bg-white p-6 rounded-lg shadow-sm">
-                            <Smartphone className="h-8 w-8 text-teal-500 mb-4" />
+                        <div className="bg-card p-6 rounded-lg shadow-sm">
+                            <Smartphone className="h-8 w-8 text-brand mb-4" />
                             <h3 className="font-medium text-lg mb-2">
                                 Smart Mobile Interface
                             </h3>
@@ -116,8 +126,8 @@ export default function WhiskeyPage() {
                                 other features for seamless mobile access.
                             </p>
                         </div>
-                        <div className="bg-white p-6 rounded-lg shadow-sm">
-                            <Shield className="h-8 w-8 text-teal-500 mb-4" />
+                        <div className="bg-card p-6 rounded-lg shadow-sm">
+                            <Shield className="h-8 w-8 text-brand mb-4" />
                             <h3 className="font-medium text-lg mb-2">Privacy-First AI</h3>
                             <p className="text-muted-foreground">
                                 All personal data remains private and under my control while
@@ -133,10 +143,10 @@ export default function WhiskeyPage() {
                     <h2 className="text-2xl font-semibold mb-6">
                         Technical Architecture
                     </h2>
-                    <div className="bg-white p-6 rounded-lg shadow-sm">
+                    <div className="bg-card p-6 rounded-lg shadow-sm">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div className="text-center">
-                                <Workflow className="h-12 w-12 text-teal-500 mx-auto mb-3" />
+                                <Workflow className="h-12 w-12 text-brand mx-auto mb-3" />
                                 <h3 className="font-medium mb-2">AI & Data Layer</h3>
                                 <p className="text-sm text-muted-foreground">
                                     Advanced AI models with optimized prompts, comprehensive data
@@ -144,7 +154,7 @@ export default function WhiskeyPage() {
                                 </p>
                             </div>
                             <div className="text-center">
-                                <Cloud className="h-12 w-12 text-teal-500 mx-auto mb-3" />
+                                <Cloud className="h-12 w-12 text-brand mx-auto mb-3" />
                                 <h3 className="font-medium mb-2">
                                     Hybrid Cloud Infrastructure
                                 </h3>
@@ -154,7 +164,7 @@ export default function WhiskeyPage() {
                                 </p>
                             </div>
                             <div className="text-center">
-                                <Smartphone className="h-12 w-12 text-teal-500 mx-auto mb-3" />
+                                <Smartphone className="h-12 w-12 text-brand mx-auto mb-3" />
                                 <h3 className="font-medium mb-2">Native Mobile Integration</h3>
                                 <p className="text-sm text-muted-foreground">
                                     SwiftUI-based iOS app with AI-enhanced features and seamless
@@ -168,25 +178,25 @@ export default function WhiskeyPage() {
                 {/* Technologies Used */}
                 <section className="mb-12">
                     <h2 className="text-2xl font-semibold mb-6">Technologies Used</h2>
-                    <div className="bg-white p-6 rounded-lg shadow-sm">
+                    <div className="bg-card p-6 rounded-lg shadow-sm">
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <div className="text-center p-3 bg-gray-50 rounded">
+                            <div className="text-center p-3 bg-muted rounded">
                                 <div className="font-medium text-sm mb-1">Cloud</div>
                                 <div className="text-xs text-muted-foreground">AWS</div>
                             </div>
-                            <div className="text-center p-3 bg-gray-50 rounded">
+                            <div className="text-center p-3 bg-muted rounded">
                                 <div className="font-medium text-sm mb-1">Backend</div>
                                 <div className="text-xs text-muted-foreground">Bun</div>
                             </div>
-                            <div className="text-center p-3 bg-gray-50 rounded">
+                            <div className="text-center p-3 bg-muted rounded">
                                 <div className="font-medium text-sm mb-1">Mobile</div>
                                 <div className="text-xs text-muted-foreground">SwiftUI</div>
                             </div>
-                            <div className="text-center p-3 bg-gray-50 rounded">
+                            <div className="text-center p-3 bg-muted rounded">
                                 <div className="font-medium text-sm mb-1">Database</div>
                                 <div className="text-xs text-muted-foreground">PostgreSQL</div>
                             </div>
-                            <div className="text-center p-3 bg-gray-50 rounded">
+                            <div className="text-center p-3 bg-muted rounded">
                                 <div className="font-medium text-sm mb-1">CI/CD</div>
                                 <div className="text-xs text-muted-foreground">
                                     GitHub Actions
@@ -199,9 +209,9 @@ export default function WhiskeyPage() {
                 {/* Project Status */}
                 <section className="mb-12">
                     <h2 className="text-2xl font-semibold mb-6">Project Status</h2>
-                    <div className="bg-white p-6 rounded-lg shadow-sm">
+                    <div className="bg-card p-6 rounded-lg shadow-sm">
                         <div className="flex items-center gap-2">
-                            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <div className="w-3 h-3 bg-status-active rounded-full"></div>
                             <span className="font-medium">Active Development</span>
                         </div>
                     </div>

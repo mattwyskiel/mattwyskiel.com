@@ -1,13 +1,29 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Music, Code, Car, Landmark, Star } from "lucide-react";
 import { getPosts } from "@/lib/contentful";
 import { getFeaturedProjects } from "@/lib/projects";
+import { Badge } from "@whiskey/web-ui/components/ui/badge";
+
+export const metadata: Metadata = {
+    title: "Matt Wyskiel",
+    description:
+        "Personal site of Matt Wyskiel - software builder, music enthusiast, and tinkerer.",
+    openGraph: {
+        type: "website",
+        title: "Matt Wyskiel",
+        description:
+            "Personal site of Matt Wyskiel - software builder, music enthusiast, and tinkerer.",
+        url: "https://mattwyskiel.com",
+        images: { url: "https://mattwyskiel.com/ogimage.png" },
+    },
+};
 
 export default async function Home() {
     const posts = await getPosts();
     const featuredProjects = getFeaturedProjects(2);
     return (
-        <div className="min-h-screen bg-[#f8f9fa]">
+        <div className="min-h-screen bg-muted">
             <main className="container mx-auto px-4 py-10 max-w-4xl">
                 {/* Hero Section */}
                 <div className="flex flex-col gap-6 mb-16">
@@ -28,20 +44,20 @@ export default async function Home() {
                             </p>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
-                            <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm">
-                                <Code className="h-8 w-8 text-teal-500 mb-2" />
+                            <div className="flex flex-col items-center p-4 bg-card rounded-lg shadow-sm">
+                                <Code className="h-8 w-8 text-brand mb-2" />
                                 <h3 className="font-medium">Software</h3>
                             </div>
-                            <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm">
-                                <Music className="h-8 w-8 text-teal-500 mb-2" />
+                            <div className="flex flex-col items-center p-4 bg-card rounded-lg shadow-sm">
+                                <Music className="h-8 w-8 text-brand mb-2" />
                                 <h3 className="font-medium">Music</h3>
                             </div>
-                            <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm">
-                                <Landmark className="h-8 w-8 text-teal-500 mb-2" />
+                            <div className="flex flex-col items-center p-4 bg-card rounded-lg shadow-sm">
+                                <Landmark className="h-8 w-8 text-brand mb-2" />
                                 <h3 className="font-medium">Archiving</h3>
                             </div>
-                            <div className="flex flex-col items-center p-4 bg-white rounded-lg shadow-sm">
-                                <Car className="h-8 w-8 text-teal-500 mb-2" />
+                            <div className="flex flex-col items-center p-4 bg-card rounded-lg shadow-sm">
+                                <Car className="h-8 w-8 text-brand mb-2" />
                                 <h3 className="font-medium">The Good Life</h3>
                             </div>
                         </div>
@@ -55,39 +71,41 @@ export default async function Home() {
                         {featuredProjects.map((project, index) => {
                             const isPersonal = project.type === "personal";
                             const borderColor = isPersonal
-                                ? "border-teal-500"
-                                : "border-blue-500";
+                                ? "border-brand"
+                                : "border-brand-alt";
                             const tagColor = isPersonal
-                                ? "bg-teal-50 text-teal-700"
-                                : "bg-blue-50 text-blue-700";
+                                ? "bg-brand-muted text-brand-muted-foreground"
+                                : "bg-brand-alt-muted text-brand-alt-muted-foreground";
                             const linkColor = isPersonal
-                                ? "text-teal-600 hover:text-teal-700"
-                                : "text-blue-600 hover:text-blue-700";
+                                ? "text-brand hover:text-brand-hover"
+                                : "text-brand-alt hover:text-brand-alt-hover";
 
                             return (
                                 <div
                                     key={index}
-                                    className={`bg-white p-6 rounded-lg shadow-sm border-l-4 ${borderColor} relative`}
+                                    className={`bg-card p-6 rounded-lg shadow-sm border-l-4 ${borderColor} relative`}
                                 >
                                     <div className="flex justify-between items-start mb-2">
                                         <h3 className="font-medium text-lg">{project.title}</h3>
-                                        <span
-                                            className={`${tagColor} text-xs px-2 py-1 rounded font-medium`}
+                                        <Badge
+                                            variant="secondary"
+                                            className={tagColor}
                                         >
                                             {project.type === "personal" ? "Personal" : "Work"}
-                                        </span>
+                                        </Badge>
                                     </div>
                                     <p className="text-muted-foreground mb-4">
                                         {project.description}
                                     </p>
                                     <div className="flex flex-wrap gap-2 mb-4">
-                                        {project.tags.map((tag, i) => (
-                                            <span
-                                                key={i}
-                                                className={`${tagColor} text-xs px-2 py-1 rounded`}
+                                        {project.tags.map((tag) => (
+                                            <Badge
+                                                key={tag}
+                                                variant="secondary"
+                                                className={tagColor}
                                             >
                                                 {tag}
-                                            </span>
+                                            </Badge>
                                         ))}
                                     </div>
                                     {project.type === "personal" && (
@@ -105,7 +123,7 @@ export default async function Home() {
                     <div className="mt-6">
                         <Link
                             href="/projects"
-                            className="text-teal-600 hover:text-teal-700 font-medium"
+                            className="text-brand hover:text-brand-hover font-medium"
                         >
                             View all projects →
                         </Link>
@@ -121,7 +139,7 @@ export default async function Home() {
                                 <h3 className="font-medium text-lg mb-2">
                                     <Link
                                         href={`/stories/${post.slug}`}
-                                        className="hover:text-teal-600"
+                                        className="hover:text-brand"
                                     >
                                         {post.title}
                                     </Link>
@@ -141,7 +159,7 @@ export default async function Home() {
                     <div className="mt-6">
                         <Link
                             href="/stories"
-                            className="text-teal-600 hover:text-teal-700 font-medium"
+                            className="text-brand hover:text-brand-hover font-medium"
                         >
                             View all posts →
                         </Link>

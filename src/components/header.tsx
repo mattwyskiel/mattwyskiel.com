@@ -9,15 +9,18 @@ import { ModeToggle } from "./ModeToggle";
 
 export default function Header() {
     return (
-        <header className="border-b bg-white">
+        <header className="border-b bg-card">
             <div className="container mx-auto px-4 py-4 flex items-center justify-between max-w-4xl">
                 <Link href="/" className="flex items-center gap-2">
-                    <Headphones className="h-6 w-6 text-teal-500" />
+                    <Headphones className="h-6 w-6 text-brand" />
                     <span className="font-medium font-mono text-lg">
                         mattwyskiel
                     </span>
                 </Link>
-                <nav className="flex items-center gap-6">
+                <nav
+                    aria-label="Main navigation"
+                    className="flex items-center gap-6"
+                >
                     <Link
                         href="/stories"
                         className="text-sm font-medium text-muted-foreground hover:text-foreground"
@@ -30,6 +33,8 @@ export default function Header() {
                     <Link
                         href="https://a-list.mattwyskiel.com"
                         className="text-sm font-medium text-muted-foreground hover:text-foreground"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
                         Music
                     </Link>
@@ -57,30 +62,35 @@ export default function Header() {
                                     <div className="flex gap-3">
                                         <Link
                                             href="https://github.com/mattwyskiel"
-                                            className="flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-[#24292e] hover:bg-gray-50 transition-colors group"
-                                            title="GitHub"
+                                            className="flex items-center justify-center w-12 h-12 rounded-full bg-card border-2 border-[#24292e] hover:bg-muted transition-colors group"
+                                            aria-label="GitHub"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                         >
                                             <Github className="h-5 w-5 text-[#24292e]" />
                                         </Link>
                                         <Link
                                             href="https://x.com/mattwyskiel"
                                             className="flex items-center justify-center w-12 h-12 rounded-full bg-black hover:bg-gray-900 transition-colors group"
-                                            title="Twitter"
+                                            aria-label="Twitter"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
                                         >
                                             <svg
                                                 className="h-5 w-5 text-white"
                                                 fill="currentColor"
                                                 viewBox="0 0 24 24"
+                                                aria-hidden="true"
                                             >
                                                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                                             </svg>
                                         </Link>
                                         <Link
                                             href="mailto:matt@mattwyskiel.com"
-                                            className="flex items-center justify-center w-12 h-12 rounded-full bg-white border-2 border-teal-500 hover:bg-teal-50 transition-colors group"
-                                            title="Email"
+                                            className="flex items-center justify-center w-12 h-12 rounded-full bg-card border-2 border-brand hover:bg-brand-muted transition-colors group"
+                                            aria-label="Email"
                                         >
-                                            <Mail className="h-5 w-5 text-teal-500" />
+                                            <Mail className="h-5 w-5 text-brand" />
                                         </Link>
                                     </div>
                                 </div>

@@ -6,7 +6,8 @@ const config: Config = {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "*.{js,ts,jsx,tsx,mdx}"
+    "*.{js,ts,jsx,tsx,mdx}",
+    "../../../libs/web-ui/components/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
   	extend: {
@@ -60,7 +61,22 @@ const config: Config = {
   				'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
   				border: 'hsl(var(--sidebar-border))',
   				ring: 'hsl(var(--sidebar-ring))'
-  			}
+  			},
+  			brand: {
+  				DEFAULT: 'hsl(var(--brand))',
+  				foreground: 'hsl(var(--brand-foreground))',
+  				muted: 'hsl(var(--brand-muted))',
+  				'muted-foreground': 'hsl(var(--brand-muted-foreground))',
+  				hover: 'hsl(var(--brand-hover))'
+  			},
+  			'brand-alt': {
+  				DEFAULT: 'hsl(var(--brand-alt))',
+  				foreground: 'hsl(var(--brand-alt-foreground))',
+  				muted: 'hsl(var(--brand-alt-muted))',
+  				'muted-foreground': 'hsl(var(--brand-alt-muted-foreground))',
+  				hover: 'hsl(var(--brand-alt-hover))'
+  			},
+  			'status-active': 'hsl(var(--status-active))'
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

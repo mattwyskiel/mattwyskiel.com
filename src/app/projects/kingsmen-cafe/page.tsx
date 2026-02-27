@@ -1,23 +1,35 @@
+import type { Metadata } from "next"
 import Link from "next/link"
-import { ArrowLeft, Smartphone, CreditCard, Coffee, Users, MapPin, Archive } from "lucide-react"
+import { Smartphone, CreditCard, Coffee, Users, MapPin, Archive } from "lucide-react"
+import { BackLink } from "@/components/back-link"
+import { Badge } from "@whiskey/web-ui/components/ui/badge"
+import { Button } from "@whiskey/web-ui/components/ui/button"
+
+export const metadata: Metadata = {
+    title: "Kingsmen Café | Matt Wyskiel",
+    description:
+        "A mobile pre-ordering experience for a small local coffee chain with Square payments.",
+    openGraph: {
+        type: "website",
+        title: "Kingsmen Café | Matt Wyskiel",
+        description:
+            "A mobile pre-ordering experience for a small local coffee chain with Square payments.",
+        url: "https://mattwyskiel.com/projects/kingsmen-cafe",
+        images: { url: "https://mattwyskiel.com/ogimage.png" },
+    },
+}
 
 export default function KingsmenCafePage() {
     return (
-        <div className="min-h-screen bg-[#f8f9fa]">
+        <div className="min-h-screen bg-muted">
             <main className="container mx-auto px-4 py-10 max-w-4xl">
-                <Link
-                    href="/projects"
-                    className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-6"
-                >
-                    <ArrowLeft className="h-4 w-4" />
-                    Back to projects
-                </Link>
+                <BackLink href="/projects" label="Back to projects" />
 
                 {/* Hero Section */}
                 <div className="mb-12">
                     <div className="flex items-center gap-2 mb-4">
-                        <Archive className="h-6 w-6 text-gray-500" />
-                        <span className="text-gray-500 font-medium">Archived Project</span>
+                        <Archive className="h-6 w-6 text-muted-foreground" />
+                        <span className="text-muted-foreground font-medium">Archived Project</span>
                     </div>
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">Kingsmen Café</h1>
                     <p className="text-xl text-muted-foreground mb-6">
@@ -25,18 +37,17 @@ export default function KingsmenCafePage() {
                     </p>
                     <div className="flex flex-wrap gap-2 mb-6">
                         {["iOS", "Swift", "Mobile", "Square", "Node.js"].map((tag) => (
-                            <span key={tag} className="bg-gray-50 text-gray-700 text-sm px-3 py-1 rounded">
+                            <Badge key={tag} variant="secondary" className="bg-muted text-muted-foreground text-sm">
                                 {tag}
-                            </span>
+                            </Badge>
                         ))}
                     </div>
                     <div className="flex gap-4">
-                        <Link 
-                            href="https://github.com/mattwyskiel/kingsmen-cafe" 
-                            className="bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-md font-medium"
-                        >
-                            View on GitHub
-                        </Link>
+                        <Button asChild className="bg-secondary-foreground hover:bg-secondary-foreground/90 text-secondary">
+                            <Link href="https://github.com/mattwyskiel/kingsmen-cafe">
+                                View on GitHub
+                            </Link>
+                        </Button>
                     </div>
                 </div>
 
@@ -55,7 +66,7 @@ export default function KingsmenCafePage() {
                 {/* Overview */}
                 <section className="mb-12">
                     <h2 className="text-2xl font-semibold mb-6">Overview</h2>
-                    <div className="bg-white p-6 rounded-lg shadow-sm">
+                    <div className="bg-card p-6 rounded-lg shadow-sm">
                         <p className="text-muted-foreground mb-4">
                             Kingsmen Café was a mobile pre-ordering solution I developed for a small local coffee 
                             chain. The app allowed customers to browse the menu, customize their orders, and pay 
@@ -73,7 +84,7 @@ export default function KingsmenCafePage() {
                 <section className="mb-12">
                     <h2 className="text-2xl font-semibold mb-6">Key Features</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="bg-white p-6 rounded-lg shadow-sm">
+                        <div className="bg-card p-6 rounded-lg shadow-sm">
                             <Coffee className="h-8 w-8 text-amber-600 mb-4" />
                             <h3 className="font-medium text-lg mb-2">Pre-Order System</h3>
                             <p className="text-muted-foreground">
@@ -81,7 +92,7 @@ export default function KingsmenCafePage() {
                                 allowing customers to place orders ahead of time.
                             </p>
                         </div>
-                        <div className="bg-white p-6 rounded-lg shadow-sm">
+                        <div className="bg-card p-6 rounded-lg shadow-sm">
                             <CreditCard className="h-8 w-8 text-amber-600 mb-4" />
                             <h3 className="font-medium text-lg mb-2">Square Integration</h3>
                             <p className="text-muted-foreground">
@@ -89,7 +100,7 @@ export default function KingsmenCafePage() {
                                 system for seamless transactions.
                             </p>
                         </div>
-                        <div className="bg-white p-6 rounded-lg shadow-sm">
+                        <div className="bg-card p-6 rounded-lg shadow-sm">
                             <Users className="h-8 w-8 text-amber-600 mb-4" />
                             <h3 className="font-medium text-lg mb-2">Community Hub</h3>
                             <p className="text-muted-foreground">
@@ -97,7 +108,7 @@ export default function KingsmenCafePage() {
                                 making it more than just a ordering app.
                             </p>
                         </div>
-                        <div className="bg-white p-6 rounded-lg shadow-sm">
+                        <div className="bg-card p-6 rounded-lg shadow-sm">
                             <Smartphone className="h-8 w-8 text-amber-600 mb-4" />
                             <h3 className="font-medium text-lg mb-2">Native iOS App</h3>
                             <p className="text-muted-foreground">
@@ -111,7 +122,7 @@ export default function KingsmenCafePage() {
                 {/* Technical Architecture */}
                 <section className="mb-12">
                     <h2 className="text-2xl font-semibold mb-6">Technical Architecture</h2>
-                    <div className="bg-white p-6 rounded-lg shadow-sm">
+                    <div className="bg-card p-6 rounded-lg shadow-sm">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div className="text-center">
                                 <Smartphone className="h-12 w-12 text-amber-600 mx-auto mb-3" />
@@ -141,25 +152,25 @@ export default function KingsmenCafePage() {
                 {/* Technologies Used */}
                 <section className="mb-12">
                     <h2 className="text-2xl font-semibold mb-6">Technologies Used</h2>
-                    <div className="bg-white p-6 rounded-lg shadow-sm">
+                    <div className="bg-card p-6 rounded-lg shadow-sm">
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            <div className="text-center p-3 bg-gray-50 rounded">
+                            <div className="text-center p-3 bg-muted rounded">
                                 <div className="font-medium text-sm mb-1">Mobile</div>
                                 <div className="text-xs text-muted-foreground">iOS SDK (Swift)</div>
                             </div>
-                            <div className="text-center p-3 bg-gray-50 rounded">
+                            <div className="text-center p-3 bg-muted rounded">
                                 <div className="font-medium text-sm mb-1">Payments</div>
                                 <div className="text-xs text-muted-foreground">Square</div>
                             </div>
-                            <div className="text-center p-3 bg-gray-50 rounded">
+                            <div className="text-center p-3 bg-muted rounded">
                                 <div className="font-medium text-sm mb-1">Backend</div>
                                 <div className="text-xs text-muted-foreground">Node.js</div>
                             </div>
-                            <div className="text-center p-3 bg-gray-50 rounded">
+                            <div className="text-center p-3 bg-muted rounded">
                                 <div className="font-medium text-sm mb-1">Database</div>
                                 <div className="text-xs text-muted-foreground">MongoDB</div>
                             </div>
-                            <div className="text-center p-3 bg-gray-50 rounded">
+                            <div className="text-center p-3 bg-muted rounded">
                                 <div className="font-medium text-sm mb-1">Hosting</div>
                                 <div className="text-xs text-muted-foreground">Heroku</div>
                             </div>
@@ -170,7 +181,7 @@ export default function KingsmenCafePage() {
                 {/* Business Context */}
                 <section className="mb-12">
                     <h2 className="text-2xl font-semibold mb-6">Business Context</h2>
-                    <div className="bg-white p-6 rounded-lg shadow-sm">
+                    <div className="bg-card p-6 rounded-lg shadow-sm">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <h3 className="font-medium mb-3">Problem Solved</h3>
@@ -197,7 +208,7 @@ export default function KingsmenCafePage() {
                 {/* Development Insights */}
                 <section className="mb-12">
                     <h2 className="text-2xl font-semibold mb-6">Development Insights</h2>
-                    <div className="bg-white p-6 rounded-lg shadow-sm">
+                    <div className="bg-card p-6 rounded-lg shadow-sm">
                         <div className="space-y-4">
                             <div className="flex items-start gap-3">
                                 <div className="w-2 h-2 bg-amber-600 rounded-full mt-2"></div>
@@ -233,9 +244,9 @@ export default function KingsmenCafePage() {
                 {/* Project Legacy */}
                 <section className="mb-12">
                     <h2 className="text-2xl font-semibold mb-6">Project Legacy</h2>
-                    <div className="bg-white p-6 rounded-lg shadow-sm">
+                    <div className="bg-card p-6 rounded-lg shadow-sm">
                         <div className="flex items-center gap-2 mb-4">
-                            <div className="w-3 h-3 bg-gray-500 rounded-full"></div>
+                            <div className="w-3 h-3 bg-muted-foreground rounded-full"></div>
                             <span className="font-medium">Archived - Business Closed</span>
                         </div>
                         <p className="text-muted-foreground">

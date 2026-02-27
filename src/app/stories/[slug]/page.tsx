@@ -1,23 +1,21 @@
 import { getPostBySlug } from "@/lib/contentful";
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import Markdown from "react-markdown";
-import Link from 'next/link'
-import { Metadata, ResolvingMetadata } from "next";
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { materialDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
-import rehypeRaw from "rehype-raw";
-import { ArrowLeft } from "lucide-react";
+import { markdownComponents } from "@/lib/markdown-components";
 
-export async function generateMetadata(props: { params: Promise<{ slug: string }> }, parent: ResolvingMetadata): Promise<Metadata> {
+import Markdown from "react-markdown";
+import { Metadata, ResolvingMetadata } from "next";
+import { notFound } from "next/navigation";
+import rehypeRaw from "rehype-raw";
+import { BackLink } from "@/components/back-link";
+
+export async function generateMetadata(
+    props: { params: Promise<{ slug: string }> },
+    parent: ResolvingMetadata,
+): Promise<Metadata> {
     const params = await props.params;
     const post = await getPostBySlug(params.slug);
+    if (!post) {
+        return {};
+    }
     return {
         openGraph: {
             type: "article",
@@ -35,19 +33,18 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
     };
 }
 
-export default async function Page(props0: { params: Promise<{ slug: string }> }) {
+export default async function Page(props0: {
+    params: Promise<{ slug: string }>;
+}) {
     const params = await props0.params;
     const post = await getPostBySlug(params.slug);
+    if (!post) {
+        notFound();
+    }
     return (
-        <div className="min-h-screen bg-[#f8f9fa]">
+        <div className="min-h-screen bg-muted">
             <main className="container mx-auto px-4 py-10 max-w-4xl">
-                <Link
-                    href="/stories"
-                    className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-6"
-                >
-                    <ArrowLeft className="h-4 w-4" />
-                    Back
-                </Link>
+                <BackLink href="/stories" label="Back" />
                 <div>
                     <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
                     <h6 className="text-sm text-muted-foreground mb-4">
@@ -60,37 +57,7 @@ export default async function Page(props0: { params: Promise<{ slug: string }> }
                     <div className="prose-img:mx-auto">
                         <Markdown
                             rehypePlugins={[rehypeRaw]}
-                            components={{
-                                p: ({ node, ...props }) => <p className="text-muted-foreground py-2" {...props} />,
-                                a: ({ node, ...props }) => <a className="text-teal-600 hover:text-teal-700 font-medium" {...props} />,
-                                h1: ({ node, ...props }) => <h1 className="text-3xl font-bold" {...props} />,
-                                h2: ({ node, ...props }) => <h2 className="text-2xl font-semibold" {...props} />,
-                                h3: ({ node, ...props }) => <h3 className="text-xl font-semibold" {...props} />,
-                                h4: ({ node, ...props }) => <h4 className="text-lg font-semibold" {...props} />,
-                                h5: ({ node, ...props }) => <h5 className="text-md font-semibold" {...props} />,
-                                h6: ({ node, ...props }) => <h6 className="text-sm font-semibold" {...props} />,
-                                ol: ({ node, ...props }) => <ol className="list-decimal list-inside text-muted-foreground" {...props} />,
-                                ul: ({ node, ...props }) => <ul className="list-disc list-inside text-muted-foreground" {...props} />,
-                                li: ({ node, ...props }) => <li className="text-muted-foreground" {...props} />,
-                                blockquote: ({ node, ...props }) => <blockquote className="border-l-4 pl-4 italic text-muted-foreground" {...props} />,
-                                img: ({ node, ...props }) => <img className="rounded-lg my-4" {...props} />,
-                                code(props) {
-                                    const { children, className, node, ...rest } = props
-                                    const match = /language-(\w+)/.exec(className || '')
-                                    return match ? (
-                                        <SyntaxHighlighter
-                                            PreTag="div"
-                                            children={String(children).replace(/\n$/, '')}
-                                            language={match[1]}
-                                            style={materialDark}
-                                        />
-                                    ) : (
-                                        <code {...rest} className={className}>
-                                            {children}
-                                        </code>
-                                    );
-                                }
-                            }}
+                            components={markdownComponents}
                         >
                             {post.content}
                         </Markdown>
