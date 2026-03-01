@@ -1,11 +1,11 @@
-import { getPostBySlug } from "@/lib/contentful";
-import { markdownComponents } from "@/lib/markdown-components";
+import type { Metadata, ResolvingMetadata } from "next";
+import { notFound } from "next/navigation";
 
 import Markdown from "react-markdown";
-import { Metadata, ResolvingMetadata } from "next";
-import { notFound } from "next/navigation";
 import rehypeRaw from "rehype-raw";
 import { BackLink } from "@/components/back-link";
+import { getPostBySlug } from "@/lib/contentful";
+import { markdownComponents } from "@/lib/markdown-components";
 
 export async function generateMetadata(
 	props: { params: Promise<{ slug: string }> },

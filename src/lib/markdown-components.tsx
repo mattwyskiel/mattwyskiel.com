@@ -1,5 +1,5 @@
-import type { Components } from "react-markdown";
 import dynamic from "next/dynamic";
+import type { Components } from "react-markdown";
 
 const CodeBlock = dynamic(
   () => import("@/components/code-block").then((mod) => mod.CodeBlock),

@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { Music, Database, Radio, Globe, Smartphone, Cloud } from "lucide-react";
-import { BackLink } from "@/components/back-link";
 import { Badge } from "@whiskey/web-ui/components/ui/badge";
 import { Button } from "@whiskey/web-ui/components/ui/button";
+import { Cloud, Database, Globe, Music, Radio, Smartphone } from "lucide-react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { BackLink } from "@/components/back-link";
 
 export const metadata: Metadata = {
   title: "A-List | Matt Wyskiel",

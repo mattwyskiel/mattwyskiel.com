@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
-import { Star } from "lucide-react";
-import { getSortedProjects, type Project } from "@/lib/projects";
 import { Badge } from "@whiskey/web-ui/components/ui/badge";
+import { Star } from "lucide-react";
+import Link from "next/link";
+import { useState } from "react";
+import { getSortedProjects, type Project } from "@/lib/projects";
 
 function SortToggle({
   sortBy,

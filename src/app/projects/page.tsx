@@ -1,9 +1,9 @@
+import { Badge } from "@whiskey/web-ui/components/ui/badge";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { archivedProjects } from "@/lib/projects";
 import { BackLink } from "@/components/back-link";
 import { ProjectsListing } from "@/components/projects-listing";
-import { Badge } from "@whiskey/web-ui/components/ui/badge";
+import { archivedProjects } from "@/lib/projects";
 
 export const metadata: Metadata = {
   title: "Projects | Matt Wyskiel",

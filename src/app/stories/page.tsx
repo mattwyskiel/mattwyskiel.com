@@ -1,8 +1,8 @@
-import Link from "next/link";
-import { Metadata } from "next";
-import { getPosts } from "@/lib/contentful";
-import { BackLink } from "@/components/back-link";
 import { Badge } from "@whiskey/web-ui/components/ui/badge";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { BackLink } from "@/components/back-link";
+import { getPosts } from "@/lib/contentful";
 
 export const metadata: Metadata = {
   title: "Stories | Matt Wyskiel",

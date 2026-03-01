@@ -1,10 +1,10 @@
-import Link from "next/link";
-import { Headphones, Github, Mail } from "lucide-react";
 import {
 	Popover,
 	PopoverContent,
 	PopoverTrigger,
 } from "@whiskey/web-ui/components/ui/popover";
+import { Github, Headphones, Mail } from "lucide-react";
+import Link from "next/link";
 import { ModeToggle } from "./ModeToggle";
 
 export default function Header() {

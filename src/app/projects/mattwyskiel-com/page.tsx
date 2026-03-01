@@ -1,17 +1,17 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import {
-  Globe,
-  Palette,
-  Code,
-  Zap,
-  Users,
-  Search,
-  Smartphone,
-} from "lucide-react";
-import { BackLink } from "@/components/back-link";
 import { Badge } from "@whiskey/web-ui/components/ui/badge";
 import { Button } from "@whiskey/web-ui/components/ui/button";
+import {
+  Code,
+  Globe,
+  Palette,
+  Search,
+  Smartphone,
+  Users,
+  Zap,
+} from "lucide-react";
+import type { Metadata } from "next";
+import Link from "next/link";
+import { BackLink } from "@/components/back-link";
 
 export const metadata: Metadata = {
   title: "mattwyskiel.com | Matt Wyskiel",
