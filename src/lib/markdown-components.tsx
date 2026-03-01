@@ -5,7 +5,7 @@ const CodeBlock = dynamic(
   () => import("@/components/code-block").then((mod) => mod.CodeBlock),
   {
     loading: () => <div className="animate-pulse bg-muted rounded h-20" />,
-  }
+  },
 );
 
 export const markdownComponents: Components = {
@@ -15,9 +15,7 @@ export const markdownComponents: Components = {
   a: ({ node, ...props }) => (
     <a className="text-brand hover:text-brand-hover font-medium" {...props} />
   ),
-  h1: ({ node, ...props }) => (
-    <h1 className="text-3xl font-bold" {...props} />
-  ),
+  h1: ({ node, ...props }) => <h1 className="text-3xl font-bold" {...props} />,
   h2: ({ node, ...props }) => (
     <h2 className="text-2xl font-semibold" {...props} />
   ),
@@ -34,10 +32,7 @@ export const markdownComponents: Components = {
     <h6 className="text-sm font-semibold" {...props} />
   ),
   ol: ({ node, ...props }) => (
-    <ol
-      className="list-decimal list-inside text-muted-foreground"
-      {...props}
-    />
+    <ol className="list-decimal list-inside text-muted-foreground" {...props} />
   ),
   ul: ({ node, ...props }) => (
     <ul className="list-disc list-inside text-muted-foreground" {...props} />
@@ -51,9 +46,7 @@ export const markdownComponents: Components = {
       {...props}
     />
   ),
-  img: ({ node, ...props }) => (
-    <img className="rounded-lg my-4" {...props} />
-  ),
+  img: ({ node, ...props }) => <img className="rounded-lg my-4" {...props} />,
   code({ children, className, node, ...rest }) {
     return <CodeBlock className={className}>{children}</CodeBlock>;
   },

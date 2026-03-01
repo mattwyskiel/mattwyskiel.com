@@ -6,17 +6,16 @@ import { ProjectsListing } from "@/components/projects-listing";
 import { Badge } from "@whiskey/web-ui/components/ui/badge";
 
 export const metadata: Metadata = {
+  title: "Projects | Matt Wyskiel",
+  description: "A showcase of my personal and professional software projects.",
+  openGraph: {
+    type: "website",
     title: "Projects | Matt Wyskiel",
     description:
-        "A showcase of my personal and professional software projects.",
-    openGraph: {
-        type: "website",
-        title: "Projects | Matt Wyskiel",
-        description:
-            "A showcase of my personal and professional software projects.",
-        url: "https://mattwyskiel.com/projects",
-        images: { url: "https://mattwyskiel.com/ogimage.png" },
-    },
+      "A showcase of my personal and professional software projects.",
+    url: "https://mattwyskiel.com/projects",
+    images: { url: "https://mattwyskiel.com/ogimage.png" },
+  },
 };
 
 export default function ProjectsPage() {

@@ -16,11 +16,7 @@ export function CodeBlock({ className, children }: CodeBlockProps) {
   }
 
   return (
-    <SyntaxHighlighter
-      PreTag="div"
-      language={match[1]}
-      style={materialDark}
-    >
+    <SyntaxHighlighter PreTag="div" language={match[1]} style={materialDark}>
       {String(children).replace(/\n$/, "")}
     </SyntaxHighlighter>
   );

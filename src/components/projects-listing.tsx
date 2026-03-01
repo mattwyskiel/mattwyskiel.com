@@ -87,7 +87,10 @@ function ProjectCard({ project }: { project: Project }) {
         ))}
       </div>
       {project.type === "personal" && (
-        <Link href={project.link} className={`${linkColor} font-medium text-sm`}>
+        <Link
+          href={project.link}
+          className={`${linkColor} font-medium text-sm`}
+        >
           View Project →
         </Link>
       )}

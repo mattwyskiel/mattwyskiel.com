@@ -1,23 +1,12 @@
 {
-    "$schema": "https://turborepo.com/schema.json",
+    "$schema": "https://turbo.build/schema.json",
     "tasks": {
-        "build": {
-            "dependsOn": [
-                "^build"
-            ],
-            "outputs": [
-                ".next/**",
-                "!.next/cache/**"
-            ]
+        "deploy": {
+            "dependsOn": ["@mattwyskiel-dotcom/webapp#build"]
         },
-        "check-types": {
-            "dependsOn": [
-                "^check-types"
-            ]
-        },
-        "dev": {
-            "persistent": true,
-            "cache": false
+        "deploy:dev": {
+            "dependsOn": ["@mattwyskiel-dotcom/webapp#build"]
         }
-    }
+    },
+    "extends": ["//"]
 }
