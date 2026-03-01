@@ -9,7 +9,7 @@ import { markdownComponents } from "@/lib/markdown-components";
 
 export async function generateMetadata(
 	props: { params: Promise<{ slug: string }> },
-	parent: ResolvingMetadata,
+	_parent: ResolvingMetadata,
 ): Promise<Metadata> {
 	const params = await props.params;
 	const post = await getPostBySlug(params.slug);

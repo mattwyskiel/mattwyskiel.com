@@ -46,8 +46,11 @@ export const markdownComponents: Components = {
       {...props}
     />
   ),
-  img: ({ node, ...props }) => <img className="rounded-lg my-4" {...props} />,
-  code({ children, className, node, ...rest }) {
+  img: ({ node, ...props }) => (
+    // biome-ignore lint/performance/noImgElement: markdown renderer requires native img for dynamic content
+    <img className="rounded-lg my-4" alt="" {...props} />
+  ),
+  code({ children, className }) {
     return <CodeBlock className={className}>{children}</CodeBlock>;
   },
 };

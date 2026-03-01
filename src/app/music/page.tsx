@@ -51,7 +51,7 @@ export default function MusicPage() {
                 <ul className="space-y-3">
                   {tracks.map((track, index) => (
                     <li
-                      key={index}
+                      key={track.title}
                       className="flex items-center justify-between text-sm"
                     >
                       <div className="flex items-center gap-3">

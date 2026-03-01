@@ -29,8 +29,8 @@ export default async function StoriesPage() {
         <p className="text-muted-foreground mb-8 max-w-2xl">Me yapping.</p>
 
         <div className="space-y-10">
-          {posts.map((post, index) => (
-            <article key={index} className="border-b pb-10">
+          {posts.map((post) => (
+            <article key={post.slug} className="border-b pb-10">
               <h2 className="text-2xl font-semibold mb-2">
                 <Link
                   href={`/stories/${post.slug}`}

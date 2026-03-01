@@ -16,6 +16,7 @@ function SortToggle({
   return (
     <div className="flex gap-2">
       <button
+        type="button"
         onClick={() => onSortChange("featured")}
         className={`px-3 py-1 text-sm rounded ${
           sortBy === "featured"
@@ -26,6 +27,7 @@ function SortToggle({
         Featured
       </button>
       <button
+        type="button"
         onClick={() => onSortChange("date")}
         className={`px-3 py-1 text-sm rounded ${
           sortBy === "date"
@@ -42,7 +44,7 @@ function SortToggle({
 function ProjectCard({ project }: { project: Project }) {
   const isPersonal = project.type === "personal";
   const borderColor = isPersonal ? "border-brand" : "border-brand-alt";
-  const tagVariant = isPersonal ? "brand" : "brand-alt";
+  const _tagVariant = isPersonal ? "brand" : "brand-alt";
   const linkColor = isPersonal
     ? "text-brand hover:text-brand-hover"
     : "text-brand-alt hover:text-brand-alt-hover";

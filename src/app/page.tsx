@@ -68,7 +68,7 @@ export default async function Home() {
 				<section className="mb-16">
 					<h2 className="text-2xl font-semibold mb-6">Featured Projects</h2>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-						{featuredProjects.map((project, index) => {
+						{featuredProjects.map((project) => {
 							const isPersonal = project.type === "personal";
 							const borderColor = isPersonal
 								? "border-brand"
@@ -82,7 +82,7 @@ export default async function Home() {
 
 							return (
 								<div
-									key={index}
+									key={project.title}
 									className={`bg-card p-6 rounded-lg shadow-sm border-l-4 ${borderColor} relative`}
 								>
 									<div className="flex justify-between items-start mb-2">
@@ -127,8 +127,8 @@ export default async function Home() {
 				<section className="mb-16">
 					<h2 className="text-2xl font-semibold mb-6">Latest Posts</h2>
 					<div className="space-y-6">
-						{posts.slice(0, 2).map((post, index) => (
-							<div key={index} className="border-b pb-6">
+						{posts.slice(0, 2).map((post) => (
+							<div key={post.slug} className="border-b pb-6">
 								<h3 className="font-medium text-lg mb-2">
 									<Link
 										href={`/stories/${post.slug}`}
