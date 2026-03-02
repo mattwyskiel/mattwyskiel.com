@@ -1,0 +1,9 @@
+{
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "cache": true,
+      "outputs": [".next/**", ".open-next/**"]
+    }
+  }
+}
