@@ -11,7 +11,7 @@
         "cancel-deploy:dev": "pulumi cancel -s dev --yes"
     },
     "devDependencies": {
-        "@types/bun": "latest"
+        "@types/bun": "catalog:dev"
     },
     "peerDependencies": {
         "typescript": "catalog:"
