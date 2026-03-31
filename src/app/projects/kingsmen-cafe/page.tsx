@@ -59,10 +59,7 @@ export default function KingsmenCafePage() {
             ))}
           </div>
           <div className="flex gap-4">
-            <Button
-              asChild
-              className="bg-secondary-foreground hover:bg-secondary-foreground/90 text-secondary"
-            >
+            <Button className="bg-secondary-foreground hover:bg-secondary-foreground/90 text-secondary">
               <Link href="https://github.com/mattwyskiel/kingsmen-cafe">
                 View on GitHub
               </Link>

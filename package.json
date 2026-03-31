@@ -18,6 +18,6 @@
     },
     "dependencies": {
         "@pulumi/pulumi": "catalog:infra",
-        "@whiskey/pulumi-utils": "workspace:*"
+        "@whiskey/pulumi-opennext-site": "workspace:*"
     }
 }

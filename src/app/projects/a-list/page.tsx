@@ -46,14 +46,10 @@ export default function AListPage() {
             ))}
           </div>
           <div className="flex gap-4">
-            <Button
-              asChild
-              className="bg-brand hover:bg-brand-hover text-brand-foreground"
-            >
+            <Button className="bg-brand hover:bg-brand-hover text-brand-foreground">
               <Link href="https://a-list.mattwyskiel.com">Listen Now</Link>
             </Button>
             <Button
-              asChild
               variant="outline"
               className="border-brand text-brand hover:bg-brand-muted"
             >
