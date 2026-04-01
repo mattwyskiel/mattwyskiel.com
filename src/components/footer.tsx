@@ -1,5 +1,5 @@
-import { Github } from "lucide-react";
 import Link from "next/link";
+import { GitHubIcon } from "@/components/GitHubIcon";
 
 export default function Footer() {
   return (
@@ -12,12 +12,12 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <Link
               href="https://github.com/mattwyskiel"
-              className="text-muted-foreground hover:text-foreground"
+              className="text-foreground hover:text-foreground/80"
               aria-label="GitHub"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Github className="h-5 w-5" />
+              <GitHubIcon className="h-5 w-auto" />
               <span className="sr-only">GitHub</span>
             </Link>
             <Link

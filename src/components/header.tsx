@@ -3,8 +3,9 @@ import {
 	PopoverContent,
 	PopoverTrigger,
 } from "@whiskey/web-ui/components/ui/popover";
-import { Github, Headphones, Mail } from "lucide-react";
+import { Headphones, Mail } from "lucide-react";
 import Link from "next/link";
+import { GitHubIcon } from "@/components/GitHubIcon";
 import { ModeToggle } from "./ModeToggle";
 
 export default function Header() {
@@ -52,12 +53,12 @@ export default function Header() {
 									<div className="flex gap-3">
 										<Link
 											href="https://github.com/mattwyskiel"
-											className="flex items-center justify-center w-12 h-12 rounded-full bg-card border-2 border-[#24292e] hover:bg-muted transition-colors group"
+											className="flex items-center justify-center w-12 h-12 rounded-full bg-card border-2 border-current hover:bg-muted transition-colors group"
 											aria-label="GitHub"
 											target="_blank"
 											rel="noopener noreferrer"
 										>
-											<Github className="h-5 w-5 text-[#24292e]" />
+											<GitHubIcon className="h-5 w-auto" />
 										</Link>
 										<Link
 											href="https://x.com/mattwyskiel"
