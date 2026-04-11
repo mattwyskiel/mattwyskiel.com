@@ -39,7 +39,6 @@
 	},
 	"devDependencies": {
 		"@types/bun": "catalog:",
-		"@types/node": "catalog:",
 		"@types/react": "catalog:ui",
 		"@types/react-dom": "catalog:ui",
 		"@types/react-syntax-highlighter": "^15.5.13",

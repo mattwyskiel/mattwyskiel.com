@@ -9,6 +9,9 @@
         "target": "ES6",
         "skipLibCheck": true,
         "strict": true,
+        "types": [
+            "bun"
+        ],
         "noEmit": true,
         "esModuleInterop": true,
         "module": "esnext",
@@ -22,23 +25,7 @@
                 "name": "next"
             }
         ],
-        "paths": {
-            "@/*": [
-                "./*"
-            ],
-            "@whiskey/web-ui/*": [
-                "../../../libs/web-ui/*"
-            ]
-        }
-    },
-    "include": [
-        "**/*.ts",
-        "**/*.tsx",
-        "next-env.d.ts",
-        ".next/types/**/*.ts",
-        ".next/dev/types/**/*.ts"
-    ],
-    "exclude": [
-        "node_modules"
-    ]
-}
+        "exclude": [
+            "node_modules"
+        ]
+    }
