@@ -5,8 +5,8 @@
     "scripts": {
         "typecheck": "tsc --noEmit",
         "typecheck:watch": "tsc --noEmit --watch",
-        "deploy": "pulumi up --stack prod -y",
-        "deploy:dev": "pulumi up --stack dev -y",
+        "deploy": "bun run --cwd src build && pulumi up --stack prod -y",
+        "deploy:dev": "bun run --cwd src build && pulumi up --stack dev -y",
         "cancel-deploy": "pulumi cancel -s prod --yes",
         "cancel-deploy:dev": "pulumi cancel -s dev --yes"
     },
