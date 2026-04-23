@@ -1,15 +1,19 @@
 import * as pulumi from "@pulumi/pulumi";
 import { NextJsSite } from "@whiskey/pulumi-opennext-site";
 
-const site = new NextJsSite("mattwyskiel-dotcom", {
+const stack = pulumi.getStack();
+const siteName = `mattwyskiel-dotcom-${stack}`;
+
+const site = new NextJsSite(siteName, {
     path: "src",
     environment: {
         CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID || "",
         CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN || "",
+        NEXT_PUBLIC_STACK: stack,
     },
-    oldName: "site",
+    oldName: ["mattwyskiel-dotcom", "site"],
     customDomain:
-        pulumi.getStack() === "prod"
+        stack === "prod"
             ? {
                   mode: "existing",
                   domainName: "mattwyskiel.com",
@@ -20,7 +24,12 @@ const site = new NextJsSite("mattwyskiel-dotcom", {
                       hostedZoneName: "mattwyskiel.com",
                   },
               }
-            : undefined,
+            : {
+                  mode: "create",
+                  domainName: `${stack}.mattwyskiel.com`,
+                  hostedZoneName: "mattwyskiel.com",
+                  includeWWW: false,
+              },
 });
 
 export const url = site.url;
