@@ -3,7 +3,7 @@ import { NextJsSite } from "@whiskey/pulumi-opennext-site";
 
 const stack = pulumi.getStack();
 const siteName = `mattwyskiel-dotcom-${stack}`;
-const resourceNameBase = stack === "prod" ? "site" : siteName;
+const resourceNameBase = siteName;
 const cloudfrontFunctionName =
     stack === "prod" ? "site-cloudfront-function-0c54d6a" : undefined;
 
