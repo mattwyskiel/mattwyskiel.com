@@ -1,9 +1,9 @@
 {
+  "$schema": "https://turbo.build/schema.json",
   "extends": ["//"],
   "tasks": {
     "build": {
-      "cache": true,
-      "outputs": [".next/**", ".open-next/**"]
+      "outputs": [".open-next/**"]
     }
   }
 }
