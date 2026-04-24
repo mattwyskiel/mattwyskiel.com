@@ -3,6 +3,9 @@ import { NextJsSite } from "@whiskey/pulumi-opennext-site";
 
 const stack = pulumi.getStack();
 const siteName = `mattwyskiel-dotcom-${stack}`;
+const resourceNameBase = stack === "prod" ? "site" : siteName;
+const cloudfrontFunctionName =
+    stack === "prod" ? "site-cloudfront-function-0c54d6a" : undefined;
 
 const site = new NextJsSite(siteName, {
     path: "src",
@@ -12,6 +15,8 @@ const site = new NextJsSite(siteName, {
         NEXT_PUBLIC_STACK: stack,
     },
     oldName: ["mattwyskiel-dotcom", "site"],
+    resourceNameBase,
+    cloudfrontFunctionName,
     customDomain:
         stack === "prod"
             ? {
