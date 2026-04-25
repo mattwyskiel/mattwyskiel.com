@@ -3,7 +3,15 @@
   "extends": ["//"],
   "tasks": {
     "build": {
-      "outputs": [".open-next/**"]
+      "outputs": [".open-next/**", "!.open-next/cache/**", "!.next/cache/**"],
+      "env": [
+        "$TURBO_EXTENDS$",
+        "CONTENTFUL_SPACE_ID",
+        "CONTENTFUL_ACCESS_TOKEN"
+      ]
+    },
+    "typecheck": {
+      "outputs": ["tsconfig.tsbuildinfo", ".next/cache/.tsbuildinfo"]
     }
   }
 }
