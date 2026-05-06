@@ -4,7 +4,7 @@
 - **Build**: `turbo build`
 - **Dev**: `turbo dev`
 - **Lint**: `turbo lint` (ESLint configured with Next.js strict rules - may need installation)
-- **Type Check**: `turbo typecheck`
+- **Type Check**: `turbo check-types`
 - **Single Test**: No test framework configured
 - **Infrastructure Preview**: `pulumi preview`
 - **Infrastructure Deploy**: `pulumi up`

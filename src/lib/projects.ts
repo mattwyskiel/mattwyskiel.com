@@ -47,7 +47,7 @@ export const allProjects: Project[] = [
     description:
       "Managed services and developer toolset enabling easier cloud resource management and deployment.",
     tags: ["Cloud", "DevOps", "Enterprise"],
-    link: "#",
+    link: "/projects/prudential-cloudhelp",
     type: "professional",
     date: "2023",
     isActive: false,
@@ -57,7 +57,7 @@ export const allProjects: Project[] = [
     title: "Prudential Individual Solutions Distribution Platform",
     description: "Backend system connecting distributors to Life products.",
     tags: ["Backend", "Enterprise", "Integration"],
-    link: "#",
+    link: "/projects/prudential-distribution",
     type: "professional",
     date: "2022",
     isActive: false,
@@ -68,7 +68,7 @@ export const allProjects: Project[] = [
     description:
       "Unlocking insights for Small Business Cardholders in the Capital One Web App, enabling increased rewards earn.",
     tags: ["Backend", "Finance", "Business"],
-    link: "#",
+    link: "/projects/capital-one-card-accept",
     type: "professional",
     date: "2025-Present",
     isActive: true,
@@ -78,7 +78,7 @@ export const allProjects: Project[] = [
     title: "PruXpress Annuities",
     description: "The web home for Financial Professionals.",
     tags: ["Frontend", "Finance", "Enterprise"],
-    link: "#",
+    link: "/projects/pruxpress-annuities",
     type: "professional",
     date: "2020",
     isActive: false,
@@ -109,14 +109,15 @@ export function getFeaturedProjects(limit: number = 2): Project[] {
 
 export function getSortedProjects(sortType: "featured" | "date"): Project[] {
   if (sortType === "featured") {
-    return allProjects.toSorted((a, b) => {
+    return allProjects.sort((a, b) => {
       if (a.featured !== b.featured) {
         return b.featured ? 1 : -1;
       }
+      // Within same featured status, sort by date
       return b.date.localeCompare(a.date);
     });
   } else {
-    return allProjects.toSorted((a, b) => {
+    return allProjects.sort((a, b) => {
       if (a.date !== b.date) {
         return b.date.localeCompare(a.date);
       }
