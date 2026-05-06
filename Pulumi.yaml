@@ -1,7 +1,3 @@
 name: mattwyskiel.com
-runtime:
-  name: nodejs
-  options:
-    typescript: true
-    packagemanager: bun
+runtime: bun
 description: The source and deployment for Matt Wyskiel's personal website.

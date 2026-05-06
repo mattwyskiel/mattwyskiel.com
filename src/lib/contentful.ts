@@ -1,52 +1,83 @@
+import type { Entry, EntryFieldTypes, EntrySkeletonType } from "contentful";
 import { createClient } from "contentful";
+import { cache } from "react";
 
 const BASE_URL = "cdn.contentful.com";
-const SPACE_ID = process.env.CONTENTFUL_SPACE_ID;
-const ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN;
 const ENVIRONMENT = "master";
 
+function getEnvVar(name: string): string {
+  const value = process.env[name];
+  if (!value) {
+    throw new Error(`Missing required environment variable: ${name}`);
+  }
+  return value;
+}
+
 const client = createClient({
-  space: SPACE_ID!,
-  accessToken: ACCESS_TOKEN!,
+  space: getEnvVar("CONTENTFUL_SPACE_ID"),
+  accessToken: getEnvVar("CONTENTFUL_ACCESS_TOKEN"),
   environment: ENVIRONMENT,
   host: BASE_URL,
 });
 
-export async function getPosts() {
-  const entries = await client.getEntries<any>({
+interface IBlogPostFields {
+  title: EntryFieldTypes.Text;
+  slug: EntryFieldTypes.Text;
+  content: EntryFieldTypes.Text;
+  excerpt: EntryFieldTypes.Text;
+  publishDate: EntryFieldTypes.Date;
+  tags: EntryFieldTypes.Array<EntryFieldTypes.Symbol>;
+}
+
+type BlogPostSkeleton = EntrySkeletonType<IBlogPostFields, "blogPost">;
+
+export interface BlogPost {
+  title: string;
+  slug: string;
+  content: string;
+  excerpt: string;
+  publishDate: Date;
+  tags: string[];
+}
+
+type BlogPostEntry = Entry<BlogPostSkeleton, undefined, string>;
+
+function toBlogPost(fields: BlogPostEntry["fields"]): BlogPost {
+  return {
+    title: fields.title,
+    slug: fields.slug,
+    content: fields.content,
+    excerpt: fields.excerpt,
+    publishDate: new Date(fields.publishDate),
+    tags: fields.tags,
+  };
+}
+
+export async function getPosts(): Promise<BlogPost[]> {
+  const entries = await client.getEntries<BlogPostSkeleton>({
     content_type: "blogPost",
   });
 
   return entries.items
     .sort(
       (a, b) =>
-        Date.parse(b.fields.publishDate as string) -
-        Date.parse(a.fields.publishDate as string),
+        Date.parse(b.fields.publishDate) - Date.parse(a.fields.publishDate),
     )
-    .map((entry) => {
-      return {
-        title: entry.fields.title as string,
-        slug: entry.fields.slug as string,
-        content: entry.fields.content as string,
-        excerpt: entry.fields.excerpt as string,
-        publishDate: new Date(entry.fields.publishDate as string),
-        tags: entry.fields.tags as string[],
-      };
-    });
+    .map((entry) => toBlogPost(entry.fields));
 }
 
-export async function getPostBySlug(slug: string) {
-  const entry = await client.getEntries<any>({
+export const getPostBySlug = cache(async function getPostBySlug(
+  slug: string,
+): Promise<BlogPost | null> {
+  const entries = await client.getEntries<BlogPostSkeleton>({
     content_type: "blogPost",
     "fields.slug": slug,
   });
 
-  return {
-    title: entry.items[0].fields.title as string,
-    slug: entry.items[0].fields.slug as string,
-    content: entry.items[0].fields.content as string,
-    excerpt: entry.items[0].fields.excerpt as string,
-    publishDate: new Date(entry.items[0].fields.publishDate as string),
-    tags: entry.items[0].fields.tags as string[],
-  };
-}
+  const item = entries.items[0];
+  if (!item) {
+    return null;
+  }
+
+  return toBlogPost(item.fields);
+});
