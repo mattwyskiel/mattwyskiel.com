@@ -1,32 +1,38 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import { ThemeProvider } from "@/components/theme-provider"
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import type React from "react";
+import "./globals.css";
+import Footer from "@/components/footer";
+import Header from "@/components/header";
+import { ThemeProvider } from "@/components/theme-provider";
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "Matt Wyskiel",
-    description: "Personal site of Matt Wyskiel - software builder, music enthusiast, and tinkerer.",
-}
+	title: "Matt Wyskiel",
+	description:
+		"Personal site of Matt Wyskiel - software builder, music enthusiast, and tinkerer.",
+};
 
 export default function RootLayout({
-    children,
+	children,
 }: Readonly<{
-    children: React.ReactNode
+	children: React.ReactNode;
 }>) {
-    return (
-        <html lang="en">
-            <body className={inter.className}>
-                <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-                    <Header />
-                    {children}
-                    <Footer />
-                </ThemeProvider>
-            </body>
-        </html>
-    )
+	return (
+		<html lang="en" suppressHydrationWarning>
+			<body className={inter.className}>
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="system"
+					enableSystem
+					disableTransitionOnChange
+				>
+					<Header />
+					{children}
+					<Footer />
+				</ThemeProvider>
+			</body>
+		</html>
+	);
 }
