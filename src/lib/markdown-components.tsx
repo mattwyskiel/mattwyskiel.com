@@ -9,44 +9,46 @@ const CodeBlock = dynamic(
 );
 
 export const markdownComponents: Components = {
-  p: ({ node, ...props }) => (
+  p: ({ node: _node, ref: _ref, ...props }) => (
     <p className="text-muted-foreground py-2" {...props} />
   ),
-  a: ({ node, ...props }) => (
+  a: ({ node: _node, ref: _ref, ...props }) => (
     <a className="text-brand hover:text-brand-hover font-medium" {...props} />
   ),
-  h1: ({ node, ...props }) => <h1 className="text-3xl font-bold" {...props} />,
-  h2: ({ node, ...props }) => (
+  h1: ({ node: _node, ref: _ref, ...props }) => (
+    <h1 className="text-3xl font-bold" {...props} />
+  ),
+  h2: ({ node: _node, ref: _ref, ...props }) => (
     <h2 className="text-2xl font-semibold" {...props} />
   ),
-  h3: ({ node, ...props }) => (
+  h3: ({ node: _node, ref: _ref, ...props }) => (
     <h3 className="text-xl font-semibold" {...props} />
   ),
-  h4: ({ node, ...props }) => (
+  h4: ({ node: _node, ref: _ref, ...props }) => (
     <h4 className="text-lg font-semibold" {...props} />
   ),
-  h5: ({ node, ...props }) => (
+  h5: ({ node: _node, ref: _ref, ...props }) => (
     <h5 className="text-md font-semibold" {...props} />
   ),
-  h6: ({ node, ...props }) => (
+  h6: ({ node: _node, ref: _ref, ...props }) => (
     <h6 className="text-sm font-semibold" {...props} />
   ),
-  ol: ({ node, ...props }) => (
+  ol: ({ node: _node, ref: _ref, ...props }) => (
     <ol className="list-decimal list-inside text-muted-foreground" {...props} />
   ),
-  ul: ({ node, ...props }) => (
+  ul: ({ node: _node, ref: _ref, ...props }) => (
     <ul className="list-disc list-inside text-muted-foreground" {...props} />
   ),
-  li: ({ node, ...props }) => (
+  li: ({ node: _node, ref: _ref, ...props }) => (
     <li className="text-muted-foreground" {...props} />
   ),
-  blockquote: ({ node, ...props }) => (
+  blockquote: ({ node: _node, ref: _ref, ...props }) => (
     <blockquote
       className="border-l-4 pl-4 italic text-muted-foreground"
       {...props}
     />
   ),
-  img: ({ node, ...props }) => (
+  img: ({ node: _node, ref: _ref, ...props }) => (
     // biome-ignore lint/performance/noImgElement: markdown renderer requires native img for dynamic content
     <img className="rounded-lg my-4" alt="" {...props} />
   ),

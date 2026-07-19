@@ -1,7 +1,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import { NextJsSite } from "@whiskey/pulumi-opennext-site";
+import { getStack } from "@whiskey/pulumi-utils/stacks";
 
 const stack = pulumi.getStack();
+const coreApi = getStack("api");
 const siteName = `mattwyskiel-dotcom-${stack}`;
 const resourceNameBase = siteName;
 const cloudfrontFunctionName =
@@ -9,6 +11,10 @@ const cloudfrontFunctionName =
 
 const site = new NextJsSite(siteName, {
   path: "src",
+  cache: {
+    apiCachePolicyId: coreApi.getOutput("opennextApiCachePolicyId"),
+    serverCachePolicyId: coreApi.getOutput("opennextServerCachePolicyId"),
+  },
   environment: {
     CONTENTFUL_SPACE_ID: process.env.CONTENTFUL_SPACE_ID || "",
     CONTENTFUL_ACCESS_TOKEN: process.env.CONTENTFUL_ACCESS_TOKEN || "",

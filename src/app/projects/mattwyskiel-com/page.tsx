@@ -76,7 +76,7 @@ export default function MattWyskielComPage() {
         {/* Overview */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Overview</h2>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
+          <div className="bg-card p-6 rounded-lg shadow-xs">
             <p className="text-muted-foreground mb-4">
               This website serves as my personal portfolio and digital presence,
               showcasing my professional work, personal projects, and thoughts.
@@ -96,7 +96,7 @@ export default function MattWyskielComPage() {
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Key Features</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-card p-6 rounded-lg shadow-sm">
+            <div className="bg-card p-6 rounded-lg shadow-xs">
               <Palette className="h-8 w-8 text-brand mb-4" />
               <h3 className="font-medium text-lg mb-2">Cohesive Design</h3>
               <p className="text-muted-foreground">
@@ -104,7 +104,7 @@ export default function MattWyskielComPage() {
                 provides an excellent user experience across all devices.
               </p>
             </div>
-            <div className="bg-card p-6 rounded-lg shadow-sm">
+            <div className="bg-card p-6 rounded-lg shadow-xs">
               <Users className="h-8 w-8 text-brand mb-4" />
               <h3 className="font-medium text-lg mb-2">
                 Professional Showcase
@@ -114,7 +114,7 @@ export default function MattWyskielComPage() {
                 technical skills, and professional accomplishments.
               </p>
             </div>
-            <div className="bg-card p-6 rounded-lg shadow-sm">
+            <div className="bg-card p-6 rounded-lg shadow-xs">
               <Search className="h-8 w-8 text-brand mb-4" />
               <h3 className="font-medium text-lg mb-2">Blogging Platform</h3>
               <p className="text-muted-foreground">
@@ -122,7 +122,7 @@ export default function MattWyskielComPage() {
                 insights, tutorials, and personal thoughts.
               </p>
             </div>
-            <div className="bg-card p-6 rounded-lg shadow-sm">
+            <div className="bg-card p-6 rounded-lg shadow-xs">
               <Smartphone className="h-8 w-8 text-brand mb-4" />
               <h3 className="font-medium text-lg mb-2">Mobile-First</h3>
               <p className="text-muted-foreground">
@@ -138,7 +138,7 @@ export default function MattWyskielComPage() {
           <h2 className="text-2xl font-semibold mb-6">
             Technical Architecture
           </h2>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
+          <div className="bg-card p-6 rounded-lg shadow-xs">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
                 <Code className="h-12 w-12 text-brand mx-auto mb-3" />
@@ -171,7 +171,7 @@ export default function MattWyskielComPage() {
         {/* Technologies Used */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Technologies Used</h2>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
+          <div className="bg-card p-6 rounded-lg shadow-xs">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="text-center p-3 bg-muted rounded">
                 <div className="font-medium text-sm mb-1">Framework</div>
@@ -202,7 +202,7 @@ export default function MattWyskielComPage() {
         {/* Design Philosophy */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Design Philosophy</h2>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
+          <div className="bg-card p-6 rounded-lg shadow-xs">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <h3 className="font-medium mb-3">Content First</h3>
@@ -229,7 +229,7 @@ export default function MattWyskielComPage() {
         {/* Development Process */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Development Process</h2>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
+          <div className="bg-card p-6 rounded-lg shadow-xs">
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-brand rounded-full mt-2"></div>
@@ -267,7 +267,7 @@ export default function MattWyskielComPage() {
         {/* Project Status */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Project Status</h2>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
+          <div className="bg-card p-6 rounded-lg shadow-xs">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-3 h-3 bg-status-active rounded-full"></div>
               <span className="font-medium">Live & Evolving</span>

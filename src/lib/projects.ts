@@ -70,8 +70,8 @@ export const allProjects: Project[] = [
     tags: ["Backend", "Finance", "Business"],
     link: "#",
     type: "professional",
-    date: "2025-Present",
-    isActive: true,
+    date: "2025-2026",
+    isActive: false,
     featured: true,
   },
   {

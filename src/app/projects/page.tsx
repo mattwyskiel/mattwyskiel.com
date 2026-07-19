@@ -42,7 +42,7 @@ export default function ProjectsPage() {
             {archivedProjects.map((project) => (
               <div
                 key={project.title}
-                className="bg-card p-6 rounded-lg shadow-sm border-l-4 border-border"
+                className="bg-card p-6 rounded-lg shadow-xs border-l-4 border-border"
               >
                 <div className="flex justify-between items-start mb-2">
                   <h3 className="font-medium text-lg">{project.title}</h3>

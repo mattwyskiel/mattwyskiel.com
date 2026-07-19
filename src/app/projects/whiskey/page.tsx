@@ -69,7 +69,7 @@ export default function WhiskeyPage() {
         {/* Overview */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Overview</h2>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
+          <div className="bg-card p-6 rounded-lg shadow-xs">
             <p className="text-muted-foreground mb-4">
               Whiskey is my second brain, my OS, my personal automation system.
               It's a cloud-native, data-rich, and private platform that ingests
@@ -91,7 +91,7 @@ export default function WhiskeyPage() {
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Key Features</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-card p-6 rounded-lg shadow-sm">
+            <div className="bg-card p-6 rounded-lg shadow-xs">
               <Workflow className="h-8 w-8 text-brand mb-4" />
               <h3 className="font-medium text-lg mb-2">AI-Powered Assistant</h3>
               <p className="text-muted-foreground">
@@ -100,7 +100,7 @@ export default function WhiskeyPage() {
                 contextual insights.
               </p>
             </div>
-            <div className="bg-card p-6 rounded-lg shadow-sm">
+            <div className="bg-card p-6 rounded-lg shadow-xs">
               <Database className="h-8 w-8 text-brand mb-4" />
               <h3 className="font-medium text-lg mb-2">
                 Intelligent Data Processing
@@ -111,7 +111,7 @@ export default function WhiskeyPage() {
                 through machine learning.
               </p>
             </div>
-            <div className="bg-card p-6 rounded-lg shadow-sm">
+            <div className="bg-card p-6 rounded-lg shadow-xs">
               <Smartphone className="h-8 w-8 text-brand mb-4" />
               <h3 className="font-medium text-lg mb-2">
                 Smart Mobile Interface
@@ -121,7 +121,7 @@ export default function WhiskeyPage() {
                 other features for seamless mobile access.
               </p>
             </div>
-            <div className="bg-card p-6 rounded-lg shadow-sm">
+            <div className="bg-card p-6 rounded-lg shadow-xs">
               <Shield className="h-8 w-8 text-brand mb-4" />
               <h3 className="font-medium text-lg mb-2">Privacy-First AI</h3>
               <p className="text-muted-foreground">
@@ -138,7 +138,7 @@ export default function WhiskeyPage() {
           <h2 className="text-2xl font-semibold mb-6">
             Technical Architecture
           </h2>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
+          <div className="bg-card p-6 rounded-lg shadow-xs">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
                 <Workflow className="h-12 w-12 text-brand mx-auto mb-3" />
@@ -173,7 +173,7 @@ export default function WhiskeyPage() {
         {/* Technologies Used */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Technologies Used</h2>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
+          <div className="bg-card p-6 rounded-lg shadow-xs">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="text-center p-3 bg-muted rounded">
                 <div className="font-medium text-sm mb-1">Cloud</div>
@@ -204,7 +204,7 @@ export default function WhiskeyPage() {
         {/* Project Status */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Project Status</h2>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
+          <div className="bg-card p-6 rounded-lg shadow-xs">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 bg-status-active rounded-full"></div>
               <span className="font-medium">Active Development</span>

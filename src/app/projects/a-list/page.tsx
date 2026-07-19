@@ -63,7 +63,7 @@ export default function AListPage() {
         {/* Overview */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Overview</h2>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
+          <div className="bg-card p-6 rounded-lg shadow-xs">
             <p className="text-muted-foreground mb-4">
               A-List is my personal DJ mix player, designed to showcase and
               organize my DJ mixes in a beautiful, accessible format. It
@@ -77,7 +77,7 @@ export default function AListPage() {
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Key Features</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-card p-6 rounded-lg shadow-sm">
+            <div className="bg-card p-6 rounded-lg shadow-xs">
               <Database className="h-8 w-8 text-brand mb-4" />
               <h3 className="font-medium text-lg mb-2">Centralized Database</h3>
               <p className="text-muted-foreground">
@@ -85,7 +85,7 @@ export default function AListPage() {
                 metadata.
               </p>
             </div>
-            <div className="bg-card p-6 rounded-lg shadow-sm">
+            <div className="bg-card p-6 rounded-lg shadow-xs">
               <Music className="h-8 w-8 text-brand mb-4" />
               <h3 className="font-medium text-lg mb-2">Web Player</h3>
               <p className="text-muted-foreground">
@@ -93,7 +93,7 @@ export default function AListPage() {
                 seamless playback experience.
               </p>
             </div>
-            <div className="bg-card p-6 rounded-lg shadow-sm">
+            <div className="bg-card p-6 rounded-lg shadow-xs">
               <Radio className="h-8 w-8 text-brand mb-4" />
               <h3 className="font-medium text-lg mb-2">Podcast Feed</h3>
               <p className="text-muted-foreground">
@@ -101,7 +101,7 @@ export default function AListPage() {
                 subscribe and listen to new mixes in your favorite podcast app.
               </p>
             </div>
-            <div className="bg-card p-6 rounded-lg shadow-sm">
+            <div className="bg-card p-6 rounded-lg shadow-xs">
               <Smartphone className="h-8 w-8 text-brand mb-4" />
               <h3 className="font-medium text-lg mb-2">Mobile Responsive</h3>
               <p className="text-muted-foreground">
@@ -117,7 +117,7 @@ export default function AListPage() {
           <h2 className="text-2xl font-semibold mb-6">
             Technical Architecture
           </h2>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
+          <div className="bg-card p-6 rounded-lg shadow-xs">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
                 <Globe className="h-12 w-12 text-brand mx-auto mb-3" />
@@ -150,7 +150,7 @@ export default function AListPage() {
         {/* Technologies Used */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Technologies Used</h2>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
+          <div className="bg-card p-6 rounded-lg shadow-xs">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="text-center p-3 bg-muted rounded">
                 <div className="font-medium text-sm mb-1">Frontend</div>
@@ -181,7 +181,7 @@ export default function AListPage() {
         {/* Audio Features */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Audio Features</h2>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
+          <div className="bg-card p-6 rounded-lg shadow-xs">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <h3 className="font-medium mb-3">Player Controls</h3>
@@ -208,7 +208,7 @@ export default function AListPage() {
         {/* Project Status */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Project Status</h2>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
+          <div className="bg-card p-6 rounded-lg shadow-xs">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-3 h-3 bg-status-active rounded-full"></div>
               <span className="font-medium">Live & Active</span>

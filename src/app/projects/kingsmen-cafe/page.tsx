@@ -83,7 +83,7 @@ export default function KingsmenCafePage() {
         {/* Overview */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Overview</h2>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
+          <div className="bg-card p-6 rounded-lg shadow-xs">
             <p className="text-muted-foreground mb-4">
               Kingsmen Café was a mobile pre-ordering solution I developed for a
               small local coffee chain. The app allowed customers to browse the
@@ -103,7 +103,7 @@ export default function KingsmenCafePage() {
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Key Features</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-card p-6 rounded-lg shadow-sm">
+            <div className="bg-card p-6 rounded-lg shadow-xs">
               <Coffee className="h-8 w-8 text-amber-600 mb-4" />
               <h3 className="font-medium text-lg mb-2">Pre-Order System</h3>
               <p className="text-muted-foreground">
@@ -111,7 +111,7 @@ export default function KingsmenCafePage() {
                 allowing customers to place orders ahead of time.
               </p>
             </div>
-            <div className="bg-card p-6 rounded-lg shadow-sm">
+            <div className="bg-card p-6 rounded-lg shadow-xs">
               <CreditCard className="h-8 w-8 text-amber-600 mb-4" />
               <h3 className="font-medium text-lg mb-2">Square Integration</h3>
               <p className="text-muted-foreground">
@@ -119,7 +119,7 @@ export default function KingsmenCafePage() {
                 system for seamless transactions.
               </p>
             </div>
-            <div className="bg-card p-6 rounded-lg shadow-sm">
+            <div className="bg-card p-6 rounded-lg shadow-xs">
               <Users className="h-8 w-8 text-amber-600 mb-4" />
               <h3 className="font-medium text-lg mb-2">Community Hub</h3>
               <p className="text-muted-foreground">
@@ -127,7 +127,7 @@ export default function KingsmenCafePage() {
                 than just a ordering app.
               </p>
             </div>
-            <div className="bg-card p-6 rounded-lg shadow-sm">
+            <div className="bg-card p-6 rounded-lg shadow-xs">
               <Smartphone className="h-8 w-8 text-amber-600 mb-4" />
               <h3 className="font-medium text-lg mb-2">Native iOS App</h3>
               <p className="text-muted-foreground">
@@ -143,7 +143,7 @@ export default function KingsmenCafePage() {
           <h2 className="text-2xl font-semibold mb-6">
             Technical Architecture
           </h2>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
+          <div className="bg-card p-6 rounded-lg shadow-xs">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="text-center">
                 <Smartphone className="h-12 w-12 text-amber-600 mx-auto mb-3" />
@@ -173,7 +173,7 @@ export default function KingsmenCafePage() {
         {/* Technologies Used */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Technologies Used</h2>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
+          <div className="bg-card p-6 rounded-lg shadow-xs">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="text-center p-3 bg-muted rounded">
                 <div className="font-medium text-sm mb-1">Mobile</div>
@@ -204,7 +204,7 @@ export default function KingsmenCafePage() {
         {/* Business Context */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Business Context</h2>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
+          <div className="bg-card p-6 rounded-lg shadow-xs">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <h3 className="font-medium mb-3">Problem Solved</h3>
@@ -231,7 +231,7 @@ export default function KingsmenCafePage() {
         {/* Development Insights */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Development Insights</h2>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
+          <div className="bg-card p-6 rounded-lg shadow-xs">
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <div className="w-2 h-2 bg-amber-600 rounded-full mt-2"></div>
@@ -272,7 +272,7 @@ export default function KingsmenCafePage() {
         {/* Project Legacy */}
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Project Legacy</h2>
-          <div className="bg-card p-6 rounded-lg shadow-sm">
+          <div className="bg-card p-6 rounded-lg shadow-xs">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-3 h-3 bg-muted-foreground rounded-full"></div>
               <span className="font-medium">Archived - Business Closed</span>

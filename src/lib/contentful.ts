@@ -5,20 +5,42 @@ import { cache } from "react";
 const BASE_URL = "cdn.contentful.com";
 const ENVIRONMENT = "master";
 
-function getEnvVar(name: string): string {
-  const value = process.env[name];
-  if (!value) {
-    throw new Error(`Missing required environment variable: ${name}`);
+function getContentfulConfig():
+  | { space: string; accessToken: string }
+  | undefined {
+  const space = process.env.CONTENTFUL_SPACE_ID;
+  const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
+
+  if (space && accessToken) {
+    return { space, accessToken };
   }
-  return value;
+
+  if (process.env.ALLOW_MISSING_CONTENTFUL_IN_CI === "true") {
+    return undefined;
+  }
+
+  const missingNames = [
+    ["CONTENTFUL_SPACE_ID", space],
+    ["CONTENTFUL_ACCESS_TOKEN", accessToken],
+  ]
+    .filter(([, value]) => !value)
+    .map(([name]) => name);
+
+  throw new Error(
+    `Missing required environment variable${missingNames.length === 1 ? "" : "s"}: ${missingNames.join(", ")}`,
+  );
 }
 
-const client = createClient({
-  space: getEnvVar("CONTENTFUL_SPACE_ID"),
-  accessToken: getEnvVar("CONTENTFUL_ACCESS_TOKEN"),
-  environment: ENVIRONMENT,
-  host: BASE_URL,
-});
+const contentfulConfig = getContentfulConfig();
+
+const client = contentfulConfig
+  ? createClient({
+      space: contentfulConfig.space,
+      accessToken: contentfulConfig.accessToken,
+      environment: ENVIRONMENT,
+      host: BASE_URL,
+    })
+  : undefined;
 
 interface IBlogPostFields {
   title: EntryFieldTypes.Text;
@@ -54,6 +76,10 @@ function toBlogPost(fields: BlogPostEntry["fields"]): BlogPost {
 }
 
 export async function getPosts(): Promise<BlogPost[]> {
+  if (!client) {
+    return [];
+  }
+
   const entries = await client.getEntries<BlogPostSkeleton>({
     content_type: "blogPost",
   });
@@ -69,6 +95,10 @@ export async function getPosts(): Promise<BlogPost[]> {
 export const getPostBySlug = cache(async function getPostBySlug(
   slug: string,
 ): Promise<BlogPost | null> {
+  if (!client) {
+    return null;
+  }
+
   const entries = await client.getEntries<BlogPostSkeleton>({
     content_type: "blogPost",
     "fields.slug": slug,

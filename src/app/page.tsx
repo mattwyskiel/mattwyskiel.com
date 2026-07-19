@@ -44,19 +44,19 @@ export default async function Home() {
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="flex flex-col items-center p-4 bg-card rounded-lg shadow-sm">
+              <div className="flex flex-col items-center p-4 bg-card rounded-lg shadow-xs">
                 <Code className="h-8 w-8 text-brand mb-2" />
                 <h3 className="font-medium">Software</h3>
               </div>
-              <div className="flex flex-col items-center p-4 bg-card rounded-lg shadow-sm">
+              <div className="flex flex-col items-center p-4 bg-card rounded-lg shadow-xs">
                 <Music className="h-8 w-8 text-brand mb-2" />
                 <h3 className="font-medium">Music</h3>
               </div>
-              <div className="flex flex-col items-center p-4 bg-card rounded-lg shadow-sm">
+              <div className="flex flex-col items-center p-4 bg-card rounded-lg shadow-xs">
                 <Landmark className="h-8 w-8 text-brand mb-2" />
                 <h3 className="font-medium">Archiving</h3>
               </div>
-              <div className="flex flex-col items-center p-4 bg-card rounded-lg shadow-sm">
+              <div className="flex flex-col items-center p-4 bg-card rounded-lg shadow-xs">
                 <Car className="h-8 w-8 text-brand mb-2" />
                 <h3 className="font-medium">The Good Life</h3>
               </div>
@@ -83,7 +83,7 @@ export default async function Home() {
               return (
                 <div
                   key={project.title}
-                  className={`bg-card p-6 rounded-lg shadow-sm border-l-4 ${borderColor} relative`}
+                  className={`bg-card p-6 rounded-lg shadow-xs border-l-4 ${borderColor} relative`}
                 >
                   <div className="flex justify-between items-start mb-2">
                     <h3 className="font-medium text-lg">{project.title}</h3>

@@ -51,7 +51,7 @@ function ProjectCard({ project }: { project: Project }) {
 
   return (
     <div
-      className={`bg-card p-6 rounded-lg shadow-sm border-l-4 ${borderColor} relative`}
+      className={`bg-card p-6 rounded-lg shadow-xs border-l-4 ${borderColor} relative`}
     >
       <div className="flex justify-between items-start mb-2">
         <div>

@@ -33,7 +33,7 @@ export default function MusicPage() {
 
         <section className="mb-12">
           <h2 className="text-2xl font-semibold mb-6">Recent Mixes</h2>
-          <div className="bg-card rounded-lg shadow-sm overflow-hidden">
+          <div className="bg-card rounded-lg shadow-xs overflow-hidden">
             <div className="p-6">
               <h3 className="font-medium text-lg mb-2">Summer Vibes 2023</h3>
               <p className="text-muted-foreground mb-4">
