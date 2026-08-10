@@ -1,10 +1,12 @@
 import { PersonalSiteFooter } from "@whiskey/web-ui/components/site/personal-site-footer";
 import { PersonalSiteHeader } from "@whiskey/web-ui/components/site/personal-site-header";
 import type { Metadata } from "next";
+import { cacheLife } from "next/cache";
 import { Inter } from "next/font/google";
 import Link from "next/link";
-import type React from "react";
+import { type ReactNode, Suspense } from "react";
 import "./globals.css";
+import { PersonalLogoMark } from "@whiskey/web-ui/components/brand/personal-logo-mark";
 import { ModeToggle } from "@/components/ModeToggle";
 import { PersonalSiteBrandIcon } from "@/components/personal-site-brand-icon";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -16,11 +18,19 @@ export const metadata: Metadata = {
   description: "Personal website",
 };
 
-export default function RootLayout({
+async function getCurrentYear() {
+  "use cache";
+  cacheLife("max");
+  return new Date().getFullYear();
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
+  const currentYear = await getCurrentYear();
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
@@ -31,12 +41,20 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <PersonalSiteHeader
-            brandIcon={<PersonalSiteBrandIcon />}
+            brandIcon={
+              <Suspense
+                fallback={
+                  <PersonalLogoMark aria-hidden="true" className="h-6 w-auto" />
+                }
+              >
+                <PersonalSiteBrandIcon />
+              </Suspense>
+            }
             linkComponent={Link}
             themeControl={<ModeToggle />}
           />
           {children}
-          <PersonalSiteFooter linkComponent={Link} />
+          <PersonalSiteFooter currentYear={currentYear} linkComponent={Link} />
         </ThemeProvider>
       </body>
     </html>

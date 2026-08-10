@@ -1,7 +1,9 @@
 import { Badge } from "@whiskey/web-ui/components/ui/badge";
+import { Skeleton } from "@whiskey/web-ui/components/ui/skeleton";
 import { Car, Code, Landmark, Music } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
 import { getPosts } from "@/lib/contentful";
 import { getFeaturedProjects } from "@/lib/projects";
 
@@ -19,8 +21,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function Home() {
-  const posts = await getPosts();
+export default function Home() {
   const featuredProjects = getFeaturedProjects(2);
   return (
     <div className="min-h-screen bg-muted">
@@ -126,28 +127,9 @@ export default async function Home() {
         {/* Latest Posts */}
         <section className="mb-16">
           <h2 className="text-2xl font-semibold mb-6">Latest Posts</h2>
-          <div className="space-y-6">
-            {posts.slice(0, 2).map((post) => (
-              <div key={post.slug} className="border-b pb-6">
-                <h3 className="font-medium text-lg mb-2">
-                  <Link
-                    href={`/stories/${post.slug}`}
-                    className="hover:text-brand"
-                  >
-                    {post.title}
-                  </Link>
-                </h3>
-                <p className="text-sm text-muted-foreground mb-2">
-                  {post.publishDate.toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </p>
-                <p className="text-muted-foreground">{post.excerpt}</p>
-              </div>
-            ))}
-          </div>
+          <Suspense fallback={<LatestPostsFallback />}>
+            <LatestPosts />
+          </Suspense>
 
           <div className="mt-6">
             <Link
@@ -159,6 +141,46 @@ export default async function Home() {
           </div>
         </section>
       </main>
+    </div>
+  );
+}
+
+async function LatestPosts() {
+  const posts = await getPosts();
+
+  return (
+    <div className="space-y-6">
+      {posts.slice(0, 2).map((post) => (
+        <div key={post.slug} className="border-b pb-6">
+          <h3 className="font-medium text-lg mb-2">
+            <Link href={`/stories/${post.slug}`} className="hover:text-brand">
+              {post.title}
+            </Link>
+          </h3>
+          <p className="text-sm text-muted-foreground mb-2">
+            {post.publishDate.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </p>
+          <p className="text-muted-foreground">{post.excerpt}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function LatestPostsFallback() {
+  return (
+    <div className="space-y-6">
+      {[0, 1].map((index) => (
+        <div className="space-y-3 border-b pb-6" key={index}>
+          <Skeleton className="h-6 w-3/4" />
+          <Skeleton className="h-4 w-36" />
+          <Skeleton className="h-12 w-full" />
+        </div>
+      ))}
     </div>
   );
 }
