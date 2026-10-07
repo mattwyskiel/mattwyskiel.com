@@ -1,17 +1,16 @@
 # Personal Website - mattwyskiel.com
 
-This repository houses my personal website, where I showcase myself both personally and professionally.
-Check back often, I seem to redesign this thing once every year or so :sweat_smile:
+Source for Matt Wyskiel's personal website and its AWS deployment.
 
 ## Tech Stack
 
-- **Framework**: Next.js 15 with App Router
+- **Framework**: Next.js 16 with App Router
 - **Runtime**: React 19
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **UI Components**: shadcn/ui
 - **CMS**: Contentful
-- **Package Manager**: Bun 1.2.20 (workspaces)
+- **Package Manager**: Bun (workspaces; use the version in the root `packageManager` field)
 - **Monorepo Tool**: Turborepo
 - **Icons**: Lucide React
 - **Infrastructure**: Pulumi + AWS (OpenNext.js)
