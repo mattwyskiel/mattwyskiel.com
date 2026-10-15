@@ -100,10 +100,7 @@ export const archivedProjects = [
 export function getFeaturedProjects(limit: number = 2): Project[] {
   return allProjects
     .filter((project) => project.featured)
-    .sort((a, b) => {
-      // Sort by date descending
-      return b.date.localeCompare(a.date);
-    })
+    .sort((a, b) => b.date.localeCompare(a.date))
     .slice(0, limit);
 }
 

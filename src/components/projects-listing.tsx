@@ -44,7 +44,6 @@ function SortToggle({
 function ProjectCard({ project }: { project: Project }) {
   const isPersonal = project.type === "personal";
   const borderColor = isPersonal ? "border-brand" : "border-brand-alt";
-  const _tagVariant = isPersonal ? "brand" : "brand-alt";
   const linkColor = isPersonal
     ? "text-brand hover:text-brand-hover"
     : "text-brand-alt hover:text-brand-alt-hover";
@@ -105,9 +104,7 @@ export function ProjectsListing() {
 
   return (
     <>
-      {/* Controls */}
       <div className="flex justify-between items-center mb-8">
-        {/* Legend */}
         <div className="flex gap-6">
           <div className="flex items-center gap-2">
             <div className="w-4 h-4 border-l-4 border-brand bg-card" />
