@@ -6,8 +6,7 @@ const BASE_URL = "cdn.contentful.com";
 const ENVIRONMENT = "master";
 
 function getContentfulConfig():
-  | { space: string; accessToken: string }
-  | undefined {
+  { space: string; accessToken: string } | undefined {
   const space = process.env.CONTENTFUL_SPACE_ID;
   const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
 
