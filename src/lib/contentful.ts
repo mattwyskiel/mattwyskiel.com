@@ -1,5 +1,6 @@
 import type { Entry, EntryFieldTypes, EntrySkeletonType } from "contentful";
 import { createClient } from "contentful";
+import { io } from "next/cache";
 import { cache } from "react";
 
 const BASE_URL = "cdn.contentful.com";
@@ -79,6 +80,8 @@ export async function getPosts(): Promise<BlogPost[]> {
     return [];
   }
 
+  // The SDK reads the clock before its network request. Keep CMS IO streamed.
+  await io();
   const entries = await client.getEntries<BlogPostSkeleton>({
     content_type: "blogPost",
   });
@@ -98,6 +101,7 @@ export const getPostBySlug = cache(async function getPostBySlug(
     return null;
   }
 
+  await io();
   const entries = await client.getEntries<BlogPostSkeleton>({
     content_type: "blogPost",
     "fields.slug": slug,
