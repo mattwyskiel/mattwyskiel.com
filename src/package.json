@@ -8,7 +8,8 @@
     "build": "SHARP_VERSION=0.35.5 bunx open-next build",
     "build:next": "next typegen && bun check && next build && bun check",
     "dev": "next dev",
-    "start": "next start"
+    "start": "next start",
+    "test": "bun test"
   },
   "dependencies": {
     "@hookform/resolvers": "catalog:ui",

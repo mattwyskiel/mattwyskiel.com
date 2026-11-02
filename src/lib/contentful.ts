@@ -31,16 +31,21 @@ function getContentfulConfig():
   );
 }
 
-const contentfulConfig = getContentfulConfig();
+let client: ReturnType<typeof createClient> | undefined;
 
-const client = contentfulConfig
-  ? createClient({
-      space: contentfulConfig.space,
-      accessToken: contentfulConfig.accessToken,
-      environment: ENVIRONMENT,
-      host: BASE_URL,
-    })
-  : undefined;
+/** Reads the configuration on first use, so importing this module has no side effects. */
+function contentful() {
+  if (client) return client;
+  const config = getContentfulConfig();
+  if (!config) return undefined;
+  client = createClient({
+    space: config.space,
+    accessToken: config.accessToken,
+    environment: ENVIRONMENT,
+    host: BASE_URL,
+  });
+  return client;
+}
 
 interface IBlogPostFields {
   title: EntryFieldTypes.Text;
@@ -76,6 +81,7 @@ function toBlogPost(fields: BlogPostEntry["fields"]): BlogPost {
 }
 
 export async function getPosts(): Promise<BlogPost[]> {
+  const client = contentful();
   if (!client) {
     return [];
   }
@@ -97,6 +103,7 @@ export async function getPosts(): Promise<BlogPost[]> {
 export const getPostBySlug = cache(async function getPostBySlug(
   slug: string,
 ): Promise<BlogPost | null> {
+  const client = contentful();
   if (!client) {
     return null;
   }
