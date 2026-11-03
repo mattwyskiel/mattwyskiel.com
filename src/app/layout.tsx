@@ -1,3 +1,4 @@
+import { apiOrigin, localApiOrigin, pathPrefix } from "@whiskey/utils";
 import { PersonalSiteFooter } from "@whiskey/web-ui/components/site/personal-site-footer";
 import { PersonalSiteHeader } from "@whiskey/web-ui/components/site/personal-site-header";
 import type { Metadata } from "next";
@@ -8,6 +9,7 @@ import { type ReactNode, Suspense } from "react";
 import "./globals.css";
 import { PersonalLogoMark } from "@whiskey/web-ui/components/brand/personal-logo-mark";
 import { ModeToggle } from "@/components/ModeToggle";
+import { NowListening } from "@/components/now-listening";
 import { PersonalSiteBrandIcon } from "@/components/personal-site-brand-icon";
 import { ThemeProvider } from "@/components/theme-provider";
 
@@ -30,6 +32,13 @@ export default async function RootLayout({
   children: ReactNode;
 }>) {
   const currentYear = await getCurrentYear();
+  const local =
+    process.env.LOCAL === "true" || process.env.NODE_ENV === "development";
+  const stack =
+    process.env.NEXT_PUBLIC_STACK ??
+    process.env.STACK ??
+    (local ? "dev" : "prod");
+  const nowListeningEndpoint = `${local ? localApiOrigin() : apiOrigin()}${pathPrefix(stack)}/roon/now-listening`;
 
   return (
     <html lang="en" suppressHydrationWarning>
@@ -52,6 +61,7 @@ export default async function RootLayout({
             }
             linkComponent={Link}
             themeControl={<ModeToggle />}
+            statusContent={<NowListening endpoint={nowListeningEndpoint} />}
           />
           {children}
           <PersonalSiteFooter currentYear={currentYear} linkComponent={Link} />

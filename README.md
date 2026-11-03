@@ -27,6 +27,7 @@ Source for Matt Wyskiel's personal website and its AWS deployment.
 - **Music**: Personal music projects and mixes
 - **Contact**: Get in touch page
 - **Responsive Design**: Mobile-first approach with Tailwind CSS
+- **Now listening**: A top-right Roon playback card on all pages; hidden when idle or unavailable. It uses the public Whiskey API and needs no Last.fm credentials. See [Now listening](../../docs/services/roon/now-listening.md) for source, privacy, local API setup, and rollout.
 - **Dark Mode**: Theme switching capability
 - **Type Safety**: Full TypeScript implementation
 - **Serverless Deployment**: AWS Lambda with CloudFront CDN
