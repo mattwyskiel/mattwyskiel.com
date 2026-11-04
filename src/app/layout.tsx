@@ -42,7 +42,9 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} md:has-[#now-listening]:pb-32`}>
+      <body
+        className={`${inter.className} has-[#now-listening]:pb-[calc(8rem+env(safe-area-inset-bottom))] md:has-[#now-listening]:pb-32`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

@@ -23,7 +23,7 @@ export function NowListeningCard({
     <aside
       id="now-listening"
       aria-label="Now listening to"
-      className="mx-auto flex w-full max-w-4xl justify-end bg-card px-4 pb-3 md:fixed md:right-6 md:bottom-6 md:z-10 md:w-80 md:bg-transparent md:p-0"
+      className="fixed right-[max(1rem,env(safe-area-inset-right))] bottom-[calc(1rem+env(safe-area-inset-bottom))] z-10 flex w-80 max-w-[calc(100vw-2rem)] md:right-6 md:bottom-6"
     >
       <Card
         size="sm"
