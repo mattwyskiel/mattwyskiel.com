@@ -42,7 +42,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${inter.className} md:has-[#now-listening]:pb-32`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -61,8 +61,8 @@ export default async function RootLayout({
             }
             linkComponent={Link}
             themeControl={<ModeToggle />}
-            statusContent={<NowListening endpoint={nowListeningEndpoint} />}
           />
+          <NowListening endpoint={nowListeningEndpoint} />
           {children}
           <PersonalSiteFooter currentYear={currentYear} linkComponent={Link} />
         </ThemeProvider>

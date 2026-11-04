@@ -21,8 +21,9 @@ export function NowListeningCard({
   const { title, artist, album } = summary.track;
   return (
     <aside
+      id="now-listening"
       aria-label="Now listening to"
-      className="container mx-auto flex max-w-4xl justify-end px-4 pb-3"
+      className="mx-auto flex w-full max-w-4xl justify-end bg-card px-4 pb-3 md:fixed md:right-6 md:bottom-6 md:z-10 md:w-80 md:bg-transparent md:p-0"
     >
       <Card
         size="sm"
