@@ -172,21 +172,16 @@ The site is deployed using Pulumi and AWS with OpenNext.js for serverless deploy
 
 ```bash
 # Preview changes
-pulumi preview
+infisical run --env=dev -- pulumi preview --stack dev
 
 # Deploy to development
-pulumi up
+infisical run --env=dev -- pulumi up --stack dev --yes
 ```
 
 ### Production Deployment
 
-```bash
-# Switch to production stack
-pulumi stack select prod
-
-# Deploy to production
-pulumi up
-```
+Production deploys only through GitHub Actions after a pull request merges to
+`main`. Do not deploy production locally.
 
 ### Infrastructure Overview
 
