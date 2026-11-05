@@ -18,11 +18,15 @@ Source for Matt Wyskiel's personal website and its AWS deployment.
 
 ## Features
 
-- **Portfolio**: Showcase of software projects including:
-  - **Whiskey**: Personal automation system and second brain
-  - **A-List**: Audio player for DJ mixes
-  - **mattwyskiel.com**: This website (meta!)
-  - **Kingsmen Café**: Mobile pre-ordering app
+- **Home page**: A short introduction, then three sections: Building (Whiskey and recent work), Mixing (the four latest A-List mixes), and Writing (the three latest stories). Mixes come from the public A-List `GET /api/entries` route and are cached for hours. Covers load through A-List's image endpoint, because this site does not optimize images and the originals are megabytes each. If A-List does not answer, the home page shows only the links.
+- **Portfolio**: Project index grouped into personal, work, and archive sections, with a page for each personal project:
+  - **Whiskey**: A dated timeline of how the platform grew, what it does today, and where it runs
+  - **A-List**: DJ mix site with track chapters and a podcast feed
+  - **mattwyskiel.com**: This website
+  - **Kingsmen Café**: Archived mobile pre-ordering app
+
+  Project pages share the layout parts in `src/components/project-page.tsx`. Project page text must match current, verified behavior. Do not publish private hostnames, machine names, or costs.
+
 - **Blog**: Stories and articles powered by Contentful CMS
 - **Music**: Personal music projects and mixes
 - **Contact**: Get in touch page
@@ -106,6 +110,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 │   │   ├── layout.tsx    # Root layout
 │   │   └── page.tsx      # Home page
 │   ├── components/       # Reusable components
+│   │   ├── project-page.tsx # Shared project page layout parts
 │   │   ├── ui/          # shadcn/ui components
 │   │   ├── footer.tsx   # Site footer
 │   │   ├── header.tsx   # Site header

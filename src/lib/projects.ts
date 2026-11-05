@@ -5,31 +5,30 @@ export interface Project {
   link: string;
   type: "personal" | "professional";
   date: string;
-  isActive: boolean;
-  featured: boolean;
+}
+
+/** Formats a project date such as "2023-Present" as "2023–present". */
+export function formatYears(date: string) {
+  return date.replace("-Present", "–present").replace("-", "–");
 }
 
 export const allProjects: Project[] = [
   {
     title: "Whiskey",
     description:
-      "My second brain. My OS. My personal automation system. Cloud-native, data-rich, and private.",
-    tags: ["AWS", "Data", "AI"],
+      "The private platform behind my AI assistant, my smart home, my music, and my live streams.",
+    tags: ["AWS", "AI", "Home automation"],
     link: "/projects/whiskey",
     type: "personal",
     date: "2023-Present",
-    isActive: true,
-    featured: true,
   },
   {
     title: "A-List",
-    description: "An audio player for my DJ mixes.",
-    tags: ["Next.js", "Web Audio", "Music"],
+    description: "My DJ mixes, with track chapters and a podcast feed.",
+    tags: ["Next.js", "DynamoDB", "Music"],
     link: "/projects/a-list",
     type: "personal",
     date: "2024-Present",
-    isActive: true,
-    featured: false,
   },
   {
     title: "mattwyskiel.com",
@@ -39,8 +38,6 @@ export const allProjects: Project[] = [
     link: "/projects/mattwyskiel-com",
     type: "personal",
     date: "2019-Present",
-    isActive: true,
-    featured: false,
   },
   {
     title: "Prudential US Businesses CloudHelp",
@@ -50,8 +47,6 @@ export const allProjects: Project[] = [
     link: "#",
     type: "professional",
     date: "2023",
-    isActive: false,
-    featured: false,
   },
   {
     title: "Prudential Individual Solutions Distribution Platform",
@@ -60,8 +55,15 @@ export const allProjects: Project[] = [
     link: "#",
     type: "professional",
     date: "2022",
-    isActive: false,
-    featured: false,
+  },
+  {
+    title: "Capital One: Field AI Transformation",
+    description:
+      "Enabling Relationship Managers to do less busywork and close more deals with the power of Generative AI.",
+    tags: ["Generative AI", "Finance", "Business"],
+    link: "#",
+    type: "professional",
+    date: "2026-Present",
   },
   {
     title: "Capital One: Vendor Card Acceptance",
@@ -71,8 +73,6 @@ export const allProjects: Project[] = [
     link: "#",
     type: "professional",
     date: "2025-2026",
-    isActive: false,
-    featured: true,
   },
   {
     title: "PruXpress Annuities",
@@ -81,8 +81,6 @@ export const allProjects: Project[] = [
     link: "#",
     type: "professional",
     date: "2020",
-    isActive: false,
-    featured: false,
   },
 ];
 
@@ -90,34 +88,9 @@ export const archivedProjects = [
   {
     title: "Kingsmen Café",
     description:
-      "A mobile pre-ordering experience for a small local coffee chain with Square payments.",
+      "A mobile pre-ordering app for a coffee shop in a school library, with Square payments.",
     tags: ["iOS", "Swift", "Mobile"],
     link: "/projects/kingsmen-cafe",
-    date: "2018",
+    date: "2017-2018",
   },
 ];
-
-export function getFeaturedProjects(limit: number = 2): Project[] {
-  return allProjects
-    .filter((project) => project.featured)
-    .sort((a, b) => b.date.localeCompare(a.date))
-    .slice(0, limit);
-}
-
-export function getSortedProjects(sortType: "featured" | "date"): Project[] {
-  if (sortType === "featured") {
-    return allProjects.toSorted((a, b) => {
-      if (a.featured !== b.featured) {
-        return b.featured ? 1 : -1;
-      }
-      return b.date.localeCompare(a.date);
-    });
-  } else {
-    return allProjects.toSorted((a, b) => {
-      if (a.date !== b.date) {
-        return b.date.localeCompare(a.date);
-      }
-      return b.isActive ? 1 : -1;
-    });
-  }
-}

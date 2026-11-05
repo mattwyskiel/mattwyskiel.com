@@ -1,293 +1,169 @@
-import { Badge } from "@whiskey/web-ui/components/ui/badge";
-import { Button } from "@whiskey/web-ui/components/ui/button";
-import {
-  Archive,
-  Coffee,
-  CreditCard,
-  MapPin,
-  Smartphone,
-  Users,
-} from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
-import { BackLink } from "@/components/back-link";
+import {
+  BuiltWith,
+  FeatureList,
+  ProjectFigure,
+  ProjectHeader,
+  ProjectPage,
+  ProjectSection,
+  ProjectStatus,
+  Prose,
+} from "@/components/project-page";
+import homeScreen from "./images/home-screen-2018.webp";
+
+const description =
+  "A mobile pre-ordering app for a coffee shop in a school library, with Square payments.";
 
 export const metadata: Metadata = {
   title: "Kingsmen Café | Matt Wyskiel",
-  description:
-    "A mobile pre-ordering experience for a small local coffee chain with Square payments.",
+  description,
   openGraph: {
     type: "website",
     title: "Kingsmen Café | Matt Wyskiel",
-    description:
-      "A mobile pre-ordering experience for a small local coffee chain with Square payments.",
+    description,
     url: "https://mattwyskiel.com/projects/kingsmen-cafe",
     images: { url: "https://mattwyskiel.com/ogimage.png" },
   },
 };
 
+const features = [
+  {
+    title: "Pre-ordering",
+    description:
+      "Order ahead from a menu of drinks and snacks that the business could change itself.",
+  },
+  {
+    title: "Square payments",
+    description:
+      "Pay in advance through Square, including cardless payment options.",
+  },
+  {
+    title: "Community hub",
+    description:
+      "School announcements, live store hours, and each student's class schedule.",
+  },
+  {
+    title: "Native iOS app",
+    description: "Built in Swift for iPhone.",
+  },
+];
+
+const problems = [
+  "Long waits during peak hours",
+  "Few convenient ways for students to order",
+  "No integrated payments",
+  "No place for community news and events",
+];
+
+const solutions = [
+  "Mobile pre-ordering to cut wait times",
+  "Payments built into the app",
+  "A community information hub",
+  "A simple, fast mobile interface",
+];
+
 export default function KingsmenCafePage() {
   return (
-    <div className="min-h-screen bg-muted">
-      <main className="container mx-auto px-4 py-10 max-w-4xl">
-        <BackLink href="/projects" label="Back to projects" />
+    <ProjectPage>
+      <ProjectHeader
+        title="Kingsmen Café"
+        summary={description}
+        facts={[
+          { label: "Years", value: "2017–2018" },
+          { label: "Status", value: <ProjectStatus status="archived" /> },
+          { label: "Code", value: "Open source" },
+        ]}
+        links={[
+          {
+            label: "Source on GitHub",
+            href: "https://github.com/mattwyskiel/kingsmen-cafe",
+          },
+        ]}
+      />
 
-        {/* Hero Section */}
-        <div className="mb-12">
-          <div className="flex items-center gap-2 mb-4">
-            <Archive className="h-6 w-6 text-muted-foreground" />
-            <span className="text-muted-foreground font-medium">
-              Archived Project
-            </span>
+      <ProjectSection title="What it was" id="overview">
+        <div className="grid items-start gap-8 sm:grid-cols-[1fr_12rem]">
+          <Prose>
+            <p>
+              Kingsmen Café was a coffee shop set up in the library of Christian
+              Heritage School, a small private K–12 school in Trumbull,
+              Connecticut. I built its ordering app with the school's Business
+              Acumen class of juniors and seniors, fresh out of high school
+              myself.
+            </p>
+            <p>
+              It was my first full-stack app for a real business. We shipped
+              version 1.0 and a few updates. Then school workloads caught up
+              with the business lead and me, and the project ended.
+            </p>
+            <p>
+              Later I cleaned up the code and made it public. The design
+              decisions I made here still inform my work.
+            </p>
+          </Prose>
+          <ProjectFigure
+            framed={false}
+            className="mx-auto w-48 sm:w-full"
+            image={homeScreen}
+            alt="An iPhone showing the Kingsmen Café home screen. It greets the student, shows their next class, their account balance, and an Order Now button."
+            caption="The home screen design from January 2018, with sample data."
+          />
+        </div>
+      </ProjectSection>
+
+      <ProjectSection title="What it did" id="features">
+        <FeatureList features={features} />
+      </ProjectSection>
+
+      <ProjectSection title="The problem" id="context">
+        <div className="grid gap-8 sm:grid-cols-2">
+          <div>
+            <h3 className="font-medium">What the café needed</h3>
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-muted-foreground marker:text-border">
+              {problems.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </div>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            Kingsmen Café
-          </h1>
-          <p className="text-xl text-muted-foreground mb-6">
-            A mobile pre-ordering experience for a small local coffee chain with
-            Square payments.
-          </p>
-          <div className="flex flex-wrap gap-2 mb-6">
-            {["iOS", "Swift", "Mobile", "Square", "Node.js"].map((tag) => (
-              <Badge
-                key={tag}
-                variant="secondary"
-                className="bg-muted text-muted-foreground text-sm"
-              >
-                {tag}
-              </Badge>
-            ))}
-          </div>
-          <div className="flex gap-4">
-            <Button className="bg-secondary-foreground hover:bg-secondary-foreground/90 text-secondary">
-              <Link href="https://github.com/mattwyskiel/kingsmen-cafe">
-                View on GitHub
-              </Link>
-            </Button>
+          <div>
+            <h3 className="font-medium">What the app delivered</h3>
+            <ul className="mt-3 list-disc space-y-2 pl-5 text-muted-foreground marker:text-border">
+              {solutions.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </div>
         </div>
+      </ProjectSection>
 
-        {/* Project Status Notice */}
-        <div className="bg-amber-50 border border-amber-200 p-4 rounded-lg mb-12">
-          <div className="flex items-center gap-2 mb-2">
-            <Archive className="h-5 w-5 text-amber-600" />
-            <h3 className="font-medium text-amber-800">Archived Project</h3>
-          </div>
-          <p className="text-amber-700 text-sm">
-            This project was developed for a local coffee chain that has since
-            closed. The code remains available as a portfolio piece and learning
-            resource.
+      <ProjectSection title="What I learned" id="lessons">
+        <Prose>
+          <p>
+            <strong>Payments.</strong> Working with Square's payment SDK taught
+            me how to handle secure mobile payments.
           </p>
-        </div>
+          <p>
+            <strong>Real business needs.</strong> I had to balance what the
+            technology could do with how the café and its customers actually
+            worked.
+          </p>
+          <p>
+            <strong>Fast mobile flows.</strong> Ordering had to be quick without
+            losing the options people wanted.
+          </p>
+        </Prose>
+      </ProjectSection>
 
-        {/* Overview */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">Overview</h2>
-          <div className="bg-card p-6 rounded-lg shadow-xs">
-            <p className="text-muted-foreground mb-4">
-              Kingsmen Café was a mobile pre-ordering solution I developed for a
-              small local coffee chain. The app allowed customers to browse the
-              menu, customize their orders, and pay using Square's payment
-              processing system, all while providing a community hub for the
-              school environment.
-            </p>
-            <p className="text-muted-foreground">
-              This project showcased my ability to work with payment processing,
-              mobile UI/UX design, and integration with third-party services in
-              a real-world business context.
-            </p>
-          </div>
-        </section>
-
-        {/* Key Features */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">Key Features</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-card p-6 rounded-lg shadow-xs">
-              <Coffee className="h-8 w-8 text-amber-600 mb-4" />
-              <h3 className="font-medium text-lg mb-2">Pre-Order System</h3>
-              <p className="text-muted-foreground">
-                Complete pre-ordering system with customizable menu items,
-                allowing customers to place orders ahead of time.
-              </p>
-            </div>
-            <div className="bg-card p-6 rounded-lg shadow-xs">
-              <CreditCard className="h-8 w-8 text-amber-600 mb-4" />
-              <h3 className="font-medium text-lg mb-2">Square Integration</h3>
-              <p className="text-muted-foreground">
-                Secure mobile payments powered by Square's payment processing
-                system for seamless transactions.
-              </p>
-            </div>
-            <div className="bg-card p-6 rounded-lg shadow-xs">
-              <Users className="h-8 w-8 text-amber-600 mb-4" />
-              <h3 className="font-medium text-lg mb-2">Community Hub</h3>
-              <p className="text-muted-foreground">
-                Featured school community information and events, making it more
-                than just a ordering app.
-              </p>
-            </div>
-            <div className="bg-card p-6 rounded-lg shadow-xs">
-              <Smartphone className="h-8 w-8 text-amber-600 mb-4" />
-              <h3 className="font-medium text-lg mb-2">Native iOS App</h3>
-              <p className="text-muted-foreground">
-                Built as a native iOS application using Swift for optimal
-                performance and user experience.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Technical Architecture */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">
-            Technical Architecture
-          </h2>
-          <div className="bg-card p-6 rounded-lg shadow-xs">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center">
-                <Smartphone className="h-12 w-12 text-amber-600 mx-auto mb-3" />
-                <h3 className="font-medium mb-2">iOS Frontend</h3>
-                <p className="text-sm text-muted-foreground">
-                  Native iOS app built with Swift SDK for optimal performance
-                </p>
-              </div>
-              <div className="text-center">
-                <CreditCard className="h-12 w-12 text-amber-600 mx-auto mb-3" />
-                <h3 className="font-medium mb-2">Payment Processing</h3>
-                <p className="text-sm text-muted-foreground">
-                  Square payment integration for secure mobile transactions
-                </p>
-              </div>
-              <div className="text-center">
-                <MapPin className="h-12 w-12 text-amber-600 mx-auto mb-3" />
-                <h3 className="font-medium mb-2">Backend Services</h3>
-                <p className="text-sm text-muted-foreground">
-                  Node.js backend with MongoDB for data management
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Technologies Used */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">Technologies Used</h2>
-          <div className="bg-card p-6 rounded-lg shadow-xs">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="text-center p-3 bg-muted rounded">
-                <div className="font-medium text-sm mb-1">Mobile</div>
-                <div className="text-xs text-muted-foreground">
-                  iOS SDK (Swift)
-                </div>
-              </div>
-              <div className="text-center p-3 bg-muted rounded">
-                <div className="font-medium text-sm mb-1">Payments</div>
-                <div className="text-xs text-muted-foreground">Square</div>
-              </div>
-              <div className="text-center p-3 bg-muted rounded">
-                <div className="font-medium text-sm mb-1">Backend</div>
-                <div className="text-xs text-muted-foreground">Node.js</div>
-              </div>
-              <div className="text-center p-3 bg-muted rounded">
-                <div className="font-medium text-sm mb-1">Database</div>
-                <div className="text-xs text-muted-foreground">MongoDB</div>
-              </div>
-              <div className="text-center p-3 bg-muted rounded">
-                <div className="font-medium text-sm mb-1">Hosting</div>
-                <div className="text-xs text-muted-foreground">Heroku</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Business Context */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">Business Context</h2>
-          <div className="bg-card p-6 rounded-lg shadow-xs">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="font-medium mb-3">Problem Solved</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Long wait times during peak hours</li>
-                  <li>• Limited ordering convenience for students</li>
-                  <li>• Need for payment processing integration</li>
-                  <li>• Lack of community engagement platform</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-medium mb-3">Solution Delivered</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Mobile pre-ordering to reduce wait times</li>
-                  <li>• Integrated payment processing</li>
-                  <li>• Community information hub</li>
-                  <li>• User-friendly mobile interface</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Development Insights */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">Development Insights</h2>
-          <div className="bg-card p-6 rounded-lg shadow-xs">
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-amber-600 rounded-full mt-2"></div>
-                <div>
-                  <h3 className="font-medium">Payment Integration</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Working with Square's payment SDK provided valuable
-                    experience in secure payment processing
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-amber-600 rounded-full mt-2"></div>
-                <div>
-                  <h3 className="font-medium">
-                    Real-World Business Requirements
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    Balancing technical capabilities with actual business needs
-                    and user workflows
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <div className="w-2 h-2 bg-amber-600 rounded-full mt-2"></div>
-                <div>
-                  <h3 className="font-medium">Mobile UX Design</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Designing for quick ordering while maintaining comprehensive
-                    functionality
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Project Legacy */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">Project Legacy</h2>
-          <div className="bg-card p-6 rounded-lg shadow-xs">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-3 h-3 bg-muted-foreground rounded-full"></div>
-              <span className="font-medium">Archived - Business Closed</span>
-            </div>
-            <p className="text-muted-foreground">
-              While the coffee chain has since closed, this project remains a
-              valuable part of my portfolio. It demonstrates my ability to work
-              with real business requirements, integrate complex payment
-              systems, and deliver a complete mobile solution. The experience
-              gained from this project has informed my approach to subsequent
-              mobile and payment-related projects.
-            </p>
-          </div>
-        </section>
-      </main>
-    </div>
+      <ProjectSection title="Built with" id="stack">
+        <BuiltWith
+          items={[
+            { label: "App", value: "iOS SDK and Swift" },
+            { label: "Payments", value: "Square" },
+            { label: "Backend", value: "Node.js and Express" },
+            { label: "Data and hosting", value: "MongoDB Atlas and Heroku" },
+          ]}
+        />
+      </ProjectSection>
+    </ProjectPage>
   );
 }

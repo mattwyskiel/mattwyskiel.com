@@ -1,227 +1,132 @@
-import { Badge } from "@whiskey/web-ui/components/ui/badge";
-import { Button } from "@whiskey/web-ui/components/ui/button";
-import { Cloud, Database, Globe, Music, Radio, Smartphone } from "lucide-react";
 import type { Metadata } from "next";
-import Link from "next/link";
-import { BackLink } from "@/components/back-link";
+import {
+  BuiltWith,
+  FeatureList,
+  ProjectFigure,
+  ProjectHeader,
+  ProjectLink,
+  ProjectPage,
+  ProjectSection,
+  ProjectStatus,
+  Prose,
+} from "@/components/project-page";
+import mixPage from "./images/mix-page.webp";
+
+const description =
+  "A home for my DJ mixes, with a web player, track chapters, and a podcast feed.";
 
 export const metadata: Metadata = {
   title: "A-List | Matt Wyskiel",
-  description:
-    "A personal DJ mix player with centralized database and web player interface.",
+  description,
   openGraph: {
     type: "website",
     title: "A-List | Matt Wyskiel",
-    description:
-      "A personal DJ mix player with centralized database and web player interface.",
+    description,
     url: "https://mattwyskiel.com/projects/a-list",
     images: { url: "https://mattwyskiel.com/ogimage.png" },
   },
 };
 
+const features = [
+  {
+    title: "Mix library",
+    description:
+      "Every published mix, newest first, with its own artwork, length, and date.",
+  },
+  {
+    title: "Track chapters",
+    description:
+      "Each mix lists its tracks. Select a track to jump to it, or share a link that starts at that track.",
+  },
+  {
+    title: "Player",
+    description:
+      "A web player with lock-screen and notification controls that show the current track. Some mixes also have a video.",
+  },
+  {
+    title: "Podcast feed",
+    description:
+      "Subscribe in a podcast app. The feed includes each mix's artwork and chapters.",
+  },
+];
+
 export default function AListPage() {
   return (
-    <div className="min-h-screen bg-muted">
-      <main className="container mx-auto px-4 py-10 max-w-4xl">
-        <BackLink href="/projects" label="Back to projects" />
+    <ProjectPage>
+      <ProjectHeader
+        title="A-List"
+        summary={description}
+        facts={[
+          { label: "Started", value: "2024" },
+          { label: "Status", value: <ProjectStatus status="active" /> },
+          { label: "Code", value: "Open source" },
+        ]}
+        links={[
+          {
+            label: "Listen to the mixes",
+            href: "https://a-list.mattwyskiel.com",
+          },
+          {
+            label: "Podcast feed",
+            href: "https://a-list.mattwyskiel.com/api/podcast-feed",
+          },
+          {
+            label: "Source on GitHub",
+            href: "https://github.com/mattwyskiel/a-list",
+          },
+        ]}
+      />
 
-        {/* Hero Section */}
-        <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            A-List
-          </h1>
-          <p className="text-xl text-muted-foreground mb-6">
-            My personal DJ mix player with centralized database and web player
-            interface.
+      <ProjectSection title="What it is" id="overview">
+        <Prose>
+          <p>
+            A-List is where my DJ mixes live. Each mix gets its own page and a
+            track list, and the whole set is a podcast you can follow. Listen in
+            the browser or in your podcast app.
           </p>
-          <div className="flex flex-wrap gap-2 mb-6">
-            {["Next.js", "AWS", "Music", "Web Audio", "DynamoDB"].map((tag) => (
-              <Badge
-                key={tag}
-                variant="secondary"
-                className="bg-brand-muted text-brand-muted-foreground text-sm"
-              >
-                {tag}
-              </Badge>
-            ))}
-          </div>
-          <div className="flex gap-4">
-            <Button className="bg-brand hover:bg-brand-hover text-brand-foreground">
-              <Link href="https://a-list.mattwyskiel.com">Listen Now</Link>
-            </Button>
-            <Button
-              variant="outline"
-              className="border-brand text-brand hover:bg-brand-muted"
-            >
-              <Link href="https://github.com/mattwyskiel/a-list">
-                View Code
-              </Link>
-            </Button>
-          </div>
-        </div>
+        </Prose>
+        <ProjectFigure
+          className="mt-8"
+          image={mixPage}
+          alt="The A-List page for the mix Uh Oh, I Feel A Beat! It shows the cover art, an audio player, the mix description, and a track list with start times."
+          caption="A mix page: cover art, the player, and the track list. Select a track to jump to it."
+        />
+      </ProjectSection>
 
-        {/* Overview */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">Overview</h2>
-          <div className="bg-card p-6 rounded-lg shadow-xs">
-            <p className="text-muted-foreground mb-4">
-              A-List is my personal DJ mix player, designed to showcase and
-              organize my DJ mixes in a beautiful, accessible format. It
-              features a centralized database of all my mixes, a responsive web
-              player, and even generates podcast feeds for easy consumption.
-            </p>
-          </div>
-        </section>
+      <ProjectSection title="What it does" id="features">
+        <FeatureList features={features} />
+      </ProjectSection>
 
-        {/* Key Features */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">Key Features</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-card p-6 rounded-lg shadow-xs">
-              <Database className="h-8 w-8 text-brand mb-4" />
-              <h3 className="font-medium text-lg mb-2">Centralized Database</h3>
-              <p className="text-muted-foreground">
-                All mixes are stored in a centralized database with rich
-                metadata.
-              </p>
-            </div>
-            <div className="bg-card p-6 rounded-lg shadow-xs">
-              <Music className="h-8 w-8 text-brand mb-4" />
-              <h3 className="font-medium text-lg mb-2">Web Player</h3>
-              <p className="text-muted-foreground">
-                Beautiful, responsive web player with full audio controls and a
-                seamless playback experience.
-              </p>
-            </div>
-            <div className="bg-card p-6 rounded-lg shadow-xs">
-              <Radio className="h-8 w-8 text-brand mb-4" />
-              <h3 className="font-medium text-lg mb-2">Podcast Feed</h3>
-              <p className="text-muted-foreground">
-                Automatically generates podcast feeds, making it easy to
-                subscribe and listen to new mixes in your favorite podcast app.
-              </p>
-            </div>
-            <div className="bg-card p-6 rounded-lg shadow-xs">
-              <Smartphone className="h-8 w-8 text-brand mb-4" />
-              <h3 className="font-medium text-lg mb-2">Mobile Responsive</h3>
-              <p className="text-muted-foreground">
-                Fully responsive design that works seamlessly across all
-                devices, from desktop to mobile.
-              </p>
-            </div>
-          </div>
-        </section>
+      <ProjectSection title="How it works" id="how">
+        <Prose>
+          <p>
+            Logic Pro markers become the chapters. A command in the{" "}
+            <ProjectLink href="/projects/whiskey">Whiskey</ProjectLink> CLI
+            reads the markers, writes the chapter list, and splits the mix into
+            one file per track.
+          </p>
+          <p>
+            The site is a Next.js app that runs on AWS Lambda behind CloudFront.
+            Mix details live in DynamoDB, and the audio and artwork come from
+            S3. It is built and deployed from the Whiskey monorepo, and
+            published as its own open-source repository.
+          </p>
+        </Prose>
+      </ProjectSection>
 
-        {/* Technical Architecture */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">
-            Technical Architecture
-          </h2>
-          <div className="bg-card p-6 rounded-lg shadow-xs">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center">
-                <Globe className="h-12 w-12 text-brand mx-auto mb-3" />
-                <h3 className="font-medium mb-2">Frontend</h3>
-                <p className="text-sm text-muted-foreground">
-                  Built with Next.js for optimal performance and SEO, featuring
-                  server-side rendering
-                </p>
-              </div>
-              <div className="text-center">
-                <Cloud className="h-12 w-12 text-brand mx-auto mb-3" />
-                <h3 className="font-medium mb-2">Serverless Backend</h3>
-                <p className="text-sm text-muted-foreground">
-                  AWS Lambda functions handle API requests with DynamoDB for
-                  data persistence
-                </p>
-              </div>
-              <div className="text-center">
-                <Database className="h-12 w-12 text-brand mx-auto mb-3" />
-                <h3 className="font-medium mb-2">Audio Storage</h3>
-                <p className="text-sm text-muted-foreground">
-                  Audio files stored in S3 with CloudFront CDN for fast global
-                  delivery
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Technologies Used */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">Technologies Used</h2>
-          <div className="bg-card p-6 rounded-lg shadow-xs">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="text-center p-3 bg-muted rounded">
-                <div className="font-medium text-sm mb-1">Frontend</div>
-                <div className="text-xs text-muted-foreground">Next.js</div>
-              </div>
-              <div className="text-center p-3 bg-muted rounded">
-                <div className="font-medium text-sm mb-1">Backend</div>
-                <div className="text-xs text-muted-foreground">AWS Lambda</div>
-              </div>
-              <div className="text-center p-3 bg-muted rounded">
-                <div className="font-medium text-sm mb-1">Database</div>
-                <div className="text-xs text-muted-foreground">DynamoDB</div>
-              </div>
-              <div className="text-center p-3 bg-muted rounded">
-                <div className="font-medium text-sm mb-1">Storage</div>
-                <div className="text-xs text-muted-foreground">S3</div>
-              </div>
-              <div className="text-center p-3 bg-muted rounded">
-                <div className="font-medium text-sm mb-1">CI/CD</div>
-                <div className="text-xs text-muted-foreground">
-                  GitHub Actions
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Audio Features */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">Audio Features</h2>
-          <div className="bg-card p-6 rounded-lg shadow-xs">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="font-medium mb-3">Player Controls</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Play/pause with keyboard shortcuts</li>
-                  <li>• Seek controls with visual waveform</li>
-                  <li>• Volume control with mute functionality</li>
-                  <li>• Playback speed adjustment</li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-medium mb-3">Mix Organization</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Genre-based categorization</li>
-                  <li>• Chronological sorting</li>
-                  <li>• Search and filter capabilities</li>
-                  <li>• Detailed mix metadata</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Project Status */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">Project Status</h2>
-          <div className="bg-card p-6 rounded-lg shadow-xs">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-3 h-3 bg-status-active rounded-full"></div>
-              <span className="font-medium">Live & Active</span>
-            </div>
-            <p className="text-muted-foreground">
-              A-List is live and actively maintained. New mixes are regularly
-              added, and the platform continues to evolve with new features and
-              improvements. The project serves as both a portfolio piece and a
-              practical tool for sharing my musical work.
-            </p>
-          </div>
-        </section>
-      </main>
-    </div>
+      <ProjectSection title="Built with" id="stack">
+        <BuiltWith
+          items={[
+            { label: "App", value: "Next.js, React, Tailwind CSS" },
+            {
+              label: "Hosting",
+              value: "AWS Lambda and CloudFront, via OpenNext",
+            },
+            { label: "Data", value: "DynamoDB, with audio and artwork in S3" },
+            { label: "Infrastructure", value: "Pulumi and GitHub Actions" },
+          ]}
+        />
+      </ProjectSection>
+    </ProjectPage>
   );
 }

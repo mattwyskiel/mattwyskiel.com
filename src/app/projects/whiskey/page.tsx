@@ -1,217 +1,401 @@
-import { Badge } from "@whiskey/web-ui/components/ui/badge";
-import { Button } from "@whiskey/web-ui/components/ui/button";
-import { Cloud, Database, Shield, Smartphone, Workflow } from "lucide-react";
+import { WhiskeyLogo } from "@whiskey/web-ui/components/brand/whiskey-logo";
 import type { Metadata } from "next";
-import Link from "next/link";
-import { BackLink } from "@/components/back-link";
+import type { ReactNode } from "react";
+import {
+  FeatureList,
+  ProjectFigure,
+  ProjectHeader,
+  ProjectLink,
+  ProjectPage,
+  ProjectSection,
+  ProjectStatus,
+  Prose,
+} from "@/components/project-page";
+import assistantDark from "./images/assistant-old-fashioned-dark.webp";
+import assistantLight from "./images/assistant-old-fashioned-light.webp";
+import nowListeningDark from "./images/now-listening-dark.webp";
+import nowListeningLight from "./images/now-listening-light.webp";
+
+const description =
+  "The private platform behind my AI assistant, my smart home, my music, and my live streams.";
 
 export const metadata: Metadata = {
   title: "Whiskey | Matt Wyskiel",
-  description:
-    "My personal automation system — cloud-native, data-rich, and private.",
+  description,
   openGraph: {
     type: "website",
     title: "Whiskey | Matt Wyskiel",
-    description:
-      "My personal automation system — cloud-native, data-rich, and private.",
+    description,
     url: "https://mattwyskiel.com/projects/whiskey",
     images: { url: "https://mattwyskiel.com/ogimage.png" },
   },
 };
 
-export default function WhiskeyPage() {
-  return (
-    <div className="min-h-screen bg-muted">
-      <main className="container mx-auto px-4 py-10 max-w-4xl">
-        <BackLink href="/projects" label="Back to projects" />
+interface Chapter {
+  when: string;
+  title: string;
+  body: ReactNode;
+  figure?: ReactNode;
+}
 
-        {/* Hero Section */}
-        <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            Whiskey
-          </h1>
-          <p className="text-xl text-muted-foreground mb-6">
-            My personal automation system, built and iterated over many years,
-            built natively in the AWS cloud.
+const chapters: Chapter[] = [
+  {
+    when: "2023",
+    title: "The idea",
+    body: (
+      <>
+        <p>
+          I wanted one private system that holds my data and does small jobs for
+          me. Not a pile of apps that each keep a piece of my life, but one
+          place that I own and control.
+        </p>
+        <p>
+          The early versions were small: a few AWS Lambda functions behind an
+          API, and an early AI chat service that ran on Amazon Bedrock.
+        </p>
+      </>
+    ),
+  },
+  {
+    when: "2025",
+    title: "A server at home",
+    body: (
+      <>
+        <p>
+          Some things should not live in the cloud. In March 2025 I set up a
+          server at home with its own HTTPS gateway. Home Assistant, a local AI
+          model, and a few tools moved behind one secure front door.
+        </p>
+        <p>
+          A self-hosted secrets manager came next. In July, Whiskey got its
+          PostgreSQL database, which also runs at home. In November, a Jellyfin
+          media server joined.
+        </p>
+      </>
+    ),
+  },
+  {
+    when: "July 2026",
+    title: "Music in the house",
+    body: (
+      <>
+        <p>
+          In July 2026 Whiskey learned to talk to Roon, the system that plays
+          music in my house. Now my wake-up alarm picks a random playlist from
+          my Roon library.
+        </p>
+        <p>
+          Later, Jellyfin got automation too. It keeps a Looney Tunes playlist
+          up to date and refreshes the live TV guide every day. And when music
+          plays at home, a card on this website shows what is on.
+        </p>
+      </>
+    ),
+    figure: (
+      <ProjectFigure
+        className="max-w-xs"
+        image={nowListeningLight}
+        darkImage={nowListeningDark}
+        alt="A card that reads: Now listening to Cake, Melanie Martinez, Cry Baby."
+        caption="The card on this site on November 4, 2026."
+      />
+    ),
+  },
+  {
+    when: "October 2026",
+    title: "Back to serverless",
+    body: (
+      <>
+        <p>
+          For a while, the Whiskey API ran as one server in containers behind a
+          load balancer. It worked, but I paid for that load balancer all day,
+          even when nothing used it.
+        </p>
+        <p>
+          In October 2026 I moved the API back to Lambda. Each service now owns
+          its own functions. The services at home stayed at home: the cloud
+          reaches them over a private Tailscale network.
+        </p>
+      </>
+    ),
+  },
+  {
+    when: "Oct–Nov 2026",
+    title: "An assistant that can act",
+    body: (
+      <>
+        <p>
+          The web app became chat first. Replies are durable: if a connection
+          drops or a function restarts, the assistant continues where it stopped
+          and nothing is lost.
+        </p>
+        <p>
+          Then it got tools. It can search the web, and it can control my home
+          through my own Home Assistant account. It can read and save files,
+          make images, and understand video. It can also write and run small
+          programs that combine its tools in one step. I choose which tools a
+          chat can use, and which AI model answers.
+        </p>
+      </>
+    ),
+    figure: (
+      <ProjectFigure
+        image={assistantLight}
+        darkImage={assistantDark}
+        alt="A Whiskey chat. The request asks where the Old Fashioned got its name and for a vintage recipe card. Below it, tool steps search the web, read sources, and design the card. The finished card shows the recipe, the method, and a note on the name."
+        caption="I asked where the Old Fashioned got its name, and for a recipe card. Whiskey searched the web, read its sources, and made the card. Its first try at the image failed, so it fixed the problem and tried again."
+      />
+    ),
+  },
+  {
+    when: "October 2026",
+    title: "Going live",
+    body: (
+      <>
+        <p>
+          Whiskey now runs my live streams too. I stream from a Mac mini at home
+          to <ProjectLink href="https://ywithaw.live">ywithaw</ProjectLink>.
+          Recordings go to the cloud, so the site and its videos stay up when
+          the Mac mini is off.
+        </p>
+        <p>
+          Viewers can chat during a broadcast. I get private viewer analytics
+          and a control room in the Whiskey web app.
+        </p>
+      </>
+    ),
+  },
+];
+
+const capabilities = [
+  {
+    title: "Assistant",
+    description:
+      "Chat with a choice of AI models. Search the web, control the house, read and save files, make images, and understand video.",
+  },
+  {
+    title: "Home",
+    description:
+      "Home Assistant, a Jellyfin media server with live TV, and Roon music. Each is reached privately from the cloud.",
+  },
+  {
+    title: "Music and media",
+    description: (
+      <>
+        Music alarms, the{" "}
+        <ProjectLink href="/projects/a-list">A-List</ProjectLink> mix player,
+        live streaming, and command-line tools that prepare audio for CDs and
+        split DJ mixes into tracks.
+      </>
+    ),
+  },
+  {
+    title: "Platform",
+    description:
+      "Sign-in with linked accounts, an event bus with an archive, daily database backups, and a command-line client for the API.",
+  },
+];
+
+const cloud = [
+  "Web apps and sign-in",
+  "API and AI chat",
+  "Events and their archive",
+  "Files and backups",
+];
+
+const home = [
+  "Database",
+  "Home Assistant",
+  "Jellyfin",
+  "Roon",
+  "Live streaming",
+];
+
+const publicParts = [
+  {
+    label: "ywithaw",
+    href: "https://ywithaw.live",
+    description: "My live streams and past broadcasts.",
+  },
+  {
+    label: "A-List",
+    href: "https://a-list.mattwyskiel.com",
+    description: "My DJ mixes, with track chapters and a podcast feed.",
+  },
+  {
+    label: "This website",
+    href: "/projects/mattwyskiel-com",
+    description: "Including the card that shows what I am listening to.",
+  },
+];
+
+function Timeline({ items }: { items: Chapter[] }) {
+  return (
+    <ol>
+      {items.map((chapter) => (
+        <li
+          key={chapter.title}
+          className="grid md:grid-cols-[9rem_1fr] md:gap-x-10"
+        >
+          <p className="hidden md:block pt-1.5 text-right text-sm font-medium tabular-nums text-muted-foreground">
+            {chapter.when}
           </p>
-          <div className="flex flex-wrap gap-2 mb-6">
-            {[
-              "AWS",
-              "SwiftUI",
-              "Automation",
-              "Cloud-Native",
-              "Data Processing",
-            ].map((tag) => (
-              <Badge
-                key={tag}
-                variant="secondary"
-                className="bg-brand-muted text-brand-muted-foreground text-sm"
-              >
-                {tag}
-              </Badge>
-            ))}
+          <div className="relative border-l border-border pb-14 pl-8 md:pl-10">
+            <span
+              aria-hidden="true"
+              className="absolute -left-[5px] top-2.5 h-2.5 w-2.5 rounded-full bg-brand ring-4 ring-muted"
+            />
+            <p className="md:hidden mb-1 text-sm font-medium tabular-nums text-muted-foreground">
+              {chapter.when}
+            </p>
+            <h3 className="text-2xl font-semibold tracking-tight">
+              {chapter.title}
+            </h3>
+            <div className="mt-3">
+              <Prose>{chapter.body}</Prose>
+            </div>
+            {chapter.figure && <div className="mt-8">{chapter.figure}</div>}
           </div>
-          <div className="flex gap-4">
-            <Button className="bg-brand hover:bg-brand-hover text-brand-foreground">
-              <Link href="https://github.com/whiskey-platform">
-                View on GitHub
-              </Link>
-            </Button>
-            <Button
-              variant="outline"
-              className="border-brand text-brand hover:bg-brand-muted"
-            >
-              <Link href="#overview">Learn More</Link>
-            </Button>
+        </li>
+      ))}
+      <li className="grid md:grid-cols-[9rem_1fr] md:gap-x-10">
+        <p className="hidden md:block pt-1.5 text-right text-sm font-medium text-muted-foreground">
+          Next
+        </p>
+        <div className="relative border-l border-dashed border-border pl-8 md:pl-10">
+          <span
+            aria-hidden="true"
+            className="absolute -left-[5px] top-2.5 h-2.5 w-2.5 rounded-full border-2 border-brand bg-muted"
+          />
+          <p className="md:hidden mb-1 text-sm font-medium text-muted-foreground">
+            Next
+          </p>
+          <h3 className="text-2xl font-semibold tracking-tight">
+            Back to the second brain
+          </h3>
+          <div className="mt-3">
+            <Prose>
+              <p>
+                The first idea is still the goal. A data lake is in place, and
+                chat files are its first source. Email and documents are next.
+                So is a native app for iPhone and Mac, which I have started.
+              </p>
+            </Prose>
           </div>
         </div>
+      </li>
+    </ol>
+  );
+}
 
-        {/* Overview */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">Overview</h2>
-          <div className="bg-card p-6 rounded-lg shadow-xs">
-            <p className="text-muted-foreground mb-4">
-              Whiskey is my second brain, my OS, my personal automation system.
-              It's a cloud-native, data-rich, and private platform that ingests
-              and processes documents, transactions, and communications to help
-              me stay organized and informed.
-            </p>
-
-            <p className="text-muted-foreground mb-4">
-              Whiskey is also an AI Assistant, which uses direct access to all
-              (and I do mean <em>all</em> ) my data so that it has everything it
-              needs to be its most helpful with whatever I need. It's an
-              exercise in prompt engineering, model optimization, data
-              management, and cloud service wrangling.
-            </p>
-          </div>
-        </section>
-
-        {/* Key Features */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">Key Features</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-card p-6 rounded-lg shadow-xs">
-              <Workflow className="h-8 w-8 text-brand mb-4" />
-              <h3 className="font-medium text-lg mb-2">AI-Powered Assistant</h3>
-              <p className="text-muted-foreground">
-                Advanced AI assistant with direct access to all personal data,
-                leveraging prompt engineering and model optimization for
-                contextual insights.
-              </p>
-            </div>
-            <div className="bg-card p-6 rounded-lg shadow-xs">
-              <Database className="h-8 w-8 text-brand mb-4" />
-              <h3 className="font-medium text-lg mb-2">
-                Intelligent Data Processing
-              </h3>
-              <p className="text-muted-foreground">
-                AI-driven ingestion and processing of documents, transactions,
-                and communications, making them searchable and actionable
-                through machine learning.
-              </p>
-            </div>
-            <div className="bg-card p-6 rounded-lg shadow-xs">
-              <Smartphone className="h-8 w-8 text-brand mb-4" />
-              <h3 className="font-medium text-lg mb-2">
-                Smart Mobile Interface
-              </h3>
-              <p className="text-muted-foreground">
-                Native iOS application hosting AI Chat, Document Viewing, and
-                other features for seamless mobile access.
-              </p>
-            </div>
-            <div className="bg-card p-6 rounded-lg shadow-xs">
-              <Shield className="h-8 w-8 text-brand mb-4" />
-              <h3 className="font-medium text-lg mb-2">Privacy-First AI</h3>
-              <p className="text-muted-foreground">
-                All personal data remains private and under my control while
-                enabling powerful automation capabilities, made possible with a
-                combination of secure cloud and self-hosting.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Technical Architecture */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">
-            Technical Architecture
-          </h2>
-          <div className="bg-card p-6 rounded-lg shadow-xs">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center">
-                <Workflow className="h-12 w-12 text-brand mx-auto mb-3" />
-                <h3 className="font-medium mb-2">AI & Data Layer</h3>
-                <p className="text-sm text-muted-foreground">
-                  Advanced AI models with optimized prompts, comprehensive data
-                  ingestion pipelines, and intelligent processing workflows
-                </p>
-              </div>
-              <div className="text-center">
-                <Cloud className="h-12 w-12 text-brand mx-auto mb-3" />
-                <h3 className="font-medium mb-2">
-                  Hybrid Cloud Infrastructure
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  Secure combination of AWS serverless architecture and
-                  self-hosted components for optimal privacy and performance
-                </p>
-              </div>
-              <div className="text-center">
-                <Smartphone className="h-12 w-12 text-brand mx-auto mb-3" />
-                <h3 className="font-medium mb-2">Native Mobile Integration</h3>
-                <p className="text-sm text-muted-foreground">
-                  SwiftUI-based iOS app with AI-enhanced features and seamless
-                  data synchronization across all platforms
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Technologies Used */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">Technologies Used</h2>
-          <div className="bg-card p-6 rounded-lg shadow-xs">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="text-center p-3 bg-muted rounded">
-                <div className="font-medium text-sm mb-1">Cloud</div>
-                <div className="text-xs text-muted-foreground">AWS</div>
-              </div>
-              <div className="text-center p-3 bg-muted rounded">
-                <div className="font-medium text-sm mb-1">Backend</div>
-                <div className="text-xs text-muted-foreground">Bun</div>
-              </div>
-              <div className="text-center p-3 bg-muted rounded">
-                <div className="font-medium text-sm mb-1">Mobile</div>
-                <div className="text-xs text-muted-foreground">SwiftUI</div>
-              </div>
-              <div className="text-center p-3 bg-muted rounded">
-                <div className="font-medium text-sm mb-1">Database</div>
-                <div className="text-xs text-muted-foreground">PostgreSQL</div>
-              </div>
-              <div className="text-center p-3 bg-muted rounded">
-                <div className="font-medium text-sm mb-1">CI/CD</div>
-                <div className="text-xs text-muted-foreground">
-                  GitHub Actions
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Project Status */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">Project Status</h2>
-          <div className="bg-card p-6 rounded-lg shadow-xs">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 bg-status-active rounded-full"></div>
-              <span className="font-medium">Active Development</span>
-            </div>
-          </div>
-        </section>
-      </main>
+function WhereItRuns() {
+  return (
+    <div className="grid items-stretch gap-0 md:grid-cols-[1fr_auto_1fr]">
+      <div className="rounded-lg bg-card p-6 shadow-xs">
+        <h3 className="font-semibold">In the cloud</h3>
+        <p className="mt-1 text-sm text-muted-foreground">
+          AWS Lambda, CloudFront, EventBridge, and S3
+        </p>
+        <ul className="mt-4 space-y-2">
+          {cloud.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </div>
+      <div className="flex items-center justify-center py-3 md:px-3 md:py-0">
+        <div className="flex flex-col items-center gap-2 md:flex-row">
+          <span
+            aria-hidden="true"
+            className="h-6 border-l-2 border-dashed border-brand md:h-0 md:w-6 md:border-l-0 md:border-t-2"
+          />
+          <span className="text-center text-sm text-muted-foreground md:w-24">
+            Private Tailscale network
+          </span>
+          <span
+            aria-hidden="true"
+            className="h-6 border-l-2 border-dashed border-brand md:h-0 md:w-6 md:border-l-0 md:border-t-2"
+          />
+        </div>
+      </div>
+      <div className="rounded-lg bg-card p-6 shadow-xs">
+        <h3 className="font-semibold">At home</h3>
+        <p className="mt-1 text-sm text-muted-foreground">Machines I own</p>
+        <ul className="mt-4 space-y-2">
+          {home.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </div>
     </div>
+  );
+}
+
+export default function WhiskeyPage() {
+  return (
+    <ProjectPage>
+      <ProjectHeader
+        title="Whiskey"
+        mark={<WhiskeyLogo className="h-14 w-auto text-foreground" />}
+        summary={description}
+        facts={[
+          { label: "Started", value: "2023" },
+          { label: "Status", value: <ProjectStatus status="active" /> },
+          { label: "Code", value: "Private" },
+        ]}
+      >
+        <p>
+          When I first put up this page, Whiskey was a backend and a big idea.
+          It does a lot more now. This is how it grew.
+        </p>
+      </ProjectHeader>
+
+      <section aria-labelledby="story-heading" className="mb-16 md:mb-20">
+        <h2 id="story-heading" className="sr-only">
+          The story so far
+        </h2>
+        <Timeline items={chapters} />
+      </section>
+
+      <ProjectSection title="What it does today" id="today">
+        <FeatureList features={capabilities} />
+        <div className="mt-6">
+          <Prose>
+            <p>
+              It is all one TypeScript monorepo on Bun: 7 apps, 10 services, and
+              16 shared libraries as of November 2026. Pulumi describes the
+              infrastructure, with separate development and production stacks.
+              Every merge to the main branch deploys through GitHub Actions.
+            </p>
+          </Prose>
+        </div>
+      </ProjectSection>
+
+      <ProjectSection title="Where it runs" id="where">
+        <WhereItRuns />
+        <div className="mt-6">
+          <Prose>
+            <p>
+              Work that comes and goes, like web requests and AI chat, runs on
+              demand in AWS. Things that hold state or touch the house, like the
+              database and the media servers, stay on hardware I own.
+            </p>
+          </Prose>
+        </div>
+      </ProjectSection>
+
+      <ProjectSection title="See it for yourself" id="public">
+        <Prose>
+          <p>Whiskey itself is private, but some of what it runs is public.</p>
+        </Prose>
+        <ul className="mt-5 space-y-4">
+          {publicParts.map((part) => (
+            <li key={part.href}>
+              <ProjectLink href={part.href}>{part.label}</ProjectLink>
+              <p className="mt-0.5 text-muted-foreground">{part.description}</p>
+            </li>
+          ))}
+        </ul>
+      </ProjectSection>
+    </ProjectPage>
   );
 }
