@@ -14,30 +14,43 @@ const summary: RoonNowListening = {
   },
 };
 
-test("card shows accessible, escaped track metadata", () => {
-  const html = renderToStaticMarkup(<NowListeningCard summary={summary} />);
-  expect(html).toContain('aria-label="Now listening to"');
-  expect(html).toContain("A song &lt;not markup&gt;");
-  expect(html).toContain("An artist");
-  expect(html).toContain("An album");
-});
+test.each(["floating", "overlay"] as const)(
+  "%s card shows accessible, escaped track metadata",
+  (presentation) => {
+    const html = renderToStaticMarkup(
+      <NowListeningCard summary={summary} presentation={presentation} />,
+    );
+    expect(html).toContain('aria-label="Now listening to"');
+    expect(html).toContain("A song &lt;not markup&gt;");
+    expect(html).toContain("An artist");
+    expect(html).toContain("An album");
+  },
+);
 
-test("card is absent without active playback and accepts title-only radio metadata", () => {
-  for (const value of [
-    null,
-    { ...summary, status: "idle" as const, track: null },
-    { ...summary, status: "unavailable" as const, track: null },
-  ]) {
-    expect(renderToStaticMarkup(<NowListeningCard summary={value} />)).toBe("");
-  }
-  const html = renderToStaticMarkup(
-    <NowListeningCard
-      summary={{
-        ...summary,
-        track: { title: "Radio station", artist: null, album: null },
-      }}
-    />,
-  );
-  expect(html).toContain("Radio station");
-  expect(html).not.toContain("null");
-});
+test.each(["floating", "overlay"] as const)(
+  "%s card is absent without active playback and accepts title-only radio metadata",
+  (presentation) => {
+    for (const value of [
+      null,
+      { ...summary, status: "idle" as const, track: null },
+      { ...summary, status: "unavailable" as const, track: null },
+    ]) {
+      expect(
+        renderToStaticMarkup(
+          <NowListeningCard summary={value} presentation={presentation} />,
+        ),
+      ).toBe("");
+    }
+    const html = renderToStaticMarkup(
+      <NowListeningCard
+        presentation={presentation}
+        summary={{
+          ...summary,
+          track: { title: "Radio station", artist: null, album: null },
+        }}
+      />,
+    );
+    expect(html).toContain("Radio station");
+    expect(html).not.toContain("null");
+  },
+);

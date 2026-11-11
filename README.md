@@ -31,7 +31,7 @@ Source for Matt Wyskiel's personal website and its AWS deployment.
 - **Music**: Personal music projects and mixes
 - **Contact**: Get in touch page
 - **Responsive Design**: Mobile-first approach with Tailwind CSS
-- **Now listening**: A top-right Roon playback card on all pages; hidden when idle or unavailable. It uses the public Whiskey API and needs no Last.fm credentials. See [Now listening](../../docs/services/roon/now-listening.md) for source, privacy, local API setup, and rollout.
+- **Now listening**: A bottom-right Roon playback card on website pages; hidden when idle or unavailable. The `/obs/now-listening` page provides the same card on a transparent canvas for an OBS Browser source (520 × 180). It uses the public Whiskey API and needs no Last.fm credentials. See [Now listening](../../docs/services/roon/now-listening.md) for OBS setup, privacy, local API setup, and rollout.
 - **Dark Mode**: Theme switching capability
 - **Type Safety**: Full TypeScript implementation
 - **Serverless Deployment**: AWS Lambda with CloudFront CDN
@@ -96,19 +96,18 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 ```
 ├── src/                   # Next.js application directory
 │   ├── app/              # Next.js App Router pages
-│   │   ├── music/        # Music showcase page
-│   │   ├── projects/     # Portfolio projects
-│   │   │   ├── a-list/   # A-List music player project
-│   │   │   ├── kingsmen-cafe/  # Kingsmen Café project
-│   │   │   ├── mattwyskiel-com/ # This website project
-│   │   │   ├── whiskey/  # Whiskey personal automation
-│   │   │   └── page.tsx  # Projects listing page
-│   │   ├── stories/      # Blog posts
-│   │   │   ├── [slug]/   # Dynamic blog post pages
-│   │   │   └── page.tsx  # Blog listing page
+│   │   ├── (site)/       # Website routes; URLs do not include the group
+│   │   │   ├── music/    # Music showcase page
+│   │   │   ├── projects/ # Portfolio index and project pages
+│   │   │   ├── stories/  # Blog index and [slug] pages
+│   │   │   ├── error.tsx # Website error panel
+│   │   │   ├── loading.tsx # Website loading skeleton
+│   │   │   ├── layout.tsx # Header, footer, theme, and floating card
+│   │   │   └── page.tsx  # Home page
+│   │   ├── obs/now-listening/ # Transparent OBS browser source
 │   │   ├── globals.css   # Global styles
-│   │   ├── layout.tsx    # Root layout
-│   │   └── page.tsx      # Home page
+│   │   ├── layout.tsx    # Shared document and font
+│   │   └── not-found.tsx # Website 404 with site layout
 │   ├── components/       # Reusable components
 │   │   ├── project-page.tsx # Shared project page layout parts
 │   │   ├── ui/          # shadcn/ui components

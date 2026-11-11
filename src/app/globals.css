@@ -116,6 +116,21 @@
   text-wrap: balance;
 }
 
+/* Keep the browser-source canvas transparent, including before hydration. */
+html:has(.obs-overlay),
+body:has(.obs-overlay) {
+  background: transparent;
+  overflow: hidden;
+}
+
+.obs-overlay {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 100dvh;
+  padding: 8px;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -170,7 +185,8 @@
     --status-active: 142 71% 45%;
   }
 
-  .dark {
+  .dark,
+  :root:has(.obs-overlay) {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
     --card: 0 0% 3.9%;
