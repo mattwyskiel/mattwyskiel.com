@@ -8,7 +8,7 @@ export function PersonalSiteBrandIcon() {
   const pathname = usePathname();
 
   return pathname === "/stories" || pathname.startsWith("/stories/") ? (
-    <BookOpen aria-hidden="true" className="size-6 text-brand" />
+    <BookOpen aria-hidden="true" className="size-6 text-primary" />
   ) : (
     <PersonalLogoMark aria-hidden="true" className="h-6 w-auto" />
   );

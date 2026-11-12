@@ -52,7 +52,7 @@ function WhiskeyFeature({ project }: { project: Project }) {
       <h3 className="mt-6 text-3xl font-semibold tracking-tight">
         <Link
           href={project.link}
-          className="rounded-sm hover:text-brand-muted-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+          className="rounded-sm hover:text-accent-text focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         >
           {project.title}
         </Link>
@@ -68,7 +68,7 @@ function WhiskeyFeature({ project }: { project: Project }) {
       </p>
       <Link
         href={project.link}
-        className="mt-6 inline-flex items-center gap-2 rounded-md bg-brand px-4 py-2 font-medium text-brand-foreground hover:bg-brand-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+        className="mt-6 inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 font-medium text-primary-foreground hover:bg-primary-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
       >
         Read how Whiskey grew
         <ArrowRight aria-hidden="true" className="h-4 w-4" />
@@ -93,7 +93,7 @@ function ProjectRow({
   const heading = href ? (
     <Link
       href={href}
-      className="rounded-sm after:absolute after:inset-0 after:rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+      className="rounded-sm after:absolute after:inset-0 after:rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
     >
       {title}
     </Link>

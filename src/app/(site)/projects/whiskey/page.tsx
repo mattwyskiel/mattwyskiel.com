@@ -243,7 +243,7 @@ function Timeline({ items }: { items: Chapter[] }) {
           <div className="relative border-l border-border pb-14 pl-8 md:pl-10">
             <span
               aria-hidden="true"
-              className="absolute -left-[5px] top-2.5 h-2.5 w-2.5 rounded-full bg-brand ring-4 ring-muted"
+              className="absolute -left-[5px] top-2.5 h-2.5 w-2.5 rounded-full bg-primary ring-4 ring-muted"
             />
             <p className="md:hidden mb-1 text-sm font-medium tabular-nums text-muted-foreground">
               {chapter.when}
@@ -265,7 +265,7 @@ function Timeline({ items }: { items: Chapter[] }) {
         <div className="relative border-l border-dashed border-border pl-8 md:pl-10">
           <span
             aria-hidden="true"
-            className="absolute -left-[5px] top-2.5 h-2.5 w-2.5 rounded-full border-2 border-brand bg-muted"
+            className="absolute -left-[5px] top-2.5 h-2.5 w-2.5 rounded-full border-2 border-primary bg-muted"
           />
           <p className="md:hidden mb-1 text-sm font-medium text-muted-foreground">
             Next
@@ -306,14 +306,14 @@ function WhereItRuns() {
         <div className="flex flex-col items-center gap-2 md:flex-row">
           <span
             aria-hidden="true"
-            className="h-6 border-l-2 border-dashed border-brand md:h-0 md:w-6 md:border-l-0 md:border-t-2"
+            className="h-6 border-l-2 border-dashed border-primary md:h-0 md:w-6 md:border-l-0 md:border-t-2"
           />
           <span className="text-center text-sm text-muted-foreground md:w-24">
             Private Tailscale network
           </span>
           <span
             aria-hidden="true"
-            className="h-6 border-l-2 border-dashed border-brand md:h-0 md:w-6 md:border-l-0 md:border-t-2"
+            className="h-6 border-l-2 border-dashed border-primary md:h-0 md:w-6 md:border-l-0 md:border-t-2"
           />
         </div>
       </div>

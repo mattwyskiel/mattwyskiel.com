@@ -13,7 +13,10 @@ export const markdownComponents: Components = {
     <p className="text-muted-foreground py-2" {...props} />
   ),
   a: ({ node: _node, ref: _ref, ...props }) => (
-    <a className="text-brand hover:text-brand-hover font-medium" {...props} />
+    <a
+      className="text-primary hover:text-primary-hover font-medium"
+      {...props}
+    />
   ),
   h1: ({ node: _node, ref: _ref, ...props }) => (
     <h1 className="text-3xl font-bold" {...props} />

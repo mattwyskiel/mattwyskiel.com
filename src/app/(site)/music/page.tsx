@@ -40,7 +40,7 @@ export default function MusicPage() {
                 A mix of upbeat tracks perfect for summer drives with the
                 windows down.
               </p>
-              <Button className="bg-brand hover:bg-brand-hover">
+              <Button className="bg-primary hover:bg-primary-hover">
                 <Play className="h-4 w-4 mr-2" />
                 Play Mix
               </Button>
@@ -83,7 +83,7 @@ export default function MusicPage() {
           <div className="space-y-6">
             <div className="border-b pb-6">
               <h3 className="font-medium text-lg mb-2">
-                <Link href="#" className="hover:text-brand">
+                <Link href="#" className="hover:text-primary">
                   The Art of Mixing: Finding Balance
                 </Link>
               </h3>
@@ -95,7 +95,7 @@ export default function MusicPage() {
             </div>
             <div className="border-b pb-6">
               <h3 className="font-medium text-lg mb-2">
-                <Link href="#" className="hover:text-brand">
+                <Link href="#" className="hover:text-primary">
                   Vinyl vs. Digital: My Take
                 </Link>
               </h3>

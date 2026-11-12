@@ -29,7 +29,7 @@ export function MixShelf({ mixes }: { mixes: Mix[] }) {
               href={mix.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-sm after:absolute after:inset-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+              className="rounded-sm after:absolute after:inset-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
             >
               {mix.title}
               <span className="sr-only"> (opens in a new tab)</span>

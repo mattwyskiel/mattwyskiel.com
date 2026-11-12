@@ -58,7 +58,7 @@ export default function Home() {
                 <h3 className="mt-4 text-xl font-semibold tracking-tight">
                   <Link
                     href={whiskey.link}
-                    className="rounded-sm after:absolute after:inset-0 after:rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                    className="rounded-sm after:absolute after:inset-0 after:rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                   >
                     Whiskey
                   </Link>
@@ -158,7 +158,7 @@ async function LatestPosts() {
             <h3 className="font-medium">
               <Link
                 href={`/stories/${post.slug}`}
-                className="rounded-sm after:absolute after:inset-0 after:rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand"
+                className="rounded-sm after:absolute after:inset-0 after:rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 {post.title}
               </Link>

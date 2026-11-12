@@ -23,7 +23,7 @@ export default function ErrorPage({
         <button
           type="button"
           onClick={reset}
-          className="inline-flex items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-medium text-brand-foreground hover:bg-brand-hover transition-colors"
+          className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary-hover transition-colors"
         >
           Try again
         </button>

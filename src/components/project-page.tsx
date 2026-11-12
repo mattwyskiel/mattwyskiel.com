@@ -32,7 +32,7 @@ export function ProjectLink({
   children: ReactNode;
   className?: string;
 }) {
-  const classes = `inline-flex items-center gap-1 rounded-sm font-medium text-brand-muted-foreground underline decoration-brand/40 underline-offset-4 hover:decoration-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand ${className}`;
+  const classes = `inline-flex items-center gap-1 rounded-sm font-medium text-accent-text underline decoration-primary/40 underline-offset-4 hover:decoration-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${className}`;
 
   if (isExternal(href)) {
     return (
@@ -130,10 +130,7 @@ export function ProjectHeader({
 export function ProjectStatus({ status }: { status: "active" | "archived" }) {
   return status === "active" ? (
     <span className="inline-flex items-center gap-2">
-      <span
-        aria-hidden="true"
-        className="h-2 w-2 rounded-full bg-status-active"
-      />
+      <span aria-hidden="true" className="h-2 w-2 rounded-full bg-signal-ok" />
       Active
     </span>
   ) : (

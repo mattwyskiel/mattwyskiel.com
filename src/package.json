@@ -12,6 +12,7 @@
     "test": "bun test"
   },
   "dependencies": {
+    "@whiskey/design-system": "workspace:*",
     "@hookform/resolvers": "catalog:ui",
     "@whiskey/contracts": "workspace:*",
     "@whiskey/utils": "workspace:*",

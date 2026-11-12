@@ -1,9 +1,24 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Fragment_Mono, Newsreader, Schibsted_Grotesk } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const voice = Newsreader({
+  subsets: ["latin"],
+  axes: ["opsz"],
+  style: ["normal", "italic"],
+  variable: "--font-newsreader",
+});
+const ui = Schibsted_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-schibsted-grotesk",
+});
+const data = Fragment_Mono({
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-fragment-mono",
+});
 
 export const metadata: Metadata = {
   title: "Matt Wyskiel",
@@ -12,8 +27,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>{children}</body>
+    <html
+      lang="en"
+      className={`skin-site ${voice.variable} ${ui.variable} ${data.variable}`}
+      suppressHydrationWarning
+    >
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

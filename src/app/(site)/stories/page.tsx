@@ -45,7 +45,7 @@ async function StoriesList() {
       {posts.map((post) => (
         <article key={post.slug} className="border-b pb-10">
           <h2 className="text-2xl font-semibold mb-2">
-            <Link href={`/stories/${post.slug}`} className="hover:text-brand">
+            <Link href={`/stories/${post.slug}`} className="hover:text-primary">
               {post.title}
             </Link>
           </h2>
@@ -62,7 +62,7 @@ async function StoriesList() {
               <Badge
                 key={tag}
                 variant="secondary"
-                className="bg-brand-muted text-brand-muted-foreground"
+                className="bg-select text-accent-text"
               >
                 {tag}
               </Badge>
@@ -70,7 +70,7 @@ async function StoriesList() {
           </div>
           <Link
             href={`/stories/${post.slug}`}
-            className="text-brand hover:text-brand-hover font-medium text-sm"
+            className="text-primary hover:text-primary-hover font-medium text-sm"
           >
             Read more →
           </Link>
