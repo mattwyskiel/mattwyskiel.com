@@ -291,7 +291,7 @@ function Timeline({ items }: { items: Chapter[] }) {
 function WhereItRuns() {
   return (
     <div className="grid items-stretch gap-0 md:grid-cols-[1fr_auto_1fr]">
-      <div className="rounded-lg bg-card p-6 shadow-xs">
+      <div className="rounded-xl bg-card p-6 shadow-1">
         <h3 className="font-semibold">In the cloud</h3>
         <p className="mt-1 text-sm text-muted-foreground">
           AWS Lambda, CloudFront, EventBridge, and S3
@@ -317,7 +317,7 @@ function WhereItRuns() {
           />
         </div>
       </div>
-      <div className="rounded-lg bg-card p-6 shadow-xs">
+      <div className="rounded-xl bg-card p-6 shadow-1">
         <h3 className="font-semibold">At home</h3>
         <p className="mt-1 text-sm text-muted-foreground">Machines I own</p>
         <ul className="mt-4 space-y-2">

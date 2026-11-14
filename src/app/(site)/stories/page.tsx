@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function StoriesPage() {
   return (
-    <div className="min-h-screen bg-muted">
+    <div className="min-h-screen bg-background">
       <main className="container mx-auto px-4 py-10 max-w-4xl">
         <BackLink href="/" label="Back home" />
 

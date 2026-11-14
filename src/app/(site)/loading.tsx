@@ -2,7 +2,7 @@ import { Skeleton } from "@whiskey/web-ui/components/ui/skeleton";
 
 export default function Loading() {
   return (
-    <div className="min-h-screen bg-muted">
+    <div className="min-h-screen bg-background">
       <main className="container mx-auto flex max-w-4xl flex-col gap-8 px-4 py-10">
         <div className="flex flex-col gap-4">
           <Skeleton className="h-4 w-24" />

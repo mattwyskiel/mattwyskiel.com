@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       className={`skin-site ${voice.variable} ${ui.variable} ${data.variable}`}
       suppressHydrationWarning
     >
-      <body className="antialiased">{children}</body>
+      <body className="wk antialiased">{children}</body>
     </html>
   );
 }

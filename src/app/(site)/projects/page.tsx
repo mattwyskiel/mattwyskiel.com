@@ -42,7 +42,7 @@ const archive = archivedProjects.toSorted(newestFirst);
 
 function WhiskeyFeature({ project }: { project: Project }) {
   return (
-    <article className="rounded-lg bg-card p-6 shadow-xs md:p-8">
+    <article className="rounded-xl bg-card p-6 shadow-1 md:p-8">
       <div className="flex items-start justify-between gap-6">
         <WhiskeyLogo className="h-10 w-auto text-foreground" />
         <p className="text-sm tabular-nums text-muted-foreground">
@@ -93,7 +93,7 @@ function ProjectRow({
   const heading = href ? (
     <Link
       href={href}
-      className="rounded-sm after:absolute after:inset-0 after:rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+      className="rounded-sm after:absolute after:inset-0 after:rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
     >
       {title}
     </Link>
@@ -135,7 +135,7 @@ export default function ProjectsPage() {
 
       <ProjectSection title="Personal" id="personal">
         {whiskey && <WhiskeyFeature project={whiskey} />}
-        <ul className="mt-6 divide-y rounded-lg bg-card shadow-xs">
+        <ul className="mt-6 divide-y rounded-xl bg-card shadow-1">
           {personal.map((project) => (
             <ProjectRow
               key={project.title}
@@ -150,7 +150,7 @@ export default function ProjectsPage() {
       </ProjectSection>
 
       <ProjectSection title="Work" id="work">
-        <ul className="divide-y rounded-lg bg-card shadow-xs">
+        <ul className="divide-y rounded-xl bg-card shadow-1">
           {work.map((project) => (
             <ProjectRow
               key={project.title}
@@ -164,7 +164,7 @@ export default function ProjectsPage() {
       </ProjectSection>
 
       <ProjectSection title="Archive" id="archive">
-        <ul className="divide-y rounded-lg bg-card shadow-xs">
+        <ul className="divide-y rounded-xl bg-card shadow-1">
           {archive.map((project) => (
             <ProjectRow
               key={project.title}

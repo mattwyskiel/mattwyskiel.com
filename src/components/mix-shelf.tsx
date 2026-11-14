@@ -22,7 +22,7 @@ export function MixShelf({ mixes }: { mixes: Mix[] }) {
             height={256}
             loading="lazy"
             decoding="async"
-            className="aspect-square w-full rounded-lg bg-card object-cover shadow-sm ring-1 ring-border transition group-hover:shadow-md"
+            className="aspect-square w-full rounded-xl bg-card object-cover shadow-1 ring-1 ring-border transition group-hover:shadow-2"
           />
           <h3 className="mt-3 text-sm font-medium leading-snug">
             <a

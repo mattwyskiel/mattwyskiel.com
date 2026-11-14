@@ -37,7 +37,7 @@ const recentWork = allProjects
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-muted">
+    <div className="min-h-screen bg-background">
       <main className="container mx-auto max-w-4xl px-4 py-10">
         <header className="mb-20 pt-6 md:mb-24 md:pt-10">
           <h1 className="text-5xl font-semibold tracking-tight md:text-7xl">
@@ -51,14 +51,14 @@ export default function Home() {
         </header>
 
         <ProjectSection title="Building" id="building">
-          <div className="divide-y rounded-lg bg-card shadow-xs">
+          <div className="divide-y rounded-xl bg-card shadow-1">
             {whiskey && (
               <article className="relative p-6">
                 <WhiskeyLogo className="h-8 w-auto text-foreground" />
                 <h3 className="mt-4 text-xl font-semibold tracking-tight">
                   <Link
                     href={whiskey.link}
-                    className="rounded-sm after:absolute after:inset-0 after:rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                    className="rounded-sm after:absolute after:inset-0 after:rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
                   >
                     Whiskey
                   </Link>
@@ -82,9 +82,7 @@ export default function Home() {
             )}
           </div>
           <p className="mt-5">
-            <ProjectLink href="/projects">
-              Everything I've worked on
-            </ProjectLink>
+            <ProjectLink href="/projects">All projects</ProjectLink>
           </p>
         </ProjectSection>
 
@@ -130,7 +128,7 @@ function MixShelfFallback() {
     <div className="grid grid-cols-2 gap-x-5 gap-y-8 sm:grid-cols-4">
       {[0, 1, 2, 3].map((index) => (
         <div key={index} className="space-y-3">
-          <Skeleton className="aspect-square w-full rounded-lg" />
+          <Skeleton className="aspect-square w-full rounded-xl" />
           <Skeleton className="h-4 w-3/4" />
           <Skeleton className="h-4 w-1/2" />
         </div>
@@ -143,7 +141,7 @@ async function LatestPosts() {
   const posts = await getPosts();
 
   return (
-    <ol className="divide-y rounded-lg bg-card shadow-xs">
+    <ol className="divide-y rounded-xl bg-card shadow-1">
       {posts.slice(0, 3).map((post) => (
         <li
           key={post.slug}
@@ -158,7 +156,7 @@ async function LatestPosts() {
             <h3 className="font-medium">
               <Link
                 href={`/stories/${post.slug}`}
-                className="rounded-sm after:absolute after:inset-0 after:rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                className="rounded-sm after:absolute after:inset-0 after:rounded-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
               >
                 {post.title}
               </Link>
@@ -175,7 +173,7 @@ async function LatestPosts() {
 
 function LatestPostsFallback() {
   return (
-    <div className="divide-y rounded-lg bg-card shadow-xs">
+    <div className="divide-y rounded-xl bg-card shadow-1">
       {[0, 1, 2].map((index) => (
         <div
           className="grid gap-2 p-5 sm:grid-cols-[6rem_1fr] sm:gap-6"

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function MusicPage() {
   return (
-    <div className="min-h-screen bg-muted">
+    <div className="min-h-screen bg-background">
       <main className="container mx-auto px-4 py-10 max-w-4xl">
         <BackLink href="/" label="Back home" />
 
@@ -32,8 +32,8 @@ export default function MusicPage() {
         </p>
 
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6">Recent Mixes</h2>
-          <div className="bg-card rounded-lg shadow-xs overflow-hidden">
+          <h2 className="text-2xl font-semibold mb-6">Recent mixes</h2>
+          <div className="bg-card rounded-xl shadow-1 overflow-hidden">
             <div className="p-6">
               <h3 className="font-medium text-lg mb-2">Summer Vibes 2023</h3>
               <p className="text-muted-foreground mb-4">

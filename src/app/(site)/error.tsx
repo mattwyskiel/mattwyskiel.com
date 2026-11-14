@@ -14,7 +14,7 @@ export default function ErrorPage({
   }, [err]);
 
   return (
-    <div className="min-h-screen bg-muted flex items-center justify-center">
+    <div className="min-h-screen bg-background flex items-center justify-center">
       <div className="text-center px-4">
         <h1 className="text-4xl font-bold mb-4">Something went wrong</h1>
         <p className="text-muted-foreground mb-8 max-w-md mx-auto">

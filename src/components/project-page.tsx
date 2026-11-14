@@ -66,7 +66,7 @@ export function ProjectPage({
   backLabel?: string;
 }) {
   return (
-    <div className="min-h-screen bg-muted">
+    <div className="min-h-screen bg-background">
       <main className="container mx-auto px-4 py-10 max-w-4xl">
         <BackLink href={backHref} label={backLabel} />
         {children}
@@ -175,7 +175,7 @@ export function Prose({ children }: { children: ReactNode }) {
 
 export function FeatureList({ features }: { features: ProjectFeature[] }) {
   return (
-    <dl className="divide-y rounded-lg bg-card shadow-xs">
+    <dl className="divide-y rounded-xl bg-card shadow-1">
       {features.map((feature) => (
         <div
           key={feature.title}
@@ -211,7 +211,7 @@ export function ProjectFigure({
   className?: string;
 }) {
   const frame = framed
-    ? "overflow-hidden rounded-xl bg-card shadow-sm ring-1 ring-border"
+    ? "overflow-hidden rounded-xl bg-card shadow-1 ring-1 ring-border"
     : "";
 
   return (
