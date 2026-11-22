@@ -17,7 +17,7 @@ import nowListeningDark from "./images/now-listening-dark.webp";
 import nowListeningLight from "./images/now-listening-light.webp";
 
 const description =
-  "The private platform behind my AI assistant, my smart home, my music, and my live streams.";
+  "My private platform for AI chat, smart-home automation, music, and live streaming—built so my data and tools live in one place I control.";
 
 export const metadata: Metadata = {
   title: "Whiskey | Matt Wyskiel",
@@ -45,13 +45,13 @@ const chapters: Chapter[] = [
     body: (
       <>
         <p>
-          I wanted one private system that holds my data and does small jobs for
-          me. Not a pile of apps that each keep a piece of my life, but one
-          place that I own and control.
+          I wanted one private system that holds my data and handles small jobs
+          for me. Not a pile of unrelated apps that each keep a slice of my
+          life, but one place that I own and control.
         </p>
         <p>
-          The early versions were small: a few AWS Lambda functions behind an
-          API, and an early AI chat service that ran on Amazon Bedrock.
+          The first version was modest: a few AWS Lambda functions behind an
+          API, paired with an early AI chat service on Amazon Bedrock.
         </p>
       </>
     ),
@@ -62,42 +62,44 @@ const chapters: Chapter[] = [
     body: (
       <>
         <p>
-          Some things should not live in the cloud. In March 2025 I set up a
-          server at home with its own HTTPS gateway. Home Assistant, a local AI
-          model, and a few tools moved behind one secure front door.
+          Some things belong on hardware I own, not in someone else's cloud. In
+          March 2025 I set up a home server with its own HTTPS gateway, placing
+          Home Assistant, a local AI setup, and a handful of personal tools
+          behind one private entry point.
         </p>
         <p>
-          A self-hosted secrets manager came next. In July, Whiskey got its
-          PostgreSQL database, which also runs at home. In November, a Jellyfin
-          media server joined.
+          A self-hosted secrets manager followed in April. In July, Whiskey got
+          its PostgreSQL database at home, and in November a Jellyfin media
+          server joined the machine.
         </p>
       </>
     ),
   },
   {
     when: "July 2026",
-    title: "Music in the house",
+    title: "Music and media in the house",
     body: (
       <>
         <p>
-          In July 2026 Whiskey learned to talk to Roon, the system that plays
-          music in my house. Now my wake-up alarm picks a random playlist from
-          my Roon library.
+          In July 2026 I connected Whiskey to Roon, the software that plays
+          music across my house. Now my wake-up alarm picks a random playlist
+          from my Roon library. When music plays at home, a small public feed
+          updates the card on this site with the current track.
         </p>
         <p>
-          Later, Jellyfin got automation too. It keeps a Looney Tunes playlist
-          up to date and refreshes the live TV guide every day. And when music
-          plays at home, a card on this website shows what is on.
+          Jellyfin gained background automation too. Whiskey keeps a Looney
+          Tunes playlist up to date and refreshes the live TV guide every day.
         </p>
       </>
     ),
     figure: (
       <ProjectFigure
         className="max-w-xs"
+        framed={false}
         image={nowListeningLight}
         darkImage={nowListeningDark}
-        alt="A card that reads: Now listening to Cake, Melanie Martinez, Cry Baby."
-        caption="The card on this site on November 4, 2026."
+        alt="A rounded card displaying sample playback: Now listening to Cake by Melanie Martinez from Cry Baby."
+        caption="The listening card on this site, shown with sample playback."
       />
     ),
   },
@@ -107,44 +109,16 @@ const chapters: Chapter[] = [
     body: (
       <>
         <p>
-          For a while, the Whiskey API ran as one server in containers behind a
-          load balancer. It worked, but I paid for that load balancer all day,
-          even when nothing used it.
+          For a while, the Whiskey API ran in containers behind a load balancer.
+          It worked, but I was paying for that load balancer around the clock,
+          even when nothing was calling it.
         </p>
         <p>
-          In October 2026 I moved the API back to Lambda. Each service now owns
-          its own functions. The services at home stayed at home: the cloud
-          reaches them over a private Tailscale network.
+          In October 2026 I moved the API back to AWS Lambda, with each service
+          owning its own functions. Stateful services stayed at home, joined to
+          the cloud over a private Tailscale network.
         </p>
       </>
-    ),
-  },
-  {
-    when: "Oct–Nov 2026",
-    title: "An assistant that can act",
-    body: (
-      <>
-        <p>
-          The web app became chat first. Replies are durable: if a connection
-          drops or a function restarts, the assistant continues where it stopped
-          and nothing is lost.
-        </p>
-        <p>
-          Then it got tools. It can search the web, and it can control my home
-          through my own Home Assistant account. It can read and save files,
-          make images, and understand video. It can also write and run small
-          programs that combine its tools in one step. I choose which tools a
-          chat can use, and which AI model answers.
-        </p>
-      </>
-    ),
-    figure: (
-      <ProjectFigure
-        image={assistantLight}
-        darkImage={assistantDark}
-        alt="A Whiskey chat. The request asks where the Old Fashioned got its name and for a vintage recipe card. Below it, tool steps search the web, read sources, and design the card. The finished card shows the recipe, the method, and a note on the name."
-        caption="I asked where the Old Fashioned got its name, and for a recipe card. Whiskey searched the web, read its sources, and made the card. Its first try at the image failed, so it fixed the problem and tried again."
-      />
     ),
   },
   {
@@ -153,16 +127,49 @@ const chapters: Chapter[] = [
     body: (
       <>
         <p>
-          Whiskey now runs my live streams too. I stream from a Mac mini at home
-          to <ProjectLink href="https://ywithaw.live">ywithaw</ProjectLink>.
-          Recordings go to the cloud, so the site and its videos stay up when
-          the Mac mini is off.
+          That same month, Whiskey took over my live streams. I broadcast from a
+          Mac mini at home to{" "}
+          <ProjectLink href="https://ywithaw.live">ywithaw</ProjectLink>, while
+          the public site and recordings live in the cloud so past broadcasts
+          stay online even when the Mac mini is off.
         </p>
         <p>
-          Viewers can chat during a broadcast. I get private viewer analytics
-          and a control room in the Whiskey web app.
+          Viewers can chat during a stream. I manage broadcasts, recordings, and
+          private viewer analytics from a control room inside the Whiskey web
+          app.
         </p>
       </>
+    ),
+  },
+  {
+    when: "Oct–Nov 2026",
+    title: "An assistant built for real work",
+    body: (
+      <>
+        <p>
+          The web app became chat-first, built so an in-progress reply can
+          recover after a dropped connection or server restart. Tools followed:
+          web research, Home Assistant, file uploads, image generation, and
+          small scripts that combine tools in one turn. I choose which tools and
+          AI model each conversation uses, and the assistant can search earlier
+          chats for context.
+        </p>
+        <p>
+          In November, the Workbench redesign rebuilt the web workspace around
+          reading, with replies in a focused column, inline tool activity and
+          source links, and composer controls close at hand in light and dark
+          themes. Alongside the web app, a private native app now brings Whiskey
+          chat to iPhone and Mac over the same API.
+        </p>
+      </>
+    ),
+    figure: (
+      <ProjectFigure
+        image={assistantLight}
+        darkImage={assistantDark}
+        alt="A saved Whiskey chat asking where the Old Fashioned cocktail got its name and for a vintage recipe card. Inline rows show web-research steps, followed by a cited answer and the generated recipe card."
+        caption="A saved chat example: I asked where the Old Fashioned got its name and for a vintage recipe card. Whiskey showed its web-research steps, cited a source, and generated the card inline."
+      />
     ),
   },
 ];
@@ -171,51 +178,51 @@ const capabilities = [
   {
     title: "Assistant",
     description:
-      "Chat with a choice of AI models. Search the web, control the house, read and save files, make images, and understand video.",
+      "Web and native Apple clients sharing one API for private AI chat, customizable tools, and personal context.",
   },
   {
     title: "Home",
     description:
-      "Home Assistant, a Jellyfin media server with live TV, and Roon music. Each is reached privately from the cloud.",
+      "Private cloud-to-home links for Home Assistant, Roon music playback, and scheduled Jellyfin library jobs.",
   },
   {
-    title: "Music and media",
+    title: "Publishing",
     description: (
       <>
-        Music alarms, the{" "}
+        Live-stream hosting and recordings for ywithaw, the{" "}
         <ProjectLink href="/projects/a-list">A-List</ProjectLink> mix player,
-        live streaming, and command-line tools that prepare audio for CDs and
-        split DJ mixes into tracks.
+        and command-line tools for preparing CD audio and splitting DJ mixes.
       </>
     ),
   },
   {
     title: "Platform",
     description:
-      "Sign-in with linked accounts, an event bus with an archive, daily database backups, and a command-line client for the API.",
+      "Hosted sign-in with linked accounts, an EventBridge event bus and S3 data lake, daily PostgreSQL backups, and a CLI for authenticated API calls.",
   },
 ];
 
 const cloud = [
-  "Web apps and sign-in",
-  "API and AI chat",
-  "Events and their archive",
-  "Files and backups",
+  "Web apps and hosted sign-in",
+  "Serverless API and AI chat",
+  "Event bus and data lake",
+  "Files, recordings, and backups",
 ];
 
 const home = [
-  "Database",
+  "PostgreSQL database",
   "Home Assistant",
-  "Jellyfin",
-  "Roon",
-  "Live streaming",
+  "Jellyfin media server",
+  "Roon music server",
+  "Live stream host",
 ];
 
 const publicParts = [
   {
     label: "ywithaw",
     href: "https://ywithaw.live",
-    description: "My live streams and past broadcasts.",
+    description:
+      "My live streams and past broadcasts, sent from home and served from the cloud.",
   },
   {
     label: "A-List",
@@ -225,7 +232,8 @@ const publicParts = [
   {
     label: "This website",
     href: "/projects/mattwyskiel-com",
-    description: "Including the card that shows what I am listening to.",
+    description:
+      "Built in the same monorepo, including the card that shows what is playing at home.",
   },
 ];
 
@@ -276,9 +284,12 @@ function Timeline({ items }: { items: Chapter[] }) {
           <div className="mt-3">
             <Prose>
               <p>
-                The first idea is still the goal. A data lake is in place, and
-                chat files are its first source. Email and documents are next.
-                So is a native app for iPhone and Mac, which I have started.
+                The first idea is still the north star. Earlier-chat context is
+                already working, and chat files and early email archives have
+                started flowing into one private archive. From here, I want
+                richer long-term memory across conversations, more of my own
+                documents and records in that archive, and a native iPhone and
+                Mac app that keeps pace with the web workspace.
               </p>
             </Prose>
           </div>
@@ -344,8 +355,8 @@ export default function WhiskeyPage() {
         ]}
       >
         <p>
-          When I first put up this page, Whiskey was a backend and a big idea.
-          It does a lot more now. This is how it grew.
+          What started in 2023 as a few cloud functions now spans a home server,
+          cloud APIs, and private web and Apple apps. Here is how it grew.
         </p>
       </ProjectHeader>
 
@@ -361,10 +372,11 @@ export default function WhiskeyPage() {
         <div className="mt-6">
           <Prose>
             <p>
-              It is all one TypeScript monorepo on Bun: 7 apps, 10 services, and
-              16 shared libraries as of November 2026. Pulumi describes the
-              infrastructure, with separate development and production stacks.
-              Every merge to the main branch deploys through GitHub Actions.
+              Everything lives in one Bun and TypeScript monorepo—Next.js web
+              apps, Hono APIs, shared libraries, a CLI, and the native Apple
+              app, which shares the API through generated OpenAPI clients.
+              Pulumi describes separate development and production stacks, and
+              merges to the main branch deploy through GitHub Actions.
             </p>
           </Prose>
         </div>
@@ -375,9 +387,11 @@ export default function WhiskeyPage() {
         <div className="mt-6">
           <Prose>
             <p>
-              Work that comes and goes, like web requests and AI chat, runs on
-              demand in AWS. Things that hold state or touch the house, like the
-              database and the media servers, stay on hardware I own.
+              Work that comes and goes—web pages, API requests, and AI chat—runs
+              on demand in AWS instead of idling on always-on servers, alongside
+              cloud storage for files, recordings, and backups. My primary
+              PostgreSQL database and the home, media, and live-streaming
+              systems stay on hardware I own at home.
             </p>
           </Prose>
         </div>
@@ -385,7 +399,10 @@ export default function WhiskeyPage() {
 
       <ProjectSection title="See it for yourself" id="public">
         <Prose>
-          <p>Whiskey itself is private, but some of what it runs is public.</p>
+          <p>
+            Whiskey itself is private, built for an audience of one, but a few
+            pieces face the public web.
+          </p>
         </Prose>
         <ul className="mt-5 space-y-4">
           {publicParts.map((part) => (
